@@ -7,7 +7,7 @@ using System.Web;
 namespace CIAUTH.Code
 {
     /// <summary>
-    /// http://stackoverflow.com/a/5518092/242897
+    /// http://stackoverflow.com/a/5518092/242897 - modified
     /// </summary>
     public class SimplerAes
     {
@@ -24,19 +24,13 @@ namespace CIAUTH.Code
             encoder = new UTF8Encoding();
         }
 
-        private string Encrypt(string unencrypted)
-        {
-            return Convert.ToBase64String(Encrypt(encoder.GetBytes(unencrypted)));
-        }
+      
 
-        private string Decrypt(string encrypted)
-        {
-            return encoder.GetString(Decrypt(Convert.FromBase64String(encrypted)));
-        }
+      
 
-        public string EncryptToUrl(string unencrypted)
+        public string Encrypt(string unencrypted)
         {
-            string value = Encrypt(unencrypted);
+            string value = Convert.ToBase64String(Encrypt(encoder.GetBytes(unencrypted)));
 
             value = value.Replace("/", "$");
             value = value.Replace("+", "#");
@@ -44,26 +38,26 @@ namespace CIAUTH.Code
             return value;
         }
 
-        public string DecryptFromUrl(string encrypted)
+        public string Decrypt(string encrypted)
         {
             var value = encrypted;
             value = value.Replace("$", "/");
 
             value = value.Replace("#", "+");
-            return Decrypt(value);
+            return encoder.GetString(Decrypt(Convert.FromBase64String(value)));
         }
 
-        public byte[] Encrypt(byte[] buffer)
+        private byte[] Encrypt(byte[] buffer)
         {
             return Transform(buffer, encryptor);
         }
 
-        public byte[] Decrypt(byte[] buffer)
+        private byte[] Decrypt(byte[] buffer)
         {
             return Transform(buffer, decryptor);
         }
 
-        protected byte[] Transform(byte[] buffer, ICryptoTransform transform)
+        private byte[] Transform(byte[] buffer, ICryptoTransform transform)
         {
             MemoryStream stream = new MemoryStream();
             using (CryptoStream cs = new CryptoStream(stream, transform, CryptoStreamMode.Write))

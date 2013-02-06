@@ -140,7 +140,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Code\Encryptor.cs" />
+    <Compile Include="Code\Authentication.cs" />
     <Compile Include="Code\SimplerAes.cs" />
     <Compile Include="Code\UserInfo.cs" />
     <Compile Include="Controllers\DecryptController.cs" />

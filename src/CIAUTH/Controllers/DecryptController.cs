@@ -15,7 +15,7 @@ namespace CIAUTH.Controllers
         // GET api/<controller>/5
         public string Get(string id)
         {
-            var decryptPayload = new Encryptor().DecryptPayload(id);
+            var decryptPayload = new Authentication().DecryptPayload(id);
             return decryptPayload;
         }
 

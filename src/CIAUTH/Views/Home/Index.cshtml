@@ -45,7 +45,7 @@
                 try
                 {
                     var userInfo = new UserInfo() { UserName = username, Password = password, NewPassword = newpassword };
-                    new Encryptor().Login(ref userInfo);
+                    new Authentication().Login(ref userInfo);
                     if (userInfo.PasswordChangeRequired)
                     {
                         errormessage = "Password change required";
@@ -53,7 +53,7 @@
                     }
                     else
                     {
-                        var payload = new Encryptor().BuildPayload(userInfo);
+                        var payload = new Authentication().BuildPayload(userInfo);
                         Response.Redirect(returnUrl + "?auth=" + payload);
 
                     }
@@ -108,17 +108,18 @@
                     <td>Username:</td><td><input type="text" name="username" value="@username"/>@uidlabel</td>
                 </tr>
                 <tr>
-                    <td>Password:</td><td><input type="password" name="password" value="@password"/>@pwdlabel</td>
+                    <td>Password:</td><td><input type="password" name="password" value="@password"/>@pwdlabel<input type="button" style="font-size: x-small;" value="Change Password" id="changepassword" name="changepassword" onclick='$("#newPasswordRow").show();$(this).hide();$("#login").val("Change password and login");'/></td>
                 </tr>
-                <tr style="display: @newPasswordStyle">
+                <tr id="newPasswordRow" style="display: @newPasswordStyle">
                     <td>New Password:</td><td><input type="password" name="newpassword" value="@newpassword"/>@newpwdlabel</td>
                 </tr>
 
                 <tr>
-                    <td><input type="submit"  value="Login"/></td><td><input type="submit" name="cancel" value="cancel"/></td>
+                    <td><input id="login" type="submit"  value="Login"/></td><td><input type="submit" name="cancel" value="cancel"/></td>
                 </tr>
             </table>
             @errormessage
         </form>
     </section>
 </div>
+ 

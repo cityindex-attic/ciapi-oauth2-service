@@ -9,8 +9,8 @@ An extension service for the CIAPI that implements an OAuth2 like flow for getti
 
 1.  Your app redirects browser to `authServer + "?returnUrl=" + UrlEncode(ReturnUrl)`
 2.  User enters their login details into the authServer, 
-3.  which creates CIAPI Session
-3.  authServer redirects browser back to ReturnUrl + '?auth={encryptedCode}'
-4.  Your app makes server side request to authServer + "/api/Decrypt/" + HttpUtility.UrlEncode({encryptedCode})
-5.  authServer returns Username:Session
-6.  Your app can now make CIAPI calls using Username and Session headers as normal
+3.  which creates CIAPI `Session`
+3.  authServer redirects browser back to `ReturnUrl + '?auth={encryptedCode}'`
+4.  Your app makes server side request to `authServer + "/api/Decrypt/" + HttpUtility.UrlEncode({encryptedCode})`
+5.  authServer returns `Username:Session`
+6.  Your app can now make CIAPI calls using `Username` and `Session` headers as normal

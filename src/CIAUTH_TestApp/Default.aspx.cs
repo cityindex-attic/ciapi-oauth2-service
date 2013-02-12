@@ -8,6 +8,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using CIAPI.DTO;
 using CIAPI.Rpc;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace CIAUTH_TestApp
 {
@@ -15,30 +17,44 @@ namespace CIAUTH_TestApp
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            string auth = Request["auth"];
-            if (auth != null)
+            string state = Request["state"];
+            string code = Request["code"];
+
+            if (code != null)
             {
- 
 
                 string authServer = WebConfigurationManager.AppSettings["authServer"];
 
-                var client = new WebClient();
-                var payload =
-                    client.DownloadString(authServer + "/api/Decrypt/" + HttpUtility.UrlEncode(auth));
+                var grant_type = "authorization_code";
+                var client_id = "123";
+                var client_secret = "456";
 
+                var client = new WebClient();
+                client.Headers.Add("Content-Type", "application/x-www-form-urlencoded");
+                string upload =
+                    string.Format("client_id={0}&client_secret={1}&grant_type={2}&code={3}", HttpUtility.UrlEncode(client_id), HttpUtility.UrlEncode(client_secret), HttpUtility.UrlEncode(grant_type), HttpUtility.UrlEncode(code));
+                var payload = client.UploadString(authServer + "/Token", upload);
                 // payload is in form "username:session" because WebApi return 'json' strings. 
                 // we can return text/plain but involves custom content formatters. !?
                 // so we just leave it as is and munge the return
 
-                payload=payload.Trim('"');
+                JObject payloadobj = (JObject) JsonConvert.DeserializeObject(payload);
 
-                var pair = payload.Split(new char[] { ':' }, StringSplitOptions.RemoveEmptyEntries);
+                string refresh_token = payloadobj["refresh_token"].Value<string>();
+
+                string access_token = payloadobj["access_token"].Value<string>();
+
+                // #TODO: clarify expire date
+
+                var pair = access_token.Split(new char[] { ':' }, StringSplitOptions.RemoveEmptyEntries);
                 var username = pair[0];
                 var session = pair[1];
 
                 // save it for later user
                 Session["CIAPI_SESSION"] = session;
                 Session["CIAPI_USERNAME"] = username;
+                
+                Session["CIAPI_REFRESHTOKEN"] = refresh_token;
             }
 
 
@@ -83,8 +99,9 @@ namespace CIAUTH_TestApp
 
         protected void AuthButton_Click(object sender, EventArgs e)
         {
+
             string authServer = WebConfigurationManager.AppSettings["authServer"];
-            Response.Redirect(authServer + "?returnUrl=" + HttpUtility.UrlEncode(Request.Url.ToString()));
+            Response.Redirect(authServer + "/Authorize?response_type=code&client_id=12345&redirect_uri=" + HttpUtility.UrlEncode(Request.Url.ToString()));
         }
     }
 }

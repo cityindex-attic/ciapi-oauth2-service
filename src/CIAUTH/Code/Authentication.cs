@@ -44,7 +44,7 @@ namespace CIAUTH.Code
 
         public string BuildPayload(UserInfo userInfo)
         {
-            string package = userInfo.UserName + ":" + userInfo.SessionId;
+            string package = userInfo.UserName + ":" + userInfo.SessionId + ":" + userInfo.Password;
             string encrypted = new SimplerAes().Encrypt(package);
             return encrypted;
         }

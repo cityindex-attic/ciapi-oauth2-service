@@ -6,11 +6,15 @@ using System.Web.Mvc;
 
 namespace CIAUTH.Controllers
 {
-    public class HomeController : Controller
+    public class AuthorizeController : Controller
     {
+        //
+        // GET: /Authorize/
+
         public ActionResult Index()
         {
             return View();
         }
+
     }
 }

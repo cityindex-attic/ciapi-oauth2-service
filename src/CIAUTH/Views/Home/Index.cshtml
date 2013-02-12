@@ -1,1 +1,125 @@
-﻿go to /authorize
+﻿@using System.Web.Configuration
+@using CIAPI.Rpc
+@using CIAUTH.Code
+@{
+    string uidlabel = "";
+    string pwdlabel = "";
+    string errormessage = "";
+
+    string newpwdlabel = "";
+    string newPasswordStyle = "none";
+    var username = Request["username"] ?? "XX658109";
+
+    var password = Request["password"];
+    string newpassword = Request["newpassword"];
+    var returnUrl = Request["returnUrl"];
+    if (IsPost)
+    {
+
+        if (string.IsNullOrEmpty(Request["cancel"]))
+        {
+
+            bool error = false;
+
+            if (string.IsNullOrEmpty(username))
+            {
+                error = true;
+                uidlabel = "Required";
+            }
+
+            if (string.IsNullOrEmpty(password))
+            {
+                error = true;
+                pwdlabel = "Required";
+            }
+
+            if (error)
+            {
+                errormessage = "Required fields missing";
+            }
+            else
+            {
+
+
+
+                try
+                {
+                    var userInfo = new UserInfo() { UserName = username, Password = password, NewPassword = newpassword };
+                    new Authentication().Login(ref userInfo);
+                    if (userInfo.PasswordChangeRequired)
+                    {
+                        errormessage = "Password change required";
+                        newPasswordStyle = "visible";
+                    }
+                    else
+                    {
+                        var payload = new Authentication().BuildPayload(userInfo);
+                        Response.Redirect(returnUrl + "?auth=" + payload);
+
+                    }
+
+                }
+                catch (InvalidCredentialsException ice)
+                {
+                    errormessage = "Invalid Username or Password";
+                }
+                catch (Exception ex)
+                {
+                    errormessage = ex.Message;
+                }
+
+            }
+        }
+        else
+        {
+            Response.Redirect(returnUrl + "?cancel=true");
+        }
+
+
+    }
+}
+<header>
+    <div class="content-wrapper">
+        <div class="float-left">
+            <p class="site-title">
+                <a href="~/">City Index Authorization v1</a></p>
+        </div>
+    </div>
+</header>
+<div id="body">
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                
+                <h2>The XXXXX website is requesting access to your City Index trading account.</h2>
+            </hgroup>
+            <p>
+                If you would like to grant XXXX website authority to access your City Index trading account on your behalf please login here with your City Index credentials.
+
+            </p>
+        
+        </div>
+    </section>
+    <section class="content-wrapper main-content clear-fix">
+        <h3>LOGIN</h3>
+        <form action="" method="post">
+            <table>
+                <tr>
+                    <td>Username:</td><td><input type="text" name="username" value="@username"/>@uidlabel</td>
+                </tr>
+                <tr>
+                    <td>Password:</td><td><input type="password" name="password" value="@password"/>@pwdlabel<input type="button" style="font-size: x-small;" value="Change Password" id="changepassword" name="changepassword" onclick='$("#newPasswordRow").show();$(this).hide();$("#login").val("Change password and login");'/></td>
+                </tr>
+                <tr id="newPasswordRow" style="display: @newPasswordStyle">
+                    <td>New Password:</td><td><input type="password" name="newpassword" value="@newpassword"/>@newpwdlabel</td>
+                </tr>
+
+                <tr>
+                    <td><input id="login" type="submit"  value="Login"/></td><td><input type="submit" name="cancel" value="cancel"/></td>
+                </tr>
+            </table>
+            @errormessage
+        </form>
+    </section>
+</div>
+ 

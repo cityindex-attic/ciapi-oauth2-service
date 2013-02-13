@@ -145,10 +145,9 @@
     <Compile Include="Code\Epoch.cs" />
     <Compile Include="Code\SimplerAes.cs" />
     <Compile Include="Code\UserInfo.cs" />
+    <Compile Include="Code\Utilities.cs" />
     <Compile Include="Controllers\AuthorizeController.cs" />
-    <Compile Include="Controllers\DecryptController.cs" />
     <Compile Include="Controllers\TokenController.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

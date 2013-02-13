@@ -34,9 +34,7 @@ namespace CIAUTH_TestApp
                 string upload =
                     string.Format("client_id={0}&client_secret={1}&grant_type={2}&code={3}", HttpUtility.UrlEncode(client_id), HttpUtility.UrlEncode(client_secret), HttpUtility.UrlEncode(grant_type), HttpUtility.UrlEncode(code));
                 var payload = client.UploadString(authServer + "/Token", upload);
-                // payload is in form "username:session" because WebApi return 'json' strings. 
-                // we can return text/plain but involves custom content formatters. !?
-                // so we just leave it as is and munge the return
+              
 
                 JObject payloadobj = (JObject) JsonConvert.DeserializeObject(payload);
 

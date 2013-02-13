@@ -16,14 +16,33 @@ namespace CIAUTH.Controllers
         [HttpPost]
         public JsonResult Index()
         {
+
+            string client_id = Request.Form["client_id"];
+            string client_secret = Request.Form["client_secret"];
+            string grant_type = Request.Form["grant_type"];
+            
+
+            //  grant_type=refresh_token&refresh_token=tGzv3JOkF0XG5Qx2TlKWIA&client_id=s6BhdRkqt3&client_secret=7Fjfp0ZBr1KtDRbnfVdmIw
+            
+            
+            
             // client_id=12345
             // client_secret=secret
             // grant_type=authorization_code
             // code=f5205cc9-a207-46a7-9888-906a40a3582e
 
-            string client_id = Request.Form["client_id"];
-            string client_secret = Request.Form["client_secret"];
-            string grant_type = Request.Form["grant_type"];
+            JsonResult jsonResult=null;
+            switch(grant_type.ToLower())
+            {
+                case "refresh_token":
+
+                    var refresh_token = Request.Form["refresh_token"];
+
+                    
+                    break;
+                case "authorization_code":
+            
+                    
             string code = Request.Form["code"];
             string username;
             string session;
@@ -55,8 +74,14 @@ namespace CIAUTH.Controllers
                            token_type = "bearer"
                        };
 
-            return new JsonResult(){Data = tokenObj};
-             
+                    jsonResult = new JsonResult() {Data = tokenObj};
+                    break;
+                default:
+                    throw new Exception("invalid grant type");
+            }
+
+            return jsonResult;
+                    
         }
 
     }

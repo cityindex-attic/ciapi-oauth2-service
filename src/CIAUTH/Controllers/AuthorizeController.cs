@@ -11,6 +11,7 @@ namespace CIAUTH.Controllers
         //
         // GET: /Authorize/
 
+         
         public ActionResult Index()
         {
             return View();

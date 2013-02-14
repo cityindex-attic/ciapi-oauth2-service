@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="simian.xsl" type="text/xsl"?>
+<!--
+Similarity Analyser 2.3.31 - http://www.harukizaemon.com/simian
+Copyright (c) 2003-11 Simon Harris.  All rights reserved.
+Simian is not free unless used solely for non-commercial or evaluation purposes.
+-->
+<simian version="2.3.31">
+    <check failOnDuplication="true" ignoreCharacterCase="true" ignoreCurlyBraces="true" ignoreIdentifierCase="true" ignoreModifiers="true" ignoreStringCase="true" reportDuplicateText="true" threshold="10">
+        <set lineCount="10">
+            <block sourceFile="C:\dev\ciapi-oauth2-service\src\CIAUTH.Tests\Controllers\TokenControllerFixture.cs" startLineNumber="281" endLineNumber="293"/>
+            <block sourceFile="C:\dev\ciapi-oauth2-service\src\CIAUTH.Tests\Controllers\TokenControllerFixture.cs" startLineNumber="244" endLineNumber="256"/>
+            <text>
+<![CDATA[            var formCollection = new FormCollection                                     {
+                                         {"client_id", _client_id},
+                                         {"client_secret", _client_secret},
+                                         {"grant_type", "refresh_token"},
+                                         {"refresh_token", _refresh_token}
+                                     };
+            HttpContextBase context = Mocking.FakeHttpContext();
+            var loginServiceMock = new Mock<ILoginService>();
+            loginServiceMock.Setup(m => m.Login(It.IsAny<string>(), It.IsAny<string>())).Returns(
+                new ApiLogOnResponseDTO
+                    {
+                        AllowedAccountOperator = true,
+]]>
+            </text>
+        </set>
+        <set lineCount="10">
+            <block sourceFile="C:\dev\ciapi-oauth2-service\src\CIAUTH.Tests\Controllers\TokenControllerFixture.cs" startLineNumber="163" endLineNumber="177"/>
+            <block sourceFile="C:\dev\ciapi-oauth2-service\src\CIAUTH.Tests\Controllers\TokenControllerFixture.cs" startLineNumber="133" endLineNumber="147"/>
+            <block sourceFile="C:\dev\ciapi-oauth2-service\src\CIAUTH.Tests\Controllers\TokenControllerFixture.cs" startLineNumber="103" endLineNumber="117"/>
+            <block sourceFile="C:\dev\ciapi-oauth2-service\src\CIAUTH.Tests\Controllers\TokenControllerFixture.cs" startLineNumber="73" endLineNumber="87"/>
+            <block sourceFile="C:\dev\ciapi-oauth2-service\src\CIAUTH.Tests\Controllers\TokenControllerFixture.cs" startLineNumber="43" endLineNumber="57"/>
+            <text>
+<![CDATA[            HttpContextBase context = Mocking.FakeHttpContext();            var loginServiceMock = new Mock<ILoginService>();
+            var controller = new TokenController(loginServiceMock.Object);
+            controller.ControllerContext = new ControllerContext(context, new RouteData(), controller);
+
+            var result = (JsonResult)controller.Index(formCollection);
+
+            Assert.AreEqual(400, context.Response.StatusCode);
+
+            Assert.IsInstanceOf(typeof(Error), result.Data);
+
+            var error = (Error)result.Data;
+
+            Assert.AreEqual(400, error.status);
+            Assert.AreEqual("", error.error_uri);
+]]>
+            </text>
+        </set>
+        <set lineCount="11">
+            <block sourceFile="C:\dev\ciapi-oauth2-service\src\CIAUTH.Tests\Controllers\TokenControllerFixture.cs" startLineNumber="41" endLineNumber="57"/>
+            <block sourceFile="C:\dev\ciapi-oauth2-service\src\CIAUTH.Tests\Controllers\TokenControllerFixture.cs" startLineNumber="161" endLineNumber="177"/>
+            <block sourceFile="C:\dev\ciapi-oauth2-service\src\CIAUTH.Tests\Controllers\TokenControllerFixture.cs" startLineNumber="101" endLineNumber="117"/>
+            <block sourceFile="C:\dev\ciapi-oauth2-service\src\CIAUTH.Tests\Controllers\TokenControllerFixture.cs" startLineNumber="131" endLineNumber="147"/>
+            <text>
+<![CDATA[                                         {"code", ""}                                     };
+            HttpContextBase context = Mocking.FakeHttpContext();
+            var loginServiceMock = new Mock<ILoginService>();
+            var controller = new TokenController(loginServiceMock.Object);
+            controller.ControllerContext = new ControllerContext(context, new RouteData(), controller);
+
+            var result = (JsonResult)controller.Index(formCollection);
+
+            Assert.AreEqual(400, context.Response.StatusCode);
+
+            Assert.IsInstanceOf(typeof(Error), result.Data);
+
+            var error = (Error)result.Data;
+
+            Assert.AreEqual(400, error.status);
+            Assert.AreEqual("", error.error_uri);
+]]>
+            </text>
+        </set>
+        <set lineCount="12">
+            <block sourceFile="C:\dev\ciapi-oauth2-service\src\CIAUTH.Tests\Controllers\TokenControllerFixture.cs" startLineNumber="160" endLineNumber="177"/>
+            <block sourceFile="C:\dev\ciapi-oauth2-service\src\CIAUTH.Tests\Controllers\TokenControllerFixture.cs" startLineNumber="40" endLineNumber="57"/>
+            <block sourceFile="C:\dev\ciapi-oauth2-service\src\CIAUTH.Tests\Controllers\TokenControllerFixture.cs" startLineNumber="100" endLineNumber="117"/>
+            <text>
+<![CDATA[                                         {"refresh_token", ""},                                         {"code", ""}
+                                     };
+            HttpContextBase context = Mocking.FakeHttpContext();
+            var loginServiceMock = new Mock<ILoginService>();
+            var controller = new TokenController(loginServiceMock.Object);
+            controller.ControllerContext = new ControllerContext(context, new RouteData(), controller);
+
+            var result = (JsonResult)controller.Index(formCollection);
+
+            Assert.AreEqual(400, context.Response.StatusCode);
+
+            Assert.IsInstanceOf(typeof(Error), result.Data);
+
+            var error = (Error)result.Data;
+
+            Assert.AreEqual(400, error.status);
+            Assert.AreEqual("", error.error_uri);
+]]>
+            </text>
+        </set>
+        <set lineCount="14">
+            <block sourceFile="C:\dev\ciapi-oauth2-service\src\CIAUTH.Tests\Controllers\TokenControllerFixture.cs" startLineNumber="158" endLineNumber="177"/>
+            <block sourceFile="C:\dev\ciapi-oauth2-service\src\CIAUTH.Tests\Controllers\TokenControllerFixture.cs" startLineNumber="38" endLineNumber="57"/>
+            <text>
+<![CDATA[                                         {"client_secret", ""},                                         {"grant_type", ""},
+                                         {"refresh_token", ""},
+                                         {"code", ""}
+                                     };
+            HttpContextBase context = Mocking.FakeHttpContext();
+            var loginServiceMock = new Mock<ILoginService>();
+            var controller = new TokenController(loginServiceMock.Object);
+            controller.ControllerContext = new ControllerContext(context, new RouteData(), controller);
+
+            var result = (JsonResult)controller.Index(formCollection);
+
+            Assert.AreEqual(400, context.Response.StatusCode);
+
+            Assert.IsInstanceOf(typeof(Error), result.Data);
+
+            var error = (Error)result.Data;
+
+            Assert.AreEqual(400, error.status);
+            Assert.AreEqual("", error.error_uri);
+]]>
+            </text>
+        </set>
+        <set lineCount="15">
+            <block sourceFile="C:\dev\ciapi-oauth2-service\src\CIAUTH.Tests\Controllers\AuthorizeControllerFixture.cs" startLineNumber="146" endLineNumber="164"/>
+            <block sourceFile="C:\dev\ciapi-oauth2-service\src\CIAUTH.Tests\Controllers\AuthorizeControllerFixture.cs" startLineNumber="203" endLineNumber="221"/>
+            <text>
+<![CDATA[                        Session = "session"                    });
+
+            var controller = new AuthorizeController(loginServiceMock.Object);
+
+            HttpContextBase context = Mocking.FakeHttpContext();
+            controller.ControllerContext = new ControllerContext(context, new RouteData(), controller);
+
+            string client_id = "123";
+            string response_type = "code";
+            string redirect_uri = "http://foo.bar.com";
+            string state = "state";
+            string username = "foo";
+            string password = "bar";
+            string login = "Login";
+            string cancel = "";
+
+            ActionResult result =
+                controller.Index(username, password, login, cancel, client_id, response_type, redirect_uri, state);
+]]>
+            </text>
+        </set>
+        <summary duplicateFileCount="2" duplicateLineCount="111" duplicateBlockCount="9" totalFileCount="29" totalRawLineCount="1926" totalSignificantLineCount="930" processingTime="634"/>
+    </check>
+</simian>

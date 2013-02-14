@@ -12,6 +12,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{3F4963
 		.nuget\NuGet.Config = .nuget\NuGet.Config
 		.nuget\NuGet.exe = .nuget\NuGet.exe
 		.nuget\NuGet.targets = .nuget\NuGet.targets
+		.nuget\packages.config = .nuget\packages.config
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CIAUTH.Configuration", "CIAUTH.Configuration\CIAUTH.Configuration.csproj", "{1DB11820-88B5-4B0F-8E9F-284EA1802AB4}"
@@ -25,11 +26,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{46EED6F6-CD2E-4F8E-B302-660EC0084036}"
 	ProjectSection(SolutionItems) = preProject
+		..\build.cmd = ..\build.cmd
 		build.xml = build.xml
 		..\tools\msbuild\CommonProperties.targets.xml = ..\tools\msbuild\CommonProperties.targets.xml
 		..\tools\msbuild\DropsAndPackaging.targets.xml = ..\tools\msbuild\DropsAndPackaging.targets.xml
 		..\tools\msbuild\TestsAndMetrics.targets.xml = ..\tools\msbuild\TestsAndMetrics.targets.xml
 		..\tools\msbuild\Versioning.targets.xml = ..\tools\msbuild\Versioning.targets.xml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".build", ".build", "{2EE884AF-909C-4F95-9EB0-6CD8B37110C3}"
+	ProjectSection(SolutionItems) = preProject
+		Build.proj = Build.proj
+		.build\MSBuild.Community.Tasks.dll = .build\MSBuild.Community.Tasks.dll
+		.build\MSBuild.Community.Tasks.targets = .build\MSBuild.Community.Tasks.targets
 	EndProjectSection
 EndProject
 Global

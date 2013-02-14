@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<html><head>
+<meta charset="utf-8" />
+<title>CIAUTH.WebApiApplication - Coverage Report</title>
+<link rel="stylesheet" type="text/css" href="report.css" />
+<script type="text/javascript">
+/* <![CDATA[ */
+document.getElementsByClassName = function(cl) {
+  var retnode = [];
+  var myclass = new RegExp('\\b'+cl+'\\b');
+  var elem = this.getElementsByTagName('*');
+  for (var i = 0; i < elem.length; i++) {
+    var classes = elem[i].className;
+    if (myclass.test(classes)) {
+      retnode.push(elem[i]);
+    }
+  }
+  return retnode;
+};
+
+function switchTestMethod() {
+  var testMethodName = this.getAttribute('value');
+
+  var lineCoverageTables = document.getElementsByClassName('lineAnalysis');
+
+  for (var i = 0, j = lineCoverageTables.length; i < j; i++) {
+    var lines = lineCoverageTables[i].getElementsByTagName('tr');
+    for (var k = 1, l = lines.length; k < l; k++) {
+      var coverageData = JSON.parse(lines[k].getAttribute('data-coverage').replace(/'/g, '"'));
+      var lineAnalysis = coverageData[testMethodName];
+      var cells = lines[k].getElementsByTagName('td');
+      if (lineAnalysis == null) {
+        lineAnalysis = coverageData['AllTestMethods'];
+        if (lineAnalysis.LVS != 'gray') {
+          cells[0].setAttribute('class', 'red');
+          cells[1].innerText = '0';
+        }
+      } else {
+        cells[0].setAttribute('class', lineAnalysis.LVS);
+        cells[1].innerText = lineAnalysis.VC;
+      }
+    }
+  }
+}
+
+function togglePin() {
+  var testMethodElement = document.getElementById('testmethods');
+  testMethodElement.className = testMethodElement.className == '' ? 'pinned' : '';
+
+  return false;
+}
+
+function init() {
+  var testMethodInputElements = document.getElementsByTagName('input');
+  for (var i = 0, j = testMethodInputElements.length; i < j; i++) {
+    testMethodInputElements[i].onchange = switchTestMethod;
+  }
+
+  document.getElementById('pin').onclick = togglePin;
+
+  if (navigator.appName == 'Microsoft Internet Explorer') {
+    document.getElementById('pinheader').style.width = 'auto';
+  }
+}
+
+window.onload = init;
+/* ]]> */
+</script>
+</head><body><div class="container">
+<h1>Summary</h1>
+<table class="overview">
+<colgroup>
+<col width="130" />
+<col />
+</colgroup>
+<tr><th>Class:</th><td>CIAUTH.WebApiApplication</td></tr>
+<tr><th>Assembly:</th><td>CIAUTH</td></tr>
+<tr><th>File(s):</th><td><a href="#cdevciapioauth2servicesrcCIAUTHGlobalasaxcs">c:\dev\ciapi-oauth2-service\src\CIAUTH\Global.asax.cs</a></td></tr>
+<tr><th>Coverage:</th><td>0%</td></tr>
+<tr><th>Covered lines:</th><td>0</td></tr>
+<tr><th>Coverable lines:</th><td>28</td></tr>
+<tr><th>Total lines:</th><td>67</td></tr>
+</table>
+<h1>Metrics</h1>
+<table class="overview">
+<tr><th>Method</th><th>Cyclomatic Complexity</th><th>Sequence Coverage</th><th>Branch Coverage</th></tr>
+<tr><td title="System.Void CIAUTH.WebApiApplication::Application_Start()">Application_Start()</td><td>1</td><td>0</td><td>0</td></tr>
+<tr><td title="System.Void CIAUTH.WebApiApplication::Application_Error(System.Object,System.EventArgs)">Application_Error(...)</td><td>2</td><td>0</td><td>0</td></tr>
+</table>
+<h1>File(s)</h1>
+<h2 id="cdevciapioauth2servicesrcCIAUTHGlobalasaxcs">c:\dev\ciapi-oauth2-service\src\CIAUTH\Global.asax.cs</h2>
+<table class="lineAnalysis">
+<tr><th></th><th>#</th><th>Line</th><th>Coverage</th></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin right"></td><td class="right"><code>1</code></td><td class="light"><code>using&nbsp;System;</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin right"></td><td class="right"><code>2</code></td><td class="light"><code>using&nbsp;System.Collections.Generic;</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin right"></td><td class="right"><code>3</code></td><td class="light"><code>using&nbsp;System.Configuration;</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin right"></td><td class="right"><code>4</code></td><td class="light"><code>using&nbsp;System.Linq;</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin right"></td><td class="right"><code>5</code></td><td class="light"><code>using&nbsp;System.Web;</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin right"></td><td class="right"><code>6</code></td><td class="light"><code>using&nbsp;System.Web.Configuration;</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin right"></td><td class="right"><code>7</code></td><td class="light"><code>using&nbsp;System.Web.Http;</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin right"></td><td class="right"><code>8</code></td><td class="light"><code>using&nbsp;System.Web.Mvc;</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin right"></td><td class="right"><code>9</code></td><td class="light"><code>using&nbsp;System.Web.Optimization;</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin right"></td><td class="right"><code>10</code></td><td class="light"><code>using&nbsp;System.Web.Routing;</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin right"></td><td class="right"><code>11</code></td><td class="light"><code>using&nbsp;CIAUTH.Configuration;</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin right"></td><td class="right"><code>12</code></td><td class="light"><code>using&nbsp;CIAUTH.Controllers;</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin right"></td><td class="right"><code>13</code></td><td class="light"><code></code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin right"></td><td class="right"><code>14</code></td><td class="light"><code>namespace&nbsp;CIAUTH</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin right"></td><td class="right"><code>15</code></td><td class="light"><code>{</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin right"></td><td class="right"><code>16</code></td><td class="light"><code>&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Note:&nbsp;For&nbsp;instructions&nbsp;on&nbsp;enabling&nbsp;IIS6&nbsp;or&nbsp;IIS7&nbsp;classic&nbsp;mode,</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin right"></td><td class="right"><code>17</code></td><td class="light"><code>&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;visit&nbsp;http://go.microsoft.com/?LinkId=9394801</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin right"></td><td class="right"><code>18</code></td><td class="light"><code></code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin right"></td><td class="right"><code>19</code></td><td class="light"><code>&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;class&nbsp;WebApiApplication&nbsp;:&nbsp;System.Web.HttpApplication</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin right"></td><td class="right"><code>20</code></td><td class="light"><code>&nbsp;&nbsp;&nbsp;&nbsp;{</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin right"></td><td class="right"><code>21</code></td><td class="light"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;protected&nbsp;void&nbsp;Application_Start()</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '0', 'LVS': 'red'}}"><td class="red">&nbsp;</td><td class="leftmargin right">0</td><td class="right"><code>22</code></td><td><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin right"></td><td class="right"><code>23</code></td><td class="light"><code></code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin right"></td><td class="right"><code>24</code></td><td class="light"><code></code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin right"></td><td class="right"><code>25</code></td><td class="light"><code></code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '0', 'LVS': 'red'}}"><td class="red">&nbsp;</td><td class="leftmargin right">0</td><td class="right"><code>26</code></td><td><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AreaRegistration.RegisterAllAreas();</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin right"></td><td class="right"><code>27</code></td><td class="light"><code></code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '0', 'LVS': 'red'}}"><td class="red">&nbsp;</td><td class="leftmargin right">0</td><td class="right"><code>28</code></td><td><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WebApiConfig.Register(GlobalConfiguration.Configuration);</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '0', 'LVS': 'red'}}"><td class="red">&nbsp;</td><td class="leftmargin right">0</td><td class="right"><code>29</code></td><td><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '0', 'LVS': 'red'}}"><td class="red">&nbsp;</td><td class="leftmargin right">0</td><td class="right"><code>30</code></td><td><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RouteConfig.RegisterRoutes(RouteTable.Routes);</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '0', 'LVS': 'red'}}"><td class="red">&nbsp;</td><td class="leftmargin right">0</td><td class="right"><code>31</code></td><td><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BundleConfig.RegisterBundles(BundleTable.Bundles);</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin right"></td><td class="right"><code>32</code></td><td class="light"><code></code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '0', 'LVS': 'red'}}"><td class="red">&nbsp;</td><td class="leftmargin right">0</td><td class="right"><code>33</code></td><td><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bootstrapper.Initialise();</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '0', 'LVS': 'red'}}"><td class="red">&nbsp;</td><td class="leftmargin right">0</td><td class="right"><code>34</code></td><td><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin right"></td><td class="right"><code>35</code></td><td class="light"><code></code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin right"></td><td class="right"><code>36</code></td><td class="light"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;protected&nbsp;void&nbsp;Application_Error(object&nbsp;sender,&nbsp;EventArgs&nbsp;e)</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '0', 'LVS': 'red'}}"><td class="red">&nbsp;</td><td class="leftmargin right">0</td><td class="right"><code>37</code></td><td><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '0', 'LVS': 'red'}}"><td class="red">&nbsp;</td><td class="leftmargin right">0</td><td class="right"><code>38</code></td><td><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Exception&nbsp;lastError&nbsp;=&nbsp;Server.GetLastError();</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '0', 'LVS': 'red'}}"><td class="red">&nbsp;</td><td class="leftmargin right">0</td><td class="right"><code>39</code></td><td><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Server.ClearError();</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin right"></td><td class="right"><code>40</code></td><td class="light"><code></code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '0', 'LVS': 'red'}}"><td class="red">&nbsp;</td><td class="leftmargin right">0</td><td class="right"><code>41</code></td><td><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;statusCode&nbsp;=&nbsp;0;</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin right"></td><td class="right"><code>42</code></td><td class="light"><code></code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '0', 'LVS': 'red'}}"><td class="red">&nbsp;</td><td class="leftmargin right">0</td><td class="right"><code>43</code></td><td><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(lastError.GetType()&nbsp;==&nbsp;typeof(HttpException))</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '0', 'LVS': 'red'}}"><td class="red">&nbsp;</td><td class="leftmargin right">0</td><td class="right"><code>44</code></td><td><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '0', 'LVS': 'red'}}"><td class="red">&nbsp;</td><td class="leftmargin right">0</td><td class="right"><code>45</code></td><td><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;statusCode&nbsp;=&nbsp;((HttpException)lastError).GetHttpCode();</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '0', 'LVS': 'red'}}"><td class="red">&nbsp;</td><td class="leftmargin right">0</td><td class="right"><code>46</code></td><td><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin right"></td><td class="right"><code>47</code></td><td class="light"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '0', 'LVS': 'red'}}"><td class="red">&nbsp;</td><td class="leftmargin right">0</td><td class="right"><code>48</code></td><td><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin right"></td><td class="right"><code>49</code></td><td class="light"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Not&nbsp;an&nbsp;HTTP&nbsp;related&nbsp;error&nbsp;so&nbsp;this&nbsp;is&nbsp;a&nbsp;problem&nbsp;in&nbsp;our&nbsp;code,&nbsp;set&nbsp;status&nbsp;to</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin right"></td><td class="right"><code>50</code></td><td class="light"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;500&nbsp;(internal&nbsp;server&nbsp;error)</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '0', 'LVS': 'red'}}"><td class="red">&nbsp;</td><td class="leftmargin right">0</td><td class="right"><code>51</code></td><td><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;statusCode&nbsp;=&nbsp;500;</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '0', 'LVS': 'red'}}"><td class="red">&nbsp;</td><td class="leftmargin right">0</td><td class="right"><code>52</code></td><td><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin right"></td><td class="right"><code>53</code></td><td class="light"><code></code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '0', 'LVS': 'red'}}"><td class="red">&nbsp;</td><td class="leftmargin right">0</td><td class="right"><code>54</code></td><td><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RouteData&nbsp;routeData&nbsp;=&nbsp;new&nbsp;RouteData();</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '0', 'LVS': 'red'}}"><td class="red">&nbsp;</td><td class="leftmargin right">0</td><td class="right"><code>55</code></td><td><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;routeData.Values.Add(&quot;controller&quot;,&nbsp;&quot;Error&quot;);</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '0', 'LVS': 'red'}}"><td class="red">&nbsp;</td><td class="leftmargin right">0</td><td class="right"><code>56</code></td><td><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;routeData.Values.Add(&quot;action&quot;,&nbsp;&quot;Index&quot;);</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '0', 'LVS': 'red'}}"><td class="red">&nbsp;</td><td class="leftmargin right">0</td><td class="right"><code>57</code></td><td><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;routeData.Values.Add(&quot;statusCode&quot;,&nbsp;statusCode);</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '0', 'LVS': 'red'}}"><td class="red">&nbsp;</td><td class="leftmargin right">0</td><td class="right"><code>58</code></td><td><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;routeData.Values.Add(&quot;exception&quot;,&nbsp;lastError);</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin right"></td><td class="right"><code>59</code></td><td class="light"><code></code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '0', 'LVS': 'red'}}"><td class="red">&nbsp;</td><td class="leftmargin right">0</td><td class="right"><code>60</code></td><td><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IController&nbsp;controller&nbsp;=&nbsp;new&nbsp;ErrorController();</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin right"></td><td class="right"><code>61</code></td><td class="light"><code></code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '0', 'LVS': 'red'}}"><td class="red">&nbsp;</td><td class="leftmargin right">0</td><td class="right"><code>62</code></td><td><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RequestContext&nbsp;requestContext&nbsp;=&nbsp;new&nbsp;RequestContext(new&nbsp;HttpContextWrapper(Context),&nbsp;routeData);</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin right"></td><td class="right"><code>63</code></td><td class="light"><code></code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '0', 'LVS': 'red'}}"><td class="red">&nbsp;</td><td class="leftmargin right">0</td><td class="right"><code>64</code></td><td><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;controller.Execute(requestContext);</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '0', 'LVS': 'red'}}"><td class="red">&nbsp;</td><td class="leftmargin right">0</td><td class="right"><code>65</code></td><td><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin right"></td><td class="right"><code>66</code></td><td class="light"><code>&nbsp;&nbsp;&nbsp;&nbsp;}</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin right"></td><td class="right"><code>67</code></td><td class="light"><code>}</code></td></tr>
+</table>
+<div class="footer">Generated by: ReportGenerator 1.7.3.0<br />2/14/2013 - 8:52:57 AM<br /><a href="http://www.palmmedia.de">www.palmmedia.de</a></div></div></body></html>

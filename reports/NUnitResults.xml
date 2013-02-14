@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!--This file represents the results of running a test suite-->
+<test-results name="C:\dev\ciapi-oauth2-service\src\..\src\CIAUTH.Tests\bin\Debug\CIAUTH.Tests.dll" total="24" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2013-02-14" time="08:52:54">
+  <environment nunit-version="2.5.7.10213" clr-version="4.0.30319.17929" os-version="Microsoft Windows NT 6.1.7601 Service Pack 1" platform="Win32NT" cwd="C:\dev\ciapi-oauth2-service\src" machine-name="SKY-T61P" user="SKY" user-domain="SKY-T61p" />
+  <culture-info current-culture="en-US" current-uiculture="en-US" />
+  <test-suite type="Assembly" name="C:\dev\ciapi-oauth2-service\src\..\src\CIAUTH.Tests\bin\Debug\CIAUTH.Tests.dll" executed="True" result="Success" success="True" time="3.298" asserts="0">
+    <results>
+      <test-suite type="Namespace" name="CIAUTH" executed="True" result="Success" success="True" time="3.281" asserts="0">
+        <results>
+          <test-suite type="Namespace" name="Tests" executed="True" result="Success" success="True" time="3.277" asserts="0">
+            <results>
+              <test-suite type="Namespace" name="Code" executed="True" result="Success" success="True" time="1.007" asserts="0">
+                <results>
+                  <test-suite type="TestFixture" name="UtilitiesFixture" executed="True" result="Success" success="True" time="1.005" asserts="0">
+                    <results>
+                      <test-case name="CIAUTH.Tests.Code.UtilitiesFixture.BuildPayload" executed="True" result="Success" success="True" time="0.096" asserts="1" />
+                      <test-case name="CIAUTH.Tests.Code.UtilitiesFixture.BuildTokenFromCode" executed="True" result="Success" success="True" time="0.042" asserts="4" />
+                      <test-case name="CIAUTH.Tests.Code.UtilitiesFixture.BuildTokenFromText" executed="True" result="Success" success="True" time="0.000" asserts="4" />
+                      <test-case name="CIAUTH.Tests.Code.UtilitiesFixture.ComposeUrl" executed="True" result="Success" success="True" time="0.001" asserts="2" />
+                      <test-case name="CIAUTH.Tests.Code.UtilitiesFixture.CreateErrorJson" executed="True" result="Success" success="True" time="0.005" asserts="5" />
+                      <test-case name="CIAUTH.Tests.Code.UtilitiesFixture.DecryptPayload" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                      <test-case name="CIAUTH.Tests.Code.UtilitiesFixture.ToByteArray" executed="True" result="Success" success="True" time="0.000" asserts="5" />
+                    </results>
+                  </test-suite>
+                </results>
+              </test-suite>
+              <test-suite type="Namespace" name="Controllers" executed="True" result="Success" success="True" time="2.265" asserts="0">
+                <results>
+                  <test-suite type="TestFixture" name="AuthorizeControllerFixture" executed="True" result="Success" success="True" time="2.090" asserts="0">
+                    <results>
+                      <test-case name="CIAUTH.Tests.Controllers.AuthorizeControllerFixture.EmptyRedirectUriThrows" executed="True" result="Success" success="True" time="0.915" asserts="1" />
+                      <test-case name="CIAUTH.Tests.Controllers.AuthorizeControllerFixture.FormSubmitShowsRequiredFieldErrors" executed="True" result="Success" success="True" time="0.650" asserts="4" />
+                      <test-case name="CIAUTH.Tests.Controllers.AuthorizeControllerFixture.InvalidClientIdThrows" executed="True" result="Success" success="True" time="0.016" asserts="1" />
+                      <test-case name="CIAUTH.Tests.Controllers.AuthorizeControllerFixture.InvalidCredentialsShowError" executed="True" result="Success" success="True" time="0.033" asserts="2" />
+                      <test-case name="CIAUTH.Tests.Controllers.AuthorizeControllerFixture.InvalidResponseTypeThrows" executed="True" result="Success" success="True" time="0.016" asserts="1" />
+                      <test-case name="CIAUTH.Tests.Controllers.AuthorizeControllerFixture.PasswordChangeRequiredReturnsRedirect" executed="True" result="Success" success="True" time="0.059" asserts="7" />
+                      <test-case name="CIAUTH.Tests.Controllers.AuthorizeControllerFixture.ValidClientIdShowsClientName" executed="True" result="Success" success="True" time="0.020" asserts="1" />
+                      <test-case name="CIAUTH.Tests.Controllers.AuthorizeControllerFixture.ValidCredentialsReturnsRedirect" executed="True" result="Success" success="True" time="0.019" asserts="3" />
+                    </results>
+                  </test-suite>
+                  <test-suite type="TestFixture" name="TokenControllerFixture" executed="True" result="Success" success="True" time="0.174" asserts="0">
+                    <results>
+                      <test-case name="CIAUTH.Tests.Controllers.TokenControllerFixture.InvalidClientIdReturnsOAUTHError" executed="True" result="Success" success="True" time="0.025" asserts="6" />
+                      <test-case name="CIAUTH.Tests.Controllers.TokenControllerFixture.InvalidCodeReturnsOAUTHError" executed="True" result="Success" success="True" time="0.022" asserts="6" />
+                      <test-case name="CIAUTH.Tests.Controllers.TokenControllerFixture.InvalidGrantTypeReturnsOAUTHError" executed="True" result="Success" success="True" time="0.015" asserts="6" />
+                      <test-case name="CIAUTH.Tests.Controllers.TokenControllerFixture.InvalidRefreshTokenReturnsOAUTHError" executed="True" result="Success" success="True" time="0.016" asserts="6" />
+                      <test-case name="CIAUTH.Tests.Controllers.TokenControllerFixture.InvalidSecretReturnsOAUTHError" executed="True" result="Success" success="True" time="0.017" asserts="6" />
+                      <test-case name="CIAUTH.Tests.Controllers.TokenControllerFixture.ValidCodeReturnsToken" executed="True" result="Success" success="True" time="0.016" asserts="4" />
+                      <test-case name="CIAUTH.Tests.Controllers.TokenControllerFixture.ValidRefreshCodeButBadCredentialsReturnsError" executed="True" result="Success" success="True" time="0.018" asserts="6" />
+                      <test-case name="CIAUTH.Tests.Controllers.TokenControllerFixture.ValidRefreshCodeButPasswordChangeRequiredReturnsError" executed="True" result="Success" success="True" time="0.018" asserts="6" />
+                      <test-case name="CIAUTH.Tests.Controllers.TokenControllerFixture.ValidRefreshCodeReturnsToken" executed="True" result="Success" success="True" time="0.019" asserts="4" />
+                    </results>
+                  </test-suite>
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>

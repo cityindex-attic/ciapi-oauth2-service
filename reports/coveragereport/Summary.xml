@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CoverageReport scope="Summary">
+  <Summary>
+    <Generatedon>2/14/2013 - 8:52:58 AM</Generatedon>
+    <Parser>OpenCoverParser</Parser>
+    <Assemblies>2</Assemblies>
+    <Files>18</Files>
+    <Coverage>67.1%</Coverage>
+    <Coveredlines>253</Coveredlines>
+    <Coverablelines>377</Coverablelines>
+    <Totallines>937</Totallines>
+  </Summary>
+  <Assemblies>
+    <Assembly name="CIAUTH" classes="15" coverage="69.3" coveredlines="231" coverablelines="333" totallines="785">
+      <Class name="CIAUTH.Bootstrapper" coverage="0" coveredlines="0" coverablelines="10" totallines="30" />
+      <Class name="CIAUTH.BundleConfig" coverage="0" coveredlines="0" coverablelines="8" totallines="43" />
+      <Class name="CIAUTH.Code.AesEncryption" coverage="100" coveredlines="38" coverablelines="38" totallines="73" />
+      <Class name="CIAUTH.Code.Utilities" coverage="86.2" coveredlines="50" coverablelines="58" totallines="125" />
+      <Class name="CIAUTH.Controllers.AuthorizeController" coverage="88.3" coveredlines="68" coverablelines="77" totallines="150" />
+      <Class name="CIAUTH.Controllers.ErrorController" coverage="0" coveredlines="0" coverablelines="5" totallines="21" />
+      <Class name="CIAUTH.Controllers.TokenController" coverage="94.4" coveredlines="68" coverablelines="72" totallines="137" />
+      <Class name="CIAUTH.FilterConfig" coverage="0" coveredlines="0" coverablelines="3" totallines="13" />
+      <Class name="CIAUTH.Models.AccessToken" coverage="100" coveredlines="4" coverablelines="4" totallines="11" />
+      <Class name="CIAUTH.Models.Error" coverage="100" coveredlines="3" coverablelines="3" totallines="12" />
+      <Class name="CIAUTH.Models.ErrorModel" coverage="0" coveredlines="0" coverablelines="2" totallines="11" />
+      <Class name="CIAUTH.RouteConfig" coverage="0" coveredlines="0" coverablelines="4" totallines="23" />
+      <Class name="CIAUTH.Services.LoginService" coverage="0" coveredlines="0" coverablelines="18" totallines="50" />
+      <Class name="CIAUTH.WebApiApplication" coverage="0" coveredlines="0" coverablelines="28" totallines="67" />
+      <Class name="CIAUTH.WebApiConfig" coverage="0" coveredlines="0" coverablelines="3" totallines="19" />
+    </Assembly>
+    <Assembly name="CIAUTH.Configuration" classes="3" coverage="50" coveredlines="22" coverablelines="44" totallines="152">
+      <Class name="CIAUTH.Configuration.CIAUTHConfigurationSection" coverage="50" coveredlines="7" coverablelines="14" totallines="53" />
+      <Class name="CIAUTH.Configuration.ClientElement" coverage="30" coveredlines="3" coverablelines="10" totallines="56" />
+      <Class name="CIAUTH.Configuration.ClientElementCollection" coverage="60" coveredlines="12" coverablelines="20" totallines="43" />
+    </Assembly>
+  </Assemblies>
+</CoverageReport>

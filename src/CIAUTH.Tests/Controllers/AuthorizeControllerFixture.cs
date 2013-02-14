@@ -225,5 +225,64 @@ namespace CIAUTH.Tests.Controllers
             Assert.IsFalse(redirectResult.Permanent);
             Assert.AreEqual("http://foo.bar.com?code=JpstAC9GbwGop5FiEqfs3Q%3d%3d&state=state", redirectResult.Url);
         }
+
+
+        [Test]
+        public void CancelReturnsRedirect()
+        {
+            var loginServiceMock = new Mock<ILoginService>();
+             
+            var controller = new AuthorizeController(loginServiceMock.Object);
+
+            HttpContextBase context = Mocking.FakeHttpContext();
+            controller.ControllerContext = new ControllerContext(context, new RouteData(), controller);
+
+            string client_id = "123";
+            string response_type = "code";
+            string redirect_uri = "http://foo.bar.com";
+            string state = "state";
+            string username = "foo";
+            string password = "bar";
+            string login = "";
+            string cancel = "Cancel";
+
+            ActionResult result =
+                controller.Index(username, password, login, cancel, client_id, response_type, redirect_uri, state);
+            Assert.IsInstanceOf<RedirectResult>(result);
+
+            var redirectResult = (RedirectResult)result;
+            Assert.IsFalse(redirectResult.Permanent);
+            Assert.AreEqual("http://foo.bar.com?cancel=true&state=state", redirectResult.Url);
+        }
+
+
+
+        [Test]
+        public void ChangePasswordReturnsView()
+        {
+            var loginServiceMock = new Mock<ILoginService>();
+
+            var controller = new AuthorizeController(loginServiceMock.Object);
+
+            HttpContextBase context = Mocking.FakeHttpContext();
+            controller.ControllerContext = new ControllerContext(context, new RouteData(), controller);
+
+            string client_id = "123";
+            string response_type = "code";
+            string redirect_uri = "http://foo.bar.com";
+            string state = "state";
+            string username = "foo";
+            string password = "bar";
+            string login = "";
+            string cancel = "Cancel";
+
+            ActionResult result =
+                controller.ChangePassword(client_id, response_type, redirect_uri, state);
+            Assert.IsInstanceOf<ViewResult>(result);
+
+            var viewResult = (ViewResult)result;
+        // TODO: implement change password    
+        
+        }
     }
 }

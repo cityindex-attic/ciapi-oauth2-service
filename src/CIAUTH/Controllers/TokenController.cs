@@ -88,15 +88,12 @@ namespace CIAUTH.Controllers
                                                                           AesVector);
                                     }
                                 }
-                                catch (InvalidCredentialsException ice)
+                                catch (InvalidCredentialsException )
                                 {
                                     jsonResult = Utilities.CreateErrorJsonResult("invalid_request", "Invalid Username or Password", "", 401);
 
                                 }
-                                catch (Exception ex)
-                                {
-                                    jsonResult = Utilities.CreateErrorJsonResult("invalid_request", ex.Message, "", 400);
-                                }
+                               
 
                             }
                             catch (Exception ex)

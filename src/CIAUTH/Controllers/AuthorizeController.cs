@@ -134,14 +134,11 @@ namespace CIAUTH.Controllers
                                 Utilities.ComposeUrl(redirect_uri, "code=" + payload + "&state=" + state), false);
                     }
                 }
-                catch (InvalidCredentialsException ice)
+                catch (InvalidCredentialsException )
                 {
                     ViewBag.ErrorMessage = "Invalid Username or Password";
                 }
-                catch (Exception ex)
-                {
-                    ViewBag.ErrorMessage = ex.Message;
-                }
+                
             }
 
             return redirectResult;

@@ -1,15 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Security.Principal;
-using System.Text;
 using System.Web;
 using Moq;
+using Moq.Language.Flow;
 
 namespace CIAUTH.Tests
 {
     public static class Mocking
     {
+        public static void ReturnsInOrder<T, TResult>(this ISetup<T, TResult> setup,
+                                                      params TResult[] results) where T : class
+        {
+            setup.Returns(new Queue<TResult>(results).Dequeue);
+        }
+
         public static HttpContextBase FakeHttpContext()
         {
             var context = new Mock<HttpContextBase>();
@@ -21,6 +25,7 @@ namespace CIAUTH.Tests
             var user = new Mock<IPrincipal>();
             var identity = new Mock<IIdentity>();
 
+            // ReSharper disable CSharpWarnings::CS0612
             request.Expect(req => req.ApplicationPath).Returns("~/");
             request.Expect(req => req.AppRelativeCurrentExecutionFilePath).Returns("~/");
             request.Expect(req => req.PathInfo).Returns(string.Empty);
@@ -34,6 +39,7 @@ namespace CIAUTH.Tests
             context.Expect(ctx => ctx.Session).Returns(session.Object);
             context.Expect(ctx => ctx.Server).Returns(server.Object);
             context.Expect(ctx => ctx.User).Returns(user.Object);
+            // ReSharper restore CSharpWarnings::CS0612
 
             return context.Object;
         }

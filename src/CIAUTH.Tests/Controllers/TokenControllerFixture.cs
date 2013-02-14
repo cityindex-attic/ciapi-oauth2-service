@@ -3,6 +3,8 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using CIAUTH.Code;
 using CIAUTH.Controllers;
+using CIAUTH.Services;
+using Moq;
 using NUnit.Framework;
 
 namespace CIAUTH.Tests.Controllers
@@ -10,6 +12,11 @@ namespace CIAUTH.Tests.Controllers
     [TestFixture]
     public class TokenControllerFixture
     {
+        public TokenControllerFixture()
+        {
+              Bootstrapper.Initialise();
+        }
+
         [Test]
         public void InvalidClientIdReturnsOAUTHError()
         {
@@ -22,7 +29,8 @@ namespace CIAUTH.Tests.Controllers
                                          {"code", ""}
                                      };
             HttpContextBase context = Mocking.FakeHttpContext();
-            var controller = new TokenController();
+            Mock<ILoginService> loginServiceMock = new Mock<ILoginService>();
+            var controller = new TokenController(loginServiceMock.Object);
             controller.ControllerContext = new ControllerContext(context, new RouteData(), controller);
 
             var result = (JsonResult) controller.Index(formCollection);
@@ -51,7 +59,8 @@ namespace CIAUTH.Tests.Controllers
                                          {"code", "fasfafd"}
                                      };
             HttpContextBase context = Mocking.FakeHttpContext();
-            var controller = new TokenController();
+            Mock<ILoginService> loginServiceMock = new Mock<ILoginService>();
+            var controller = new TokenController(loginServiceMock.Object);
             controller.ControllerContext = new ControllerContext(context, new RouteData(), controller);
 
             var result = (JsonResult) controller.Index(formCollection);
@@ -80,7 +89,8 @@ namespace CIAUTH.Tests.Controllers
                                          {"code", ""}
                                      };
             HttpContextBase context = Mocking.FakeHttpContext();
-            var controller = new TokenController();
+            Mock<ILoginService> loginServiceMock = new Mock<ILoginService>();
+            var controller = new TokenController(loginServiceMock.Object);
             controller.ControllerContext = new ControllerContext(context, new RouteData(), controller);
 
             var result = (JsonResult) controller.Index(formCollection);
@@ -109,7 +119,8 @@ namespace CIAUTH.Tests.Controllers
                                          {"code", ""}
                                      };
             HttpContextBase context = Mocking.FakeHttpContext();
-            var controller = new TokenController();
+            Mock<ILoginService> loginServiceMock = new Mock<ILoginService>();
+            var controller = new TokenController(loginServiceMock.Object);
             controller.ControllerContext = new ControllerContext(context, new RouteData(), controller);
 
             var result = (JsonResult) controller.Index(formCollection);
@@ -138,7 +149,8 @@ namespace CIAUTH.Tests.Controllers
                                          {"code", ""}
                                      };
             HttpContextBase context = Mocking.FakeHttpContext();
-            var controller = new TokenController();
+            Mock<ILoginService> loginServiceMock = new Mock<ILoginService>();
+            var controller = new TokenController(loginServiceMock.Object);
             controller.ControllerContext = new ControllerContext(context, new RouteData(), controller);
 
             var result = (JsonResult) controller.Index(formCollection);

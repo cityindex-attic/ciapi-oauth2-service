@@ -39,7 +39,8 @@ namespace CIAUTH.Code
             return jsonResult;
         }
 
-        public static JsonResult RefreshToken(string refreshToken, byte[] aesKey, byte[] aesVector)
+        // #TODO: having login in this class stinks
+        public static JsonResult RefreshToken(string refreshToken, byte[] aesKey, byte[] aesVector, ILoginService loginService)
         {
             string username;
             string password;
@@ -61,8 +62,8 @@ namespace CIAUTH.Code
             JsonResult jsonResult;
             try
             {
-                Client rpcClient = BuildClient();
-                ApiLogOnResponseDTO result = rpcClient.LogIn(username, password);
+            
+                ApiLogOnResponseDTO result = loginService.Login(username, password);
 
                 if (result.PasswordChangeRequired)
                 {
@@ -136,12 +137,7 @@ namespace CIAUTH.Code
             return encrypted;
         }
 
-        public static Client BuildClient()
-        {
-            var client = new Client(new Uri(CIAUTHConfigurationSection.Instance.ApiUrl),
-                                    new Uri("http://example.com"), CIAUTHConfigurationSection.Instance.AppKey);
-            return client;
-        }
+
 
         public static string ComposeUrl(string baseUrl, string query)
         {

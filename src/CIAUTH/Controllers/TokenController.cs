@@ -10,6 +10,13 @@ namespace CIAUTH.Controllers
     // will figure out if it is possible to use apicontroller later
     public class TokenController : Controller
     {
+        
+        private readonly ILoginService _loginService;
+        public TokenController(ILoginService loginService)
+        {
+            _loginService = loginService;
+        }
+
         private static readonly byte[] AesKey;
         private static readonly byte[] AesVector;
 
@@ -49,7 +56,7 @@ namespace CIAUTH.Controllers
                     {
                         case "refresh_token":
                             string refreshToken = formCollection["refresh_token"];
-                            jsonResult = Utilities.RefreshToken(refreshToken, AesKey, AesVector);
+                            jsonResult = Utilities.RefreshToken(refreshToken, AesKey, AesVector, _loginService);
                             break;
 
                         case "authorization_code":

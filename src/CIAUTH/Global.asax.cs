@@ -29,6 +29,8 @@ namespace CIAUTH
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            Bootstrapper.Initialise();
         }
 
         protected void Application_Error(object sender, EventArgs e)

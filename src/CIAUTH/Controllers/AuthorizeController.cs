@@ -12,26 +12,32 @@ namespace CIAUTH.Controllers
         private static readonly byte[] AesKey;
         private static readonly byte[] AesVector;
 
+        private readonly ILoginService _loginService;
+
         static AuthorizeController()
         {
-
-
             AesVector = Utilities.ToByteArray(CIAUTHConfigurationSection.Instance.AesVector);
             AesKey = Utilities.ToByteArray(CIAUTHConfigurationSection.Instance.AesKey);
         }
 
+        public AuthorizeController(ILoginService loginService)
+        {
+            _loginService = loginService;
+        }
 
 // ReSharper disable InconsistentNaming
         public ActionResult Index(string client_id, string response_type, string redirect_uri, string state)
 // ReSharper restore InconsistentNaming
         {
             ClientElement client = CIAUTHConfigurationSection.Instance.Clients[client_id];
-            ValidateParameters(response_type, redirect_uri, client);
+            ValidateOAUTHParameters(response_type, redirect_uri, client);
             ViewBag.SiteName = client.Name;
             return View();
         }
 
-        private static void ValidateParameters(string response_type, string redirect_uri, ClientElement client)
+// ReSharper disable InconsistentNaming
+        private static void ValidateOAUTHParameters(string response_type, string redirect_uri, ClientElement client)
+// ReSharper restore InconsistentNaming
         {
             if (client == null)
             {
@@ -64,11 +70,8 @@ namespace CIAUTH.Controllers
 
             ClientElement client = CIAUTHConfigurationSection.Instance.Clients[client_id];
 
-            // #TODO: validate client and show error page if bad
-            if (client == null)
-            {
-                throw new Exception("unregistered client");
-            }
+            ValidateOAUTHParameters(response_type, redirect_uri, client);
+
 
             ViewBag.SiteName = client.Name;
             ViewBag.ErrorMessage = "";
@@ -100,8 +103,7 @@ namespace CIAUTH.Controllers
             {
                 try
                 {
-                    Client rpcClient = Utilities.BuildClient();
-                    ApiLogOnResponseDTO result = rpcClient.LogIn(username, password);
+                    ApiLogOnResponseDTO result = _loginService.Login(username, password);
 
                     if (result.PasswordChangeRequired)
                     {

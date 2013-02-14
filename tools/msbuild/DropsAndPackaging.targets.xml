@@ -10,7 +10,7 @@
     <NuGet_apiKey Condition="'$(NuGet_apiKey)'==''">You must call with /p:NuGet_apiKey={yourkey} to publish to nuget</NuGet_apiKey>
   </PropertyGroup>
 
-  <Target Name="Package" DependsOnTargets="CreateDropDirectories;CopyMSBuildOutputToDropDirectory;CopySourceToDropDirectory;DeleteBinFilesFromSource;CopyLicenseToAllDirectories;CopyReportsToDropFolder">
+  <!--<Target Name="Package" DependsOnTargets="CreateDropDirectories;CopyMSBuildOutputToDropDirectory;CopySourceToDropDirectory;DeleteBinFilesFromSource;CopyLicenseToAllDirectories;CopyReportsToDropFolder">
     <Message Text="Packaging with NuGet" />
     <Copy SourceFiles="$(RootDirectory)\src\CIAUTH.nuspec" DestinationFolder="$(DropDirectory)"/>
     <Exec Command='"$(NuGetEXE)" pack -Symbols "$(DropDirectory)\CIAUTH.nuspec"' ContinueOnError='false' WorkingDirectory='$(DropDirectory)'/>
@@ -25,7 +25,7 @@
     </ItemGroup>
     <Message Text="Copying source files to output to $(DropLibDirectory)" />
     <Copy ContinueOnError="false" SourceFiles="@(MSBuildOutputItems)" DestinationFiles="@(MSBuildOutputItems ->'$(DropLibDirectory)\src\%(RecursiveDir)%(Filename)%(Extension)')" />
-  </Target>
+  </Target>-->
 
   <Target Name="DeleteBinFilesFromSource">
     <ItemGroup>

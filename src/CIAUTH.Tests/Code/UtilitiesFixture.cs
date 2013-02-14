@@ -111,9 +111,10 @@ namespace CIAUTH.Tests.Code
         [Test]
         public void EpochDate()
         {
+            var date = new DateTime(2010, 1, 1);
             long result;
-            result = new DateTime(2010, 1, 1).ToEpoch();
-            Assert.AreEqual(1262329200,result);
+            result = date.ToEpoch();
+            
             var result2 = result.FromEpoch();
             Assert.AreEqual(2010, result2.Year);
             Assert.AreEqual(1, result2.Day);

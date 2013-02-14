@@ -3,6 +3,7 @@ using System.Web.Configuration;
 
 namespace CIAUTH.Configuration
 {
+    // TODO: encrypt element  http://msdn.microsoft.com/en-us/library/zhhddkxy(v=vs.100).aspx
     public class CIAUTHConfigurationSection : ConfigurationSection
     {
         public static CIAUTHConfigurationSection Instance
@@ -19,35 +20,35 @@ namespace CIAUTH.Configuration
         {
             get { return (string) base["aes_vector"]; }
 
-            set { base["aes_vector"] = value; }
+            //set { base["aes_vector"] = value; }
         }
 
         [ConfigurationProperty("aes_key")]
         public string AesKey
         {
             get { return (string) base["aes_key"]; }
-            set { base["aes_key"] = value; }
+            //set { base["aes_key"] = value; }
         }
 
         [ConfigurationProperty("app_key")]
         public string AppKey
         {
             get { return (string) base["app_key"]; }
-            set { base["app_key"] = value; }
+            //set { base["app_key"] = value; }
         }
 
         [ConfigurationProperty("api_url")]
         public string ApiUrl
         {
             get { return (string) base["api_url"]; }
-            set { base["api_url"] = value; }
+            //set { base["api_url"] = value; }
         }
 
         [ConfigurationProperty("clients")]
         public ClientElementCollection Clients
         {
             get { return (ClientElementCollection) base["clients"]; }
-            set { base["clients"] = value; }
+            //set { base["clients"] = value; }
         }
     }
 }

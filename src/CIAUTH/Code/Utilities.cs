@@ -105,7 +105,7 @@ namespace CIAUTH.Code
             }
             catch (Exception ex)
             {
-                throw new Exception("error initializing aes array", ex);
+                throw new ArgumentException("error initializing aes array", ex);
             }
         }
 
@@ -114,7 +114,7 @@ namespace CIAUTH.Code
             return (long)(time.ToUniversalTime() - new DateTime(1970, 1, 1)).TotalSeconds;
         }
 
-        public static DateTime FromEpoch(long epoch)
+        public static DateTime FromEpoch(this long epoch)
         {
             var d = new DateTime(1970, 1, 1);
             d = d.AddSeconds(epoch);

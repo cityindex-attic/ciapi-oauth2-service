@@ -124,6 +124,7 @@
   <ItemGroup>
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Code\UtilitiesFixture.cs" />
+    <Compile Include="Configuration\ConfigurationFixture.cs" />
     <Compile Include="Controllers\AuthorizeControllerFixture.cs" />
     <Compile Include="Mocking.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -18,14 +18,14 @@ namespace CIAUTH.Configuration
         public ClientElement this[int index]
         {
             get { return (ClientElement)base.BaseGet(index); }
-            set
-            {
-                if (base.BaseGet(index) != null)
-                {
-                    base.BaseRemoveAt(index);
-                }
-                base.BaseAdd(index, value);
-            }
+            //set
+            //{
+            //    if (base.BaseGet(index) != null)
+            //    {
+            //        base.BaseRemoveAt(index);
+            //    }
+            //    base.BaseAdd(index, value);
+            //}
         }
 
         public ClientElement this[string name]

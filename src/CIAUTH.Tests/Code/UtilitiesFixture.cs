@@ -90,7 +90,12 @@ namespace CIAUTH.Tests.Code
             Assert.AreEqual(400, data.status);
              
         }
+        [Test]
+        public void ToByteArrayFails()
+        {
+            Assert.Throws<ArgumentException>(()=>Utilities.ToByteArray("abc"));
 
+        }
         [Test]
         public void ToByteArray()
         {
@@ -101,6 +106,18 @@ namespace CIAUTH.Tests.Code
             Assert.AreEqual(3, result[2]);
             Assert.AreEqual(4, result[3]);
  
+        }
+
+        [Test]
+        public void EpochDate()
+        {
+            long result;
+            result = new DateTime(2010, 1, 1).ToEpoch();
+            Assert.AreEqual(1262329200,result);
+            var result2 = result.FromEpoch();
+            Assert.AreEqual(2010, result2.Year);
+            Assert.AreEqual(1, result2.Day);
+            Assert.AreEqual(1, result2.Month);
         }
     }
 }

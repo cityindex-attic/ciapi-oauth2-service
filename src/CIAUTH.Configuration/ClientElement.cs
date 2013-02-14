@@ -21,35 +21,35 @@ namespace CIAUTH.Configuration
         public string Id
         {
             get { return (string) base["id"]; }
-            set { base["id"] = value; }
+            //set { base["id"] = value; }
         }
 
         [ConfigurationProperty("secret")]
         public string Secret
         {
             get { return (string) base["secret"]; }
-            set { base["secret"] = value; }
+            //set { base["secret"] = value; }
         }
 
         [ConfigurationProperty("name")]
         public string Name
         {
             get { return (string) base["name"]; }
-            set { base["name"] = value; }
+            //set { base["name"] = value; }
         }
 
         [ConfigurationProperty("about_url")]
         public string AboutURL
         {
             get { return (string) base["about_url"]; }
-            set { base["about_url"] = value; }
+            //set { base["about_url"] = value; }
         }
 
         [ConfigurationProperty("ip")]
         public string IP
         {
             get { return (string)base["ip"]; }
-            set { base["ip"] = value; }
+            //set { base["ip"] = value; }
         }
 
     }

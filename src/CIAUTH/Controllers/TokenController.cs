@@ -42,12 +42,12 @@ namespace CIAUTH.Controllers
 
             if (client == null)
             {
-                jsonResult = Utilities.CreateErrorJson("invalid_client", "client is not registered", "", 400);
+                jsonResult = Utilities.CreateErrorJsonResult("invalid_client", "client is not registered", "", 400);
             }
 
             else if (clientSecret != client.Secret)
             {
-                jsonResult = Utilities.CreateErrorJson("invalid_client", "invalid client secret", "", 400);
+                jsonResult = Utilities.CreateErrorJsonResult("invalid_client", "invalid client secret", "", 400);
             }
             else
             {
@@ -79,29 +79,29 @@ namespace CIAUTH.Controllers
                                     if (result.PasswordChangeRequired)
                                     {
 
-                                        jsonResult = Utilities.CreateErrorJson("invalid_request", "password change required", "", 400);
+                                        jsonResult = Utilities.CreateErrorJsonResult("invalid_request", "password change required", "", 400);
 
                                     }
                                     else
                                     {
-                                        jsonResult = Utilities.BuildToken(username, result.Session, password, AesKey,
+                                        jsonResult = Utilities.BuildAccessTokenJsonResult(username, result.Session, password, AesKey,
                                                                           AesVector);
                                     }
                                 }
                                 catch (InvalidCredentialsException ice)
                                 {
-                                    jsonResult = Utilities.CreateErrorJson("invalid_request", "Invalid Username or Password", "", 401);
+                                    jsonResult = Utilities.CreateErrorJsonResult("invalid_request", "Invalid Username or Password", "", 401);
 
                                 }
                                 catch (Exception ex)
                                 {
-                                    jsonResult = Utilities.CreateErrorJson("invalid_request", ex.Message, "", 400);
+                                    jsonResult = Utilities.CreateErrorJsonResult("invalid_request", ex.Message, "", 400);
                                 }
 
                             }
                             catch (Exception ex)
                             {
-                                jsonResult = Utilities.CreateErrorJson("invalid_request", "invalid refresh_token", "", 400);
+                                jsonResult = Utilities.CreateErrorJsonResult("invalid_request", "invalid refresh_token", "", 400);
 
                             }
 
@@ -114,13 +114,13 @@ namespace CIAUTH.Controllers
                             break;
 
                         default:
-                            jsonResult = Utilities.CreateErrorJson("unsupported_grant_type", "", "", 400);
+                            jsonResult = Utilities.CreateErrorJsonResult("unsupported_grant_type", "", "", 400);
                             break;
                     }
                 }
                 catch (Exception ex)
                 {
-                    jsonResult = Utilities.CreateErrorJson("invalid_request", ex.Message, "", 400);
+                    jsonResult = Utilities.CreateErrorJsonResult("invalid_request", ex.Message, "", 400);
                 }
             }
 

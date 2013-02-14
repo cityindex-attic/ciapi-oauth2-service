@@ -55,7 +55,7 @@ namespace CIAUTH.Tests.Code
         [Test]
         public void BuildTokenFromText()
         {
-            JsonResult result = Utilities.BuildToken("foo", "session", "bar", AesKey, AesVector);
+            JsonResult result = Utilities.BuildAccessTokenJsonResult("foo", "session", "bar", AesKey, AesVector);
             Assert.IsInstanceOf<AccessToken>(result.Data);
             var data = (AccessToken)result.Data;
             Assert.AreEqual("foo:session", data.access_token);
@@ -80,7 +80,7 @@ namespace CIAUTH.Tests.Code
         [Test]
         public void CreateErrorJson()
         {
-            JsonResult result = Utilities.CreateErrorJson("error","description","uri",400);
+            JsonResult result = Utilities.CreateErrorJsonResult("error","description","uri",400);
 
             Assert.IsInstanceOf<Error>(result.Data);
             var data = (Error) result.Data;

@@ -1,33 +1,14 @@
 ﻿using System;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using CIAPI.DTO;
-using CIAPI.Rpc;
 using CIAUTH.Models;
 
 namespace CIAUTH.Code
 {
     public static class Utilities
     {
-        public static byte[] ToByteArray(string value)
-        {
-            try
-            {
-// ReSharper disable RedundantExplicitArrayCreation
-                byte[] bytes =
-                    value.Split(new char[] {','}, StringSplitOptions.RemoveEmptyEntries).Select(s => Convert.ToByte(s)).
-                        ToArray();
-// ReSharper restore RedundantExplicitArrayCreation
-                return bytes;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("error initializing aes array", ex);
-            }
-        }
 
-        public static JsonResult CreateErrorJson(string error, string errorDescription, string errorUri, int status)
+        public static JsonResult CreateErrorJsonResult(string error, string errorDescription, string errorUri, int status)
         {
             var jsonResult = new JsonResult
                                  {
@@ -42,70 +23,63 @@ namespace CIAUTH.Code
             return jsonResult;
         }
 
-     
 
         public static JsonResult BuildToken(string code, byte[] aesKey, byte[] aesVector)
         {
-            string session;
-            string password;
-            string username;
-
             try
             {
                 string decryptPayload = DecryptPayload(code, aesKey, aesVector);
                 string[] parts = decryptPayload.Split(new[] {':'}, StringSplitOptions.RemoveEmptyEntries);
 
-                username = parts[0];
-                session = parts[1];
-                password = parts[2];
+                string username = parts[0];
+                string session = parts[1];
+                string password = parts[2];
+                return BuildAccessTokenJsonResult(username, session, password, aesKey, aesVector);
             }
             catch (Exception ex)
             {
                 throw new Exception("Malformed access code", ex);
             }
-
-
-            return BuildToken(username, session, password, aesKey, aesVector);
         }
 
-        public static JsonResult BuildToken(string username, string session, string password, byte[] aesKey,
-                                            byte[] aesVector)
+        public static JsonResult BuildAccessTokenJsonResult(string username, string session, string password,
+                                                            byte[] aesKey,
+                                                            byte[] aesVector)
+        {
+            return new JsonResult {Data = BuildAccessToken(username, session, password, aesKey, aesVector)};
+        }
+
+        public static AccessToken BuildAccessToken(string username, string session, string password, byte[] aesKey,
+                                                   byte[] aesVector)
         {
             string accessToken = username + ":" + session;
-            // #TODO: expose un encoded encrypt/decrypt methods
-            string encrypted = new SimplerAes(aesKey, aesVector).Encrypt(username + ":" + password);
-            string refreshToken = HttpUtility.UrlDecode(encrypted);
-            var tokenObj = new AccessToken
+
+            string refreshToken = new AesEncryption(aesKey, aesVector).Encrypt(username + ":" + password);
+
+            return new AccessToken
                                {
                                    access_token = accessToken,
                                    expires_in = (int) DateTime.Now.AddDays(1).ToEpoch(),
                                    refresh_token = refreshToken,
                                    token_type = "bearer"
                                };
-
-            var jsonResult = new JsonResult {Data = tokenObj};
-            return jsonResult;
         }
 
         public static string DecryptPayload(string payload, byte[] aesKey, byte[] aesVector)
         {
-            string payloadDecrypted = new SimplerAes(aesKey, aesVector).Decrypt(payload);
-            return payloadDecrypted;
+            return new AesEncryption(aesKey, aesVector).Decrypt(payload);
         }
 
-        public static string BuildPayload(string username, string password, string session, byte[] aesKey,
-                                          byte[] aesVector)
+        public static string BuildPayload(string username, string password, string session, byte[] aesKey, byte[] aesVector)
         {
-            string package = username + ":" + session + ":" + password;
-
-            string encrypted = new SimplerAes(aesKey, aesVector).Encrypt(package);
-            return encrypted;
+            return new AesEncryption(aesKey, aesVector).EncryptAndEncode(username + ":" + session + ":" + password);
         }
 
 
         public static string ComposeUrl(string baseUrl, string query)
         {
             string url = baseUrl;
+
             if (baseUrl.IndexOf("?", StringComparison.Ordinal) > -1)
             {
                 url = url + "&";
@@ -114,7 +88,38 @@ namespace CIAUTH.Code
             {
                 url = url + "?";
             }
+
             return url + query;
         }
+
+        public static byte[] ToByteArray(string value)
+        {
+            try
+            {
+                // ReSharper disable RedundantExplicitArrayCreation
+                byte[] bytes =
+                    value.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
+                    .Select(s => Convert.ToByte(s)).ToArray();
+                // ReSharper restore RedundantExplicitArrayCreation
+                return bytes;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("error initializing aes array", ex);
+            }
+        }
+
+        public static long ToEpoch(this DateTime time)
+        {
+            return (long)(time.ToUniversalTime() - new DateTime(1970, 1, 1)).TotalSeconds;
+        }
+
+        public static DateTime FromEpoch(long epoch)
+        {
+            var d = new DateTime(1970, 1, 1);
+            d = d.AddSeconds(epoch);
+            return d.ToLocalTime();
+        }
+
     }
 }

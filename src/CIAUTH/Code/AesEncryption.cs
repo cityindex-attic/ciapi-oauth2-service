@@ -6,16 +6,13 @@ using System.Web;
 
 namespace CIAUTH.Code
 {
-    /// <summary>
-    /// http://stackoverflow.com/a/5518092/242897 - modified
-    /// </summary>
-    public class SimplerAes
+    public class AesEncryption
     {
         private readonly ICryptoTransform _decryptor;
         private readonly UTF8Encoding _encoder;
         private readonly ICryptoTransform _encryptor;
 
-        public SimplerAes(byte[] key, byte[] vector)
+        public AesEncryption(byte[] key, byte[] vector)
         {
             var rm = new RijndaelManaged();
             _encryptor = rm.CreateEncryptor(key, vector);
@@ -24,24 +21,24 @@ namespace CIAUTH.Code
         }
 
 
-        public string Encrypt(string unencrypted)
+        public string EncryptAndEncode(string value)
         {
-            string value = Convert.ToBase64String(Encrypt(_encoder.GetBytes(unencrypted)));
-
-            value = value.Replace("/", "$");
-            value = value.Replace("+", "#");
-            value = HttpUtility.UrlEncode(value);
-            return value;
+            return HttpUtility.UrlEncode(Encrypt(value));
         }
 
+        public string Encrypt(string unencrypted)
+        {
+            return Base64Out(Convert.ToBase64String(Encrypt(_encoder.GetBytes(unencrypted))));
+        }
+
+        
         public string Decrypt(string encrypted)
         {
             string value = encrypted;
-            value = value.Replace("$", "/");
-
-            value = value.Replace("#", "+");
+            value = Base64In(value);
             return _encoder.GetString(Decrypt(Convert.FromBase64String(value)));
         }
+
 
         private byte[] Encrypt(byte[] buffer)
         {
@@ -61,6 +58,16 @@ namespace CIAUTH.Code
                 cs.Write(buffer, 0, buffer.Length);
             }
             return stream.ToArray();
+        }
+
+        private static string Base64Out(string value)
+        {
+            return value.Replace("/", "$").Replace("+", "#");
+        }
+
+        private static string Base64In(string value)
+        {
+            return value.Replace("$", "/").Replace("#", "+");
         }
     }
 }

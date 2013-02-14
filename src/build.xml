@@ -31,7 +31,7 @@
 		<!-- list of test assemblies (space separated) -->
 		<TestAssemblies>$(SrcDirectory)\CIAUTH.Tests\bin\$(Configuration)\CIAUTH.Tests.dll</TestAssemblies>
 		<!-- list of assembly filters (space separated) - see https://github.com/sawilde/opencover/wiki/Usage -filter: for syntax-->
-		<OpenCoverFilter>+[CIAUTH.Configuration]* +[CIAUTH]*</OpenCoverFilter>
+		<OpenCoverFilter>+[CIAUTH.Configuration]* +[CIAUTH]* -[CIAUTH]CIAUTH.FilterConfig -[CIAUTH]CIAUTH.Bootstrapper -[CIAUTH]CIAUTH.BundleConfig -[CIAUTH]CIAUTH.FilterConfig -[CIAUTH]CIAUTH.RouteConfig -[CIAUTH]CIAUTH.WebApiApplication -[CIAUTH]CIAUTH.WebApiConfig</OpenCoverFilter>
 	</PropertyGroup>
  
   <Target Name="Go" DependsOnTargets="UpdateVersion;Build;RunTests;CalculateMetrics">

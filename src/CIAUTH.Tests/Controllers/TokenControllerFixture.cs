@@ -12,9 +12,11 @@ namespace CIAUTH.Tests.Controllers
     [TestFixture]
     public class TokenControllerFixture
     {
+        //foo,bar,session
+        //code=JpstAC9GbwGop5FiEqfs3Q==
         public TokenControllerFixture()
         {
-              Bootstrapper.Initialise();
+            Bootstrapper.Initialise();
         }
 
         [Test]
@@ -33,13 +35,13 @@ namespace CIAUTH.Tests.Controllers
             var controller = new TokenController(loginServiceMock.Object);
             controller.ControllerContext = new ControllerContext(context, new RouteData(), controller);
 
-            var result = (JsonResult) controller.Index(formCollection);
+            var result = (JsonResult)controller.Index(formCollection);
 
             Assert.AreEqual(400, context.Response.StatusCode);
 
-            Assert.IsInstanceOf(typeof (Error), result.Data);
+            Assert.IsInstanceOf(typeof(Error), result.Data);
 
-            var error = (Error) result.Data;
+            var error = (Error)result.Data;
 
             Assert.AreEqual(400, error.status);
             Assert.AreEqual("", error.error_uri);
@@ -63,13 +65,13 @@ namespace CIAUTH.Tests.Controllers
             var controller = new TokenController(loginServiceMock.Object);
             controller.ControllerContext = new ControllerContext(context, new RouteData(), controller);
 
-            var result = (JsonResult) controller.Index(formCollection);
+            var result = (JsonResult)controller.Index(formCollection);
 
             Assert.AreEqual(400, context.Response.StatusCode);
 
-            Assert.IsInstanceOf(typeof (Error), result.Data);
+            Assert.IsInstanceOf(typeof(Error), result.Data);
 
-            var error = (Error) result.Data;
+            var error = (Error)result.Data;
 
             Assert.AreEqual(400, error.status);
             Assert.AreEqual("", error.error_uri);
@@ -93,13 +95,13 @@ namespace CIAUTH.Tests.Controllers
             var controller = new TokenController(loginServiceMock.Object);
             controller.ControllerContext = new ControllerContext(context, new RouteData(), controller);
 
-            var result = (JsonResult) controller.Index(formCollection);
+            var result = (JsonResult)controller.Index(formCollection);
 
             Assert.AreEqual(400, context.Response.StatusCode);
 
-            Assert.IsInstanceOf(typeof (Error), result.Data);
+            Assert.IsInstanceOf(typeof(Error), result.Data);
 
-            var error = (Error) result.Data;
+            var error = (Error)result.Data;
 
             Assert.AreEqual(400, error.status);
             Assert.AreEqual("", error.error_uri);
@@ -123,17 +125,17 @@ namespace CIAUTH.Tests.Controllers
             var controller = new TokenController(loginServiceMock.Object);
             controller.ControllerContext = new ControllerContext(context, new RouteData(), controller);
 
-            var result = (JsonResult) controller.Index(formCollection);
+            var result = (JsonResult)controller.Index(formCollection);
 
             Assert.AreEqual(400, context.Response.StatusCode);
 
-            Assert.IsInstanceOf(typeof (Error), result.Data);
+            Assert.IsInstanceOf(typeof(Error), result.Data);
 
-            var error = (Error) result.Data;
+            var error = (Error)result.Data;
 
             Assert.AreEqual(400, error.status);
             Assert.AreEqual("", error.error_uri);
-            Assert.AreEqual("invalid refresh token", error.error_description);
+            Assert.AreEqual("invalid refresh_token", error.error_description);
             Assert.AreEqual("invalid_request", error.error);
         }
 
@@ -153,13 +155,13 @@ namespace CIAUTH.Tests.Controllers
             var controller = new TokenController(loginServiceMock.Object);
             controller.ControllerContext = new ControllerContext(context, new RouteData(), controller);
 
-            var result = (JsonResult) controller.Index(formCollection);
+            var result = (JsonResult)controller.Index(formCollection);
 
             Assert.AreEqual(400, context.Response.StatusCode);
 
-            Assert.IsInstanceOf(typeof (Error), result.Data);
+            Assert.IsInstanceOf(typeof(Error), result.Data);
 
-            var error = (Error) result.Data;
+            var error = (Error)result.Data;
 
             Assert.AreEqual(400, error.status);
             Assert.AreEqual("", error.error_uri);

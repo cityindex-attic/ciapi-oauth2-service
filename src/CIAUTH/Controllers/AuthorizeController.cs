@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Web.Mvc;
+using System.Web.Routing;
 using CIAPI.DTO;
 using CIAPI.Rpc;
 using CIAUTH.Code;
@@ -25,9 +26,17 @@ namespace CIAUTH.Controllers
             _loginService = loginService;
         }
 
-// ReSharper disable InconsistentNaming
+
+        public ActionResult ChangePassword(string client_id, string response_type, string redirect_uri, string state)
+        {
+            return View();
+        }
+
+
+
+        // ReSharper disable InconsistentNaming
         public ActionResult Index(string client_id, string response_type, string redirect_uri, string state)
-// ReSharper restore InconsistentNaming
+        // ReSharper restore InconsistentNaming
         {
             ClientElement client = CIAUTHConfigurationSection.Instance.Clients[client_id];
             ValidateOAUTHParameters(response_type, redirect_uri, client);
@@ -35,9 +44,9 @@ namespace CIAUTH.Controllers
             return View();
         }
 
-// ReSharper disable InconsistentNaming
+        // ReSharper disable InconsistentNaming
         private static void ValidateOAUTHParameters(string response_type, string redirect_uri, ClientElement client)
-// ReSharper restore InconsistentNaming
+        // ReSharper restore InconsistentNaming
         {
             if (client == null)
             {
@@ -57,10 +66,10 @@ namespace CIAUTH.Controllers
 
 
         [HttpPost]
-// ReSharper disable InconsistentNaming
+        // ReSharper disable InconsistentNaming
         public ActionResult Index(string username, string password, string login, string cancel, string client_id,
                                   string response_type, string redirect_uri, string state)
-// ReSharper restore InconsistentNaming
+        // ReSharper restore InconsistentNaming
         {
             if (!string.IsNullOrEmpty(cancel))
             {
@@ -107,8 +116,15 @@ namespace CIAUTH.Controllers
 
                     if (result.PasswordChangeRequired)
                     {
-                        ViewBag.ErrorMessage = "Password change required";
-                        // #TODO: implement dedicated change password view and then redirect back to authorize
+                        redirectResult = RedirectToAction("ChangePassword", "Authorize", new
+                                                                                {
+                                                                                    client_id,
+                                                                                    response_type,
+                                                                                    redirect_uri,
+                                                                                    state
+                                                                                });
+
+
                     }
                     else
                     {

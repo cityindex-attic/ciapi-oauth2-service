@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Web.Mvc;
+using CIAPI.DTO;
+using CIAPI.Rpc;
 using CIAUTH.Code;
 using CIAUTH.Configuration;
 
@@ -10,7 +12,7 @@ namespace CIAUTH.Controllers
     // will figure out if it is possible to use apicontroller later
     public class TokenController : Controller
     {
-        
+
         private readonly ILoginService _loginService;
         public TokenController(ILoginService loginService)
         {
@@ -56,7 +58,53 @@ namespace CIAUTH.Controllers
                     {
                         case "refresh_token":
                             string refreshToken = formCollection["refresh_token"];
-                            jsonResult = Utilities.RefreshToken(refreshToken, AesKey, AesVector, _loginService);
+
+                            string username;
+                            string password;
+
+                            try
+                            {
+
+                                string decryptPayload = Utilities.DecryptPayload(refreshToken, AesKey, AesVector);
+                                string[] parts = decryptPayload.Split(new[] { ':' }, StringSplitOptions.RemoveEmptyEntries);
+
+                                username = parts[0];
+                                password = parts[1];
+
+                                try
+                                {
+                                    ApiLogOnResponseDTO result = _loginService.Login(username, password);
+
+                                    if (result.PasswordChangeRequired)
+                                    {
+
+                                        jsonResult = Utilities.CreateErrorJson("invalid_request", "password change required", "", 400);
+
+                                    }
+                                    else
+                                    {
+                                        jsonResult = Utilities.BuildToken(username, password, result.Session, AesKey,
+                                                                          AesVector);
+                                    }
+                                }
+                                catch (InvalidCredentialsException ice)
+                                {
+                                    jsonResult = Utilities.CreateErrorJson("invalid_request", "Invalid Username or Password", "", 401);
+
+                                }
+                                catch (Exception ex)
+                                {
+                                    jsonResult = Utilities.CreateErrorJson("invalid_request", ex.Message, "", 400);
+                                }
+
+                            }
+                            catch (Exception ex)
+                            {
+                                jsonResult = Utilities.CreateErrorJson("invalid_request", "invalid refresh_token", "", 400);
+
+                            }
+
+
                             break;
 
                         case "authorization_code":

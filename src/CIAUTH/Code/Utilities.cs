@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using CIAPI.DTO;
@@ -9,6 +10,20 @@ namespace CIAUTH.Code
 {
     public static class Utilities
     {
+        public static byte[] ToByteArray(string value)
+        {
+            try
+            {
+
+                byte[] bytes = value.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries).Select(s => Convert.ToByte(s)).ToArray();
+                return bytes;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("error initializing aes array", ex);
+            }
+        }
         public static JsonResult CreateErrorJson(string error, string errorDescription, string errorUri, int status)
         {
             var jsonResult = new JsonResult
@@ -24,7 +39,7 @@ namespace CIAUTH.Code
             return jsonResult;
         }
 
-        public static JsonResult RefreshToken(string refreshToken)
+        public static JsonResult RefreshToken(string refreshToken, byte[] aesKey, byte[] aesVector)
         {
             string username;
             string password;
@@ -32,7 +47,7 @@ namespace CIAUTH.Code
             try
             {
 
-                string decryptPayload = DecryptPayload(refreshToken);
+                string decryptPayload = DecryptPayload(refreshToken, aesKey, aesVector);
                 string[] parts = decryptPayload.Split(new[] { ':' }, StringSplitOptions.RemoveEmptyEntries);
 
                 username = parts[0];
@@ -55,8 +70,8 @@ namespace CIAUTH.Code
                 }
                 else
                 {
-                    string payload = BuildPayload(username, password, result.Session);
-                    jsonResult = BuildToken(payload);
+                    string payload = BuildPayload(username, password, result.Session, aesKey, aesVector);
+                    jsonResult = BuildToken(payload, aesKey, aesVector);
                 }
             }
             catch (InvalidCredentialsException)
@@ -71,14 +86,14 @@ namespace CIAUTH.Code
             return jsonResult;
         }
 
-        public static JsonResult BuildToken(string code)
+        public static JsonResult BuildToken(string code, byte[] aesKey, byte[] aesVector)
         {
 
             string encrypted;
             string accessToken;
             try
             {
-                string decryptPayload = DecryptPayload(code);
+                string decryptPayload = DecryptPayload(code, aesKey, aesVector);
                 string[] parts = decryptPayload.Split(new[] { ':' }, StringSplitOptions.RemoveEmptyEntries);
                 string username = parts[0];
                 string session = parts[1];
@@ -87,7 +102,7 @@ namespace CIAUTH.Code
 
                 accessToken = username + ":" + session;
                 // #TODO: expose un encoded encrypt/decrypt methods
-                encrypted = new SimplerAes().Encrypt(username + ":" + password);
+                encrypted = new SimplerAes(aesKey, aesVector).Encrypt(username + ":" + password);
             }
             catch (Exception ex)
             {
@@ -107,16 +122,17 @@ namespace CIAUTH.Code
             return jsonResult;
         }
 
-        public static string DecryptPayload(string payload)
+        public static string DecryptPayload(string payload, byte[] aesKey, byte[] aesVector)
         {
-            string payloadDecrypted = new SimplerAes().Decrypt(payload);
+            string payloadDecrypted = new SimplerAes(aesKey, aesVector).Decrypt(payload);
             return payloadDecrypted;
         }
 
-        public static string BuildPayload(string username, string password, string session)
+        public static string BuildPayload(string username, string password, string session, byte[] aesKey, byte[] aesVector)
         {
             string package = username + ":" + session + ":" + password;
-            string encrypted = new SimplerAes().Encrypt(package);
+
+            string encrypted = new SimplerAes(aesKey, aesVector).Encrypt(package);
             return encrypted;
         }
 

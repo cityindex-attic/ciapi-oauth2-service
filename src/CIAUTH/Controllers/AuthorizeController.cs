@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using System.Web.Configuration;
+using CIAPI.DTO;
 using CIAPI.Rpc;
 using CIAUTH.Code;
 using CIAUTH.Configuration;
@@ -12,30 +9,51 @@ namespace CIAUTH.Controllers
 {
     public class AuthorizeController : Controller
     {
+        private static readonly byte[] AesKey;
+        private static readonly byte[] AesVector;
+
+        static AuthorizeController()
+        {
+
+
+            AesVector = Utilities.ToByteArray(CIAUTHConfigurationSection.Instance.AesVector);
+            AesKey = Utilities.ToByteArray(CIAUTHConfigurationSection.Instance.AesKey);
+        }
 
 
 // ReSharper disable InconsistentNaming
         public ActionResult Index(string client_id, string response_type, string redirect_uri, string state)
 // ReSharper restore InconsistentNaming
         {
-            var client = CIAUTHConfigurationSection.Instance.Clients[client_id];
+            ClientElement client = CIAUTHConfigurationSection.Instance.Clients[client_id];
+            ValidateParameters(response_type, redirect_uri, client);
+            ViewBag.SiteName = client.Name;
+            return View();
+        }
 
-            // #TODO: validate client and show error page if bad
+        private static void ValidateParameters(string response_type, string redirect_uri, ClientElement client)
+        {
             if (client == null)
             {
                 throw new Exception("unregistered client");
             }
 
-            ViewBag.SiteName = client.Name;
+            if (response_type != "code")
+            {
+                throw new Exception("invalid response_type");
+            }
 
-
-            return View();
+            if (string.IsNullOrEmpty(redirect_uri))
+            {
+                throw new Exception("empty redirect_uri");
+            }
         }
 
 
         [HttpPost]
 // ReSharper disable InconsistentNaming
-        public ActionResult Index(string username, string password, string login, string cancel, string client_id, string response_type, string redirect_uri, string state)
+        public ActionResult Index(string username, string password, string login, string cancel, string client_id,
+                                  string response_type, string redirect_uri, string state)
 // ReSharper restore InconsistentNaming
         {
             if (!string.IsNullOrEmpty(cancel))
@@ -44,7 +62,7 @@ namespace CIAUTH.Controllers
             }
 
 
-            var client = CIAUTHConfigurationSection.Instance.Clients[client_id];
+            ClientElement client = CIAUTHConfigurationSection.Instance.Clients[client_id];
 
             // #TODO: validate client and show error page if bad
             if (client == null)
@@ -82,8 +100,8 @@ namespace CIAUTH.Controllers
             {
                 try
                 {
-                    var rpcClient = Utilities.BuildClient();
-                    var result = rpcClient.LogIn(username, password);
+                    Client rpcClient = Utilities.BuildClient();
+                    ApiLogOnResponseDTO result = rpcClient.LogIn(username, password);
 
                     if (result.PasswordChangeRequired)
                     {
@@ -92,10 +110,10 @@ namespace CIAUTH.Controllers
                     }
                     else
                     {
-
-                        var payload = Utilities.BuildPayload(username, password, result.Session);
-                        redirectResult = new RedirectResult(Utilities.ComposeUrl(redirect_uri, "code=" + payload + "&state=" + state), false);
-
+                        string payload = Utilities.BuildPayload(username, password, result.Session, AesKey, AesVector);
+                        redirectResult =
+                            new RedirectResult(
+                                Utilities.ComposeUrl(redirect_uri, "code=" + payload + "&state=" + state), false);
                     }
                 }
                 catch (InvalidCredentialsException ice)
@@ -110,6 +128,5 @@ namespace CIAUTH.Controllers
 
             return redirectResult;
         }
-
     }
 }

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Net.Http;
 using System.Web.Mvc;
 using CIAUTH.Code;
 using CIAUTH.Configuration;
@@ -11,11 +10,21 @@ namespace CIAUTH.Controllers
     // will figure out if it is possible to use apicontroller later
     public class TokenController : Controller
     {
+        private static readonly byte[] AesKey;
+        private static readonly byte[] AesVector;
+
+
+        static TokenController()
+        {
+            AesVector = Utilities.ToByteArray(CIAUTHConfigurationSection.Instance.AesVector);
+            AesKey = Utilities.ToByteArray(CIAUTHConfigurationSection.Instance.AesKey);
+        }
+
         [HttpPost]
         public ActionResult Index(FormCollection formCollection)
         {
             JsonResult jsonResult;
-            
+
             string clientId = formCollection["client_id"];
             string clientSecret = formCollection["client_secret"];
 
@@ -40,12 +49,12 @@ namespace CIAUTH.Controllers
                     {
                         case "refresh_token":
                             string refreshToken = formCollection["refresh_token"];
-                            jsonResult = Utilities.RefreshToken(refreshToken);
+                            jsonResult = Utilities.RefreshToken(refreshToken, AesKey, AesVector);
                             break;
 
                         case "authorization_code":
                             string code = formCollection["code"];
-                            jsonResult = Utilities.BuildToken(code);
+                            jsonResult = Utilities.BuildToken(code, AesKey, AesVector);
                             break;
 
                         default:
@@ -55,9 +64,7 @@ namespace CIAUTH.Controllers
                 }
                 catch (Exception ex)
                 {
-
                     jsonResult = Utilities.CreateErrorJson("invalid_request", ex.Message, "", 400);
-                            
                 }
             }
 

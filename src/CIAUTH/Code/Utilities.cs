@@ -4,6 +4,7 @@ using System.Web;
 using System.Web.Mvc;
 using CIAPI.DTO;
 using CIAPI.Rpc;
+using CIAUTH.Models;
 
 namespace CIAUTH.Code
 {

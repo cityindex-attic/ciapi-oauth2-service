@@ -4,6 +4,7 @@ using CIAPI.DTO;
 using CIAPI.Rpc;
 using CIAUTH.Code;
 using CIAUTH.Configuration;
+using CIAUTH.Models;
 
 namespace CIAUTH.Controllers
 {
@@ -83,7 +84,7 @@ namespace CIAUTH.Controllers
                                     }
                                     else
                                     {
-                                        jsonResult = Utilities.BuildToken(username, password, result.Session, AesKey,
+                                        jsonResult = Utilities.BuildToken(username, result.Session, password, AesKey,
                                                                           AesVector);
                                     }
                                 }

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace CIAUTH.Code
+﻿namespace CIAUTH.Models
 {
     public class Error
     {

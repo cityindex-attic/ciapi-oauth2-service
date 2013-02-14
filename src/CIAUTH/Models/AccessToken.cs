@@ -1,4 +1,4 @@
-namespace CIAUTH.Code
+namespace CIAUTH.Models
 {
     public class AccessToken
     {

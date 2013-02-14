@@ -5,6 +5,7 @@ using System.Text;
 using System.Web.Mvc;
 using CIAUTH.Code;
 using CIAUTH.Configuration;
+using CIAUTH.Models;
 using NUnit.Framework;
 
 namespace CIAUTH.Tests.Code

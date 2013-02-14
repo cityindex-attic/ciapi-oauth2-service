@@ -11,27 +11,22 @@ namespace CIAUTH.Code
     /// </summary>
     public class SimplerAes
     {
-        // #TODO: put key and vector in config element
-        //private static byte[] key = { 123, 217, 19, 11, 24, 26, 85, 45, 114, 184, 27, 162, 37, 112, 222, 209, 241, 24, 175, 144, 173, 53, 196, 29, 24, 26, 17, 218, 131, 236, 53, 209 };
-        //private static byte[] vector = { 146, 64, 191, 111, 23, 3, 113, 119, 231, 121, 221, 112, 79, 32, 114, 156 };
-        private ICryptoTransform encryptor, decryptor;
-        private UTF8Encoding encoder;
+        private readonly ICryptoTransform _decryptor;
+        private readonly UTF8Encoding _encoder;
+        private readonly ICryptoTransform _encryptor;
 
         public SimplerAes(byte[] key, byte[] vector)
         {
-            RijndaelManaged rm = new RijndaelManaged();
-            encryptor = rm.CreateEncryptor(key, vector);
-            decryptor = rm.CreateDecryptor(key, vector);
-            encoder = new UTF8Encoding();
+            var rm = new RijndaelManaged();
+            _encryptor = rm.CreateEncryptor(key, vector);
+            _decryptor = rm.CreateDecryptor(key, vector);
+            _encoder = new UTF8Encoding();
         }
 
-      
-
-      
 
         public string Encrypt(string unencrypted)
         {
-            string value = Convert.ToBase64String(Encrypt(encoder.GetBytes(unencrypted)));
+            string value = Convert.ToBase64String(Encrypt(_encoder.GetBytes(unencrypted)));
 
             value = value.Replace("/", "$");
             value = value.Replace("+", "#");
@@ -41,27 +36,27 @@ namespace CIAUTH.Code
 
         public string Decrypt(string encrypted)
         {
-            var value = encrypted;
+            string value = encrypted;
             value = value.Replace("$", "/");
 
             value = value.Replace("#", "+");
-            return encoder.GetString(Decrypt(Convert.FromBase64String(value)));
+            return _encoder.GetString(Decrypt(Convert.FromBase64String(value)));
         }
 
         private byte[] Encrypt(byte[] buffer)
         {
-            return Transform(buffer, encryptor);
+            return Transform(buffer, _encryptor);
         }
 
         private byte[] Decrypt(byte[] buffer)
         {
-            return Transform(buffer, decryptor);
+            return Transform(buffer, _decryptor);
         }
 
         private byte[] Transform(byte[] buffer, ICryptoTransform transform)
         {
-            MemoryStream stream = new MemoryStream();
-            using (CryptoStream cs = new CryptoStream(stream, transform, CryptoStreamMode.Write))
+            var stream = new MemoryStream();
+            using (var cs = new CryptoStream(stream, transform, CryptoStreamMode.Write))
             {
                 cs.Write(buffer, 0, buffer.Length);
             }

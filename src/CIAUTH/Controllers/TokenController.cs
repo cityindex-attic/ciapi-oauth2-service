@@ -1,4 +1,6 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Net.Http;
+using System.Web.Mvc;
 using CIAUTH.Code;
 using CIAUTH.Configuration;
 
@@ -10,10 +12,10 @@ namespace CIAUTH.Controllers
     public class TokenController : Controller
     {
         [HttpPost]
-        public JsonResult Index(FormCollection formCollection)
+        public ActionResult Index(FormCollection formCollection)
         {
             JsonResult jsonResult;
-
+            
             string clientId = formCollection["client_id"];
             string clientSecret = formCollection["client_secret"];
 
@@ -32,21 +34,30 @@ namespace CIAUTH.Controllers
             {
                 string grantType = formCollection["grant_type"];
 
-                switch (grantType.ToLower())
+                try
                 {
-                    case "refresh_token":
-                        string refreshToken = formCollection["refresh_token"];
-                        jsonResult = Utilities.RefreshToken(refreshToken);
-                        break;
+                    switch (grantType.ToLower())
+                    {
+                        case "refresh_token":
+                            string refreshToken = formCollection["refresh_token"];
+                            jsonResult = Utilities.RefreshToken(refreshToken);
+                            break;
 
-                    case "authorization_code":
-                        string code = formCollection["code"];
-                        jsonResult = Utilities.BuildToken(code);
-                        break;
+                        case "authorization_code":
+                            string code = formCollection["code"];
+                            jsonResult = Utilities.BuildToken(code);
+                            break;
 
-                    default:
-                        jsonResult = Utilities.CreateErrorJson("unsupported_grant_type", "", "", 400);
-                        break;
+                        default:
+                            jsonResult = Utilities.CreateErrorJson("unsupported_grant_type", "", "", 400);
+                            break;
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                    jsonResult = Utilities.CreateErrorJson("invalid_request", ex.Message, "", 400);
+                            
                 }
             }
 

@@ -40,7 +40,7 @@ namespace CIAUTH.Controllers
         {
             if (!string.IsNullOrEmpty(cancel))
             {
-                Response.Redirect(Utilities.ComposeUrl(redirect_uri, "cancel=true&state=" + state));
+                return new RedirectResult(Utilities.ComposeUrl(redirect_uri, "cancel=true&state=" + state));
             }
 
 

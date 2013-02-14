@@ -26,10 +26,23 @@ namespace CIAUTH.Code
 
         public static JsonResult RefreshToken(string refreshToken)
         {
-            string decryptPayload = DecryptPayload(refreshToken);
-            string[] parts = decryptPayload.Split(new[] {':'}, StringSplitOptions.RemoveEmptyEntries);
-            string username = parts[0];
-            string password = parts[1];
+            string username;
+            string password;
+
+            try
+            {
+
+                string decryptPayload = DecryptPayload(refreshToken);
+                string[] parts = decryptPayload.Split(new[] { ':' }, StringSplitOptions.RemoveEmptyEntries);
+
+                username = parts[0];
+                password = parts[1];
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("invalid refresh token", ex);
+            }
+
             JsonResult jsonResult;
             try
             {
@@ -60,25 +73,37 @@ namespace CIAUTH.Code
 
         public static JsonResult BuildToken(string code)
         {
-            string decryptPayload = DecryptPayload(code);
-            string[] parts = decryptPayload.Split(new[] {':'}, StringSplitOptions.RemoveEmptyEntries);
-            string username = parts[0];
-            string session = parts[1];
-            string password = parts[2];
+
+            string encrypted;
+            string accessToken;
+            try
+            {
+                string decryptPayload = DecryptPayload(code);
+                string[] parts = decryptPayload.Split(new[] { ':' }, StringSplitOptions.RemoveEmptyEntries);
+                string username = parts[0];
+                string session = parts[1];
+                string password = parts[2];
 
 
-            string accessToken = username + ":" + session;
-            // #TODO: expose un encoded encrypt/decrypt methods
-            string refreshToken = HttpUtility.UrlDecode(new SimplerAes().Encrypt(username + ":" + password));
+                accessToken = username + ":" + session;
+                // #TODO: expose un encoded encrypt/decrypt methods
+                encrypted = new SimplerAes().Encrypt(username + ":" + password);
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Malformed access code", ex);
+            }
+            string refreshToken = HttpUtility.UrlDecode(encrypted);
             var tokenObj = new AccessToken
                                {
                                    access_token = accessToken,
-                                   expires_in = (int) DateTime.Now.AddDays(1).ToEpoch(),
+                                   expires_in = (int)DateTime.Now.AddDays(1).ToEpoch(),
                                    refresh_token = refreshToken,
                                    token_type = "bearer"
                                };
 
-            var jsonResult = new JsonResult {Data = tokenObj};
+            var jsonResult = new JsonResult { Data = tokenObj };
             return jsonResult;
         }
 

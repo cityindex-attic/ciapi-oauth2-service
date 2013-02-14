@@ -82,7 +82,7 @@
       <ModuleName>nunit.core.interfaces</ModuleName>
       <Classes />
     </Module>
-    <Module skippedDueTo="Filter" hash="FA-2F-06-05-7F-CC-14-05-41-0B-A8-D1-D4-59-01-59-3C-F9-08-34">
+    <Module skippedDueTo="Filter" hash="88-82-8D-CC-C7-09-E2-05-07-A9-D7-2D-31-AC-27-C4-03-04-CE-49">
       <FullName>C:\dev\ciapi-oauth2-service\src\CIAUTH.Tests\bin\Debug\CIAUTH.Tests.dll</FullName>
       <ModuleName>CIAUTH.Tests</ModuleName>
       <Classes />
@@ -97,7 +97,7 @@
       <ModuleName>System.Core</ModuleName>
       <Classes />
     </Module>
-    <Module hash="E0-D1-23-50-59-4D-AC-D0-EA-1B-08-8E-C9-25-AC-1C-F1-36-4F-EC">
+    <Module hash="B0-30-F6-51-7E-55-A2-D1-EA-BF-CB-A5-F2-45-BD-17-C9-90-55-76">
       <Summary numSequencePoints="86" visitedSequencePoints="34" numBranchPoints="30" visitedBranchPoints="12" sequenceCoverage="39.53" branchCoverage="40" maxCyclomaticComplexity="2" minCyclomaticComplexity="1" />
       <FullName>C:\dev\ciapi-oauth2-service\src\CIAUTH.Tests\bin\Debug\CIAUTH.Configuration.dll</FullName>
       <ModuleName>CIAUTH.Configuration</ModuleName>
@@ -508,7 +508,7 @@
         </Class>
       </Classes>
     </Module>
-    <Module hash="C3-D6-8E-B4-2B-B2-BF-BE-1F-DD-7D-C2-9D-F8-33-D7-01-F5-BF-95">
+    <Module hash="B1-35-F3-C1-28-D3-D3-6B-69-79-57-94-28-A7-48-37-F8-6A-A8-EF">
       <Summary numSequencePoints="324" visitedSequencePoints="224" numBranchPoints="119" visitedBranchPoints="73" sequenceCoverage="69.14" branchCoverage="61.34" maxCyclomaticComplexity="15" minCyclomaticComplexity="1" />
       <FullName>C:\dev\ciapi-oauth2-service\src\CIAUTH.Tests\bin\Debug\CIAUTH.dll</FullName>
       <ModuleName>CIAUTH</ModuleName>

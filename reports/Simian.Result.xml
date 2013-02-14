@@ -151,6 +151,6 @@ Simian is not free unless used solely for non-commercial or evaluation purposes.
 ]]>
             </text>
         </set>
-        <summary duplicateFileCount="2" duplicateLineCount="111" duplicateBlockCount="9" totalFileCount="29" totalRawLineCount="1926" totalSignificantLineCount="930" processingTime="634"/>
+        <summary duplicateFileCount="2" duplicateLineCount="111" duplicateBlockCount="9" totalFileCount="29" totalRawLineCount="1926" totalSignificantLineCount="930" processingTime="595"/>
     </check>
 </simian>

@@ -37,6 +37,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto">
+      <HintPath>..\packages\BouncyCastle.1.7.0\lib\Net40-Client\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
     <Reference Include="CIAPI">
       <HintPath>..\packages\CIAPI.9.3.0\lib\net35\Release\CIAPI.dll</HintPath>
     </Reference>
@@ -45,6 +48,12 @@
     </Reference>
     <Reference Include="DotNetClient_N2">
       <HintPath>..\packages\CIAPI.9.3.0\lib\net35\Release\DotNetClient_N2.dll</HintPath>
+    </Reference>
+    <Reference Include="Ionic.Zip">
+      <HintPath>..\packages\DotNetZip.1.9.1.8\lib\net20\Ionic.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="Keyczar">
+      <HintPath>..\packages\Keyczar.0.7.5-beta4\lib\net40-client\Keyczar.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -143,10 +152,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Code\AccessToken.cs" />
-    <Compile Include="Code\Authentication.cs" />
     <Compile Include="Code\Epoch.cs" />
+    <Compile Include="Code\Error.cs" />
     <Compile Include="Code\SimplerAes.cs" />
-    <Compile Include="Code\UserInfo.cs" />
     <Compile Include="Code\Utilities.cs" />
     <Compile Include="Controllers\AuthorizeController.cs" />
     <Compile Include="Controllers\TokenController.cs" />
@@ -264,6 +272,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Authorize\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CIAUTH.Configuration\CIAUTH.Configuration.csproj">
+      <Project>{1DB11820-88B5-4B0F-8E9F-284EA1802AB4}</Project>
+      <Name>CIAUTH.Configuration</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

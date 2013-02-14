@@ -99,7 +99,7 @@ namespace CIAUTH_TestApp
         {
 
             string authServer = WebConfigurationManager.AppSettings["authServer"];
-            Response.Redirect(authServer + "/Authorize?response_type=code&client_id=12345&redirect_uri=" + HttpUtility.UrlEncode(Request.Url.ToString()));
+            Response.Redirect(authServer + "/Authorize?response_type=code&client_id=123&redirect_uri=" + HttpUtility.UrlEncode(Request.Url.ToString())+"&state=statevalue");
         }
     }
 }

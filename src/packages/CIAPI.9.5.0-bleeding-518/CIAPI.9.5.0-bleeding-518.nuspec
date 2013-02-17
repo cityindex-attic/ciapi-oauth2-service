@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
-<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+<package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
   <metadata>
     <id>CIAPI</id>
-    <version>9.4.0</version>
+    <version>9.5.0-bleeding-518</version>
     <title>CIAPI</title>
     <authors>CityIndex Ltd, Sky Sanders, David Laing</authors>
     <owners>CityIndex Ltd, Sky Sanders, David Laing</owners>

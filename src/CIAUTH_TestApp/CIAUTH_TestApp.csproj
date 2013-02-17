@@ -35,16 +35,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CIAPI, Version=9.4.0.512, Culture=neutral, PublicKeyToken=5dfdbaca97c75bb7, processorArchitecture=MSIL">
+    <Reference Include="CIAPI, Version=9.5.0.518, Culture=neutral, PublicKeyToken=5dfdbaca97c75bb7, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\CIAPI.9.4.0\lib\net35\Release\CIAPI.dll</HintPath>
+      <HintPath>..\packages\CIAPI.9.5.0-bleeding-518\lib\net35\Debug\CIAPI.dll</HintPath>
     </Reference>
-    <Reference Include="CIAPI.Serializer, Version=9.4.0.512, Culture=neutral, PublicKeyToken=5dfdbaca97c75bb7, processorArchitecture=MSIL">
+    <Reference Include="CIAPI.Serializer, Version=9.5.0.518, Culture=neutral, PublicKeyToken=5dfdbaca97c75bb7, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\CIAPI.9.4.0\lib\net35\Release\CIAPI.Serializer.dll</HintPath>
+      <HintPath>..\packages\CIAPI.9.5.0-bleeding-518\lib\net35\Debug\CIAPI.Serializer.dll</HintPath>
     </Reference>
     <Reference Include="DotNetClient_N2, Version=2.0.4168.21412, Culture=neutral, PublicKeyToken=8d72f58860ac9835, processorArchitecture=MSIL">
-      <HintPath>..\packages\CIAPI.9.4.0\lib\net35\Release\DotNetClient_N2.dll</HintPath>
+      <HintPath>..\packages\CIAPI.9.5.0-bleeding-518\lib\net35\Debug\DotNetClient_N2.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json">
@@ -53,12 +53,12 @@
     <Reference Include="Salient.ReflectiveLoggingAdapter.35">
       <HintPath>..\packages\Salient.ReflectiveLoggingAdapter.3.2.0\lib\net35\Release\Salient.ReflectiveLoggingAdapter.35.dll</HintPath>
     </Reference>
-    <Reference Include="Salient.ReliableHttpClient, Version=1.0.6.17, Culture=neutral, PublicKeyToken=de2ccdae144c2020, processorArchitecture=MSIL">
-      <HintPath>..\packages\CIAPI.9.4.0\lib\net35\Release\Salient.ReliableHttpClient.dll</HintPath>
-    </Reference>
-    <Reference Include="Salient.ReliableHttpClient.Serializer.Newtonsoft, Version=1.0.6.19, Culture=neutral, PublicKeyToken=af1483d0b03a76fa, processorArchitecture=MSIL">
+    <Reference Include="Salient.ReliableHttpClient, Version=1.0.11.24, Culture=neutral, PublicKeyToken=de2ccdae144c2020, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Salient.ReliableHttpClient.1.0.6-bleeding-19\lib\net35\Debug\Salient.ReliableHttpClient.Serializer.Newtonsoft.dll</HintPath>
+      <HintPath>..\packages\Salient.ReliableHttpClient.1.0.11-bleeding-24\lib\net35\Debug\Salient.ReliableHttpClient.dll</HintPath>
+    </Reference>
+    <Reference Include="Salient.ReliableHttpClient.Serializer.Newtonsoft">
+      <HintPath>..\packages\Salient.ReliableHttpClient.1.0.11-bleeding-24\lib\net35\Debug\Salient.ReliableHttpClient.Serializer.Newtonsoft.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />

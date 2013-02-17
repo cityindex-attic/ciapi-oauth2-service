@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Web.Mvc;
 using CIAPI.DTO;
 using CIAPI.Rpc;
@@ -27,26 +26,111 @@ namespace CIAUTH.Controllers
             _loginService = loginService;
         }
 
-        public ActionResult Logout(string username, string session)
-        {
-            bool result = _loginService.Logout(username, session);
+        #region AJAX Methods
 
-            return Json(new { success = result, reason = "" });
+        public ActionResult AjaxLogin()
+        {
+            return View();
         }
-        public ActionResult Login(string username, string password, string new_password)
-        {
-            // #TODO: restrict calls to same origin, we don't want native code clients collecting credentials and calling this
 
-            JsonResult jsonResult;
-            ApiLogOnResponseDTO result;
-            bool success = true;
-            string reason = null;
-            bool passwordChangeRequired = false;
+// ReSharper disable InconsistentNaming
+        public ActionResult RefreshToken(string refresh_token)
+// ReSharper restore InconsistentNaming
+        {
+            bool success;
+            string reason;
+            bool passwordChangeRequired;
             AccessToken token = null;
 
             try
             {
-                result = _loginService.Login(username, password);
+                string decryptPayload = Utilities.DecryptPayload(refresh_token, AesKey, AesVector);
+                string[] parts = decryptPayload.Split(new[] {':'}, StringSplitOptions.RemoveEmptyEntries);
+
+                string username = parts[0];
+                string password = parts[2];
+                string session = parts[1];
+
+                try
+                {
+                    try
+                    {
+                        _loginService.Logout(username, session);
+                    }
+                    catch 
+                    {
+                        
+                         // swallow
+                    }
+
+                    ApiLogOnResponseDTO result = _loginService.Login(username, password);
+
+                    if (result.PasswordChangeRequired)
+                    {
+                        success = false;
+                        reason = "Password change required";
+                        passwordChangeRequired = true;
+                    }
+                    else
+                    {
+                        token = Utilities.BuildAccessToken(username, result.Session, password, AesKey,
+                                                           AesVector);
+
+
+                        success = true;
+                        reason = "Password changed";
+                        passwordChangeRequired = false;
+                    }
+                }
+                catch (InvalidCredentialsException)
+                {
+                    success = false;
+                    reason = "Invalid Username or Password";
+                    passwordChangeRequired = false;
+                }
+            }
+            catch (Exception)
+            {
+                success = false;
+                reason = "invalid refresh_token";
+                passwordChangeRequired = false;
+            }
+
+            return Json(new {success, reason, passwordChangeRequired, token});
+        }
+
+        public ActionResult Logout(string username, string session)
+        {
+            bool success = false;
+            string reason = null;
+
+
+            try
+            {
+                success = _loginService.Logout(username, session);
+            }
+            catch (Exception ex)
+            {
+                reason = ex.Message;
+            }
+
+            return Json(new {success, reason});
+        }
+
+// ReSharper disable InconsistentNaming
+        public ActionResult Login(string username, string password, string new_password)
+// ReSharper restore InconsistentNaming
+        {
+            // #TODO: restrict calls to same origin, we don't want native code clients collecting credentials and calling this
+
+            bool success = true;
+            string reason;
+            bool passwordChangeRequired = false;
+            AccessToken token;
+
+            try
+            {
+                ApiLogOnResponseDTO result = _loginService.Login(username, password);
                 passwordChangeRequired = result.PasswordChangeRequired;
                 reason = "Logged in";
                 token = Utilities.BuildAccessToken(username, result.Session, password, AesKey, AesVector);
@@ -59,7 +143,6 @@ namespace CIAUTH.Controllers
                         if (pwdChangeResult.IsPasswordChanged)
                         {
                             passwordChangeRequired = false;
-                            success = true;
                             reason = "Password changed";
                             token = Utilities.BuildAccessToken(username, result.Session, new_password, AesKey, AesVector);
                         }
@@ -81,7 +164,7 @@ namespace CIAUTH.Controllers
                     }
                 }
             }
-            catch (InvalidCredentialsException ice)
+            catch (InvalidCredentialsException)
             {
                 success = false;
                 reason = "Invalid credentials";
@@ -94,16 +177,14 @@ namespace CIAUTH.Controllers
                 token = null;
             }
 
-            return Json(new { success, reason, passwordChangeRequired, token });
+            return Json(new {success, reason, passwordChangeRequired, token});
         }
 
+        #endregion
 
+// ReSharper disable InconsistentNaming
         public ActionResult ChangePassword(string client_id, string response_type, string redirect_uri, string state)
-        {
-            return View();
-        }
-
-        public ActionResult AjaxLogin()
+// ReSharper restore InconsistentNaming
         {
             return View();
         }
@@ -111,7 +192,7 @@ namespace CIAUTH.Controllers
 
         // ReSharper disable InconsistentNaming
         public ActionResult Index(string client_id, string response_type, string redirect_uri, string state)
-        // ReSharper restore InconsistentNaming
+            // ReSharper restore InconsistentNaming
         {
             ClientElement client = CIAUTHConfigurationSection.Instance.Clients[client_id];
             Utilities.ValidateOAUTHParameters(response_type, redirect_uri, client);
@@ -124,7 +205,7 @@ namespace CIAUTH.Controllers
         // ReSharper disable InconsistentNaming
         public ActionResult Index(string username, string password, string login, string cancel, string client_id,
                                   string response_type, string redirect_uri, string state)
-        // ReSharper restore InconsistentNaming
+            // ReSharper restore InconsistentNaming
         {
             if (string.IsNullOrEmpty(redirect_uri))
             {
@@ -186,7 +267,7 @@ namespace CIAUTH.Controllers
                     }
                     else
                     {
-                        string payload = Utilities.BuildPayload(username, password, result.Session, AesKey, AesVector);
+                        string payload = Utilities.BuildPayloadAndEncode(username, password, result.Session, AesKey, AesVector);
                         redirectResult =
                             new RedirectResult(
                                 Utilities.ComposeUrl(redirect_uri,

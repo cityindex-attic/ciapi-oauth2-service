@@ -20,10 +20,13 @@ namespace CIAUTH.Code
             _encoder = new UTF8Encoding();
         }
 
-
+        public string Encode(string value)
+        {
+            return HttpUtility.UrlEncode(value);
+        }
         public string EncryptAndEncode(string value)
         {
-            return HttpUtility.UrlEncode(Encrypt(value));
+            return Encode(Encrypt(value));
         }
 
         public string Encrypt(string unencrypted)

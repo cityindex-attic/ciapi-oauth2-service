@@ -32,15 +32,20 @@ namespace CIAUTH.Code
         {
             var jsonResult = new JsonResult
                                  {
-                                     Data = new Error
-                                                {
-                                                    status = status,
-                                                    error = error,
-                                                    error_description = errorDescription,
-                                                    error_uri = errorUri
-                                                }
+                                     Data = CreateError(error, errorDescription, errorUri, status)
                                  };
             return jsonResult;
+        }
+
+        public static Error CreateError(string error, string errorDescription, string errorUri, int status)
+        {
+            return new Error
+                       {
+                           status = status,
+                           error = error,
+                           error_description = errorDescription,
+                           error_uri = errorUri
+                       };
         }
 
 
@@ -49,13 +54,13 @@ namespace CIAUTH.Code
             try
             {
                 string decryptPayload = DecryptPayload(code, aesKey, aesVector);
-                string[] parts = decryptPayload.Split(new[] {':'}, StringSplitOptions.RemoveEmptyEntries);
+                string[] parts = decryptPayload.Split(new[] { ':' }, StringSplitOptions.RemoveEmptyEntries);
 
                 string username = parts[0];
                 string session = parts[1];
                 string password = parts[2];
-               
-                return BuildAccessTokenJsonResult(username, session, password ,aesKey, aesVector);
+
+                return BuildAccessTokenJsonResult(username, session, password, aesKey, aesVector);
             }
             catch (Exception ex)
             {
@@ -67,20 +72,20 @@ namespace CIAUTH.Code
                                                             byte[] aesKey,
                                                             byte[] aesVector)
         {
-            return new JsonResult {Data = BuildAccessToken(username, session, password, aesKey, aesVector)};
+            return new JsonResult { Data = BuildAccessToken(username, session, password, aesKey, aesVector) };
         }
 
-        public static AccessToken BuildAccessToken(string username, string session, string password,  byte[] aesKey,
+        public static AccessToken BuildAccessToken(string username, string session, string password, byte[] aesKey,
                                                    byte[] aesVector)
         {
             string accessToken = username + ":" + session;
 
-            string refreshToken = new AesEncryption(aesKey, aesVector).Encrypt(username + ":" + password);
+            string refreshToken = BuildPayload(username, password, session, aesKey, aesVector);
 
             return new AccessToken
                                {
                                    access_token = accessToken,
-                                   expires_in = (int) DateTime.Now.AddDays(1).ToEpoch(),
+                                   expires_in = (int)DateTime.Now.AddDays(1).ToEpoch(),
                                    refresh_token = refreshToken,
                                    token_type = "bearer"
                                };
@@ -91,9 +96,13 @@ namespace CIAUTH.Code
             return new AesEncryption(aesKey, aesVector).Decrypt(payload);
         }
 
-        public static string BuildPayload(string username, string password, string session,  byte[] aesKey, byte[] aesVector)
+        public static string BuildPayload(string username, string password, string session, byte[] aesKey, byte[] aesVector)
         {
-            return new AesEncryption(aesKey, aesVector).EncryptAndEncode(username + ":" + session + ":" + password  );
+            return new AesEncryption(aesKey, aesVector).Encrypt(username + ":" + session + ":" + password);
+        }
+        public static string BuildPayloadAndEncode(string username, string password, string session, byte[] aesKey, byte[] aesVector)
+        {
+            return new AesEncryption(aesKey, aesVector).Encode(BuildPayload(username, password, session, aesKey, aesVector));
         }
 
 

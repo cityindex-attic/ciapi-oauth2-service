@@ -70,10 +70,21 @@ namespace CIAUTH.Controllers
                                 string[] parts = decryptPayload.Split(new[] { ':' }, StringSplitOptions.RemoveEmptyEntries);
 
                                 username = parts[0];
-                                password = parts[1];
+                                password = parts[2];
+                                var session = parts[1];
 
                                 try
                                 {
+                                    try
+                                    {
+                                        _loginService.Logout(username, session);
+                                    }
+                                    catch
+                                    {
+
+                                        // swallow
+                                    }
+
                                     ApiLogOnResponseDTO result = _loginService.Login(username, password);
 
                                     if (result.PasswordChangeRequired)

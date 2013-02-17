@@ -75,7 +75,7 @@
     </Reference>
     <Reference Include="Salient.ReliableHttpClient, Version=1.0.11.24, Culture=neutral, PublicKeyToken=de2ccdae144c2020, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Salient.ReliableHttpClient.1.0.11-bleeding-24\lib\net35\Debug\Salient.ReliableHttpClient.dll</HintPath>
+      <HintPath>..\packages\CIAPI.9.5.0-bleeding-518\lib\net35\Debug\Salient.ReliableHttpClient.dll</HintPath>
     </Reference>
     <Reference Include="Salient.ReliableHttpClient.Serializer.Newtonsoft">
       <HintPath>..\packages\Salient.ReliableHttpClient.1.0.11-bleeding-24\lib\net35\Debug\Salient.ReliableHttpClient.Serializer.Newtonsoft.dll</HintPath>

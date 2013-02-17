@@ -35,7 +35,7 @@ namespace CIAUTH.Tests.Code
         [Test]
         public void BuildPayload()
         {
-            string result = Utilities.BuildPayload("foo", "bar", "session" , AesKey, AesVector);
+            string result = Utilities.BuildPayloadAndEncode("foo", "bar", "session" , AesKey, AesVector);
             Assert.AreEqual("JpstAC9GbwGop5FiEqfs3Q%3d%3d", result);
 
 
@@ -49,7 +49,7 @@ namespace CIAUTH.Tests.Code
             Assert.IsInstanceOf<AccessToken>(result.Data);
             var data = (AccessToken)result.Data;
             Assert.AreEqual("foo:session", data.access_token);
-            Assert.AreEqual("d#ZQyAkHGSpd57S$BpwjQQ==", data.refresh_token);
+            Assert.AreEqual("JpstAC9GbwGop5FiEqfs3Q==", data.refresh_token);
             Assert.AreEqual("bearer", data.token_type);
         }
 
@@ -60,7 +60,7 @@ namespace CIAUTH.Tests.Code
             Assert.IsInstanceOf<AccessToken>(result.Data);
             var data = (AccessToken)result.Data;
             Assert.AreEqual("foo:session", data.access_token);
-            Assert.AreEqual("d#ZQyAkHGSpd57S$BpwjQQ==", data.refresh_token);
+            Assert.AreEqual("JpstAC9GbwGop5FiEqfs3Q==", data.refresh_token);
             Assert.AreEqual("bearer", data.token_type);
 
 

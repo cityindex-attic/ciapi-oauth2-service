@@ -16,7 +16,7 @@ namespace CIAUTH.Tests.Controllers
     {
         public const string _client_id = "123";
         public const string _client_secret = "456";
-        public const string _refresh_token = "d#ZQyAkHGSpd57S$BpwjQQ==";
+        public const string _refresh_token = "JpstAC9GbwGop5FiEqfs3Q==";
 
         public const string _code = "JpstAC9GbwGop5FiEqfs3Q==";
         public const string _username = "foo";

@@ -1,7 +1,6 @@
 ﻿<!DOCTYPE html>
 <html>
     <head>
-        <meta name="viewport" content="width=device-width" />
         <title>AjaxLogin</title>
         <script type="text/javascript" src="~/Scripts/easyXDM/easyXDM.js"> </script>
         <script type="text/javascript" src="~/Scripts/json2.js"> </script>
@@ -9,14 +8,22 @@
         <script type="text/javascript">
 
             $(document).ready(function() {
+                var passwordChangeRequired = false;
+                var token = null;
+                var username = null;
+                var session = null;
+
+                $(window).resize(function() {
+                    remote.resize(window.document.scrollHeight);
+
+                });
+
                 var remote = new easyXDM.Rpc(
                     {
                         local: "../../scripts/easyXDM/name.html",
-                        swf: "../../scripts/easyXDM/easyxdm.swf",
-                        onReady: function() {
-                            remote.resize(document.body.scrollHeight);
-                        }
-                    }, {
+                        swf: "../../scripts/easyXDM/easyxdm.swf"
+                    },
+                    {
                         remote: {
                             resize: { },
                             alertMessage: { },
@@ -28,9 +35,6 @@
                             }
                         }
                     });
-
-
-                var passwordChangeRequired = false;
 
 
                 $("#btn_login").live("click", function() {
@@ -69,19 +73,26 @@
                         {
                             username: $("#tb_uid").val(),
                             password: $("#tb_pwd").val(),
-                            new_password: $("#tb_new_pwd_1").val(),
+                            new_password: $("#tb_new_pwd_1").val()
                         },
                         function(data, status, xhr) {
 
                             $("#div_change_password").hide();
-                            $("#div_error").text(data.reason);
+                            $("#div_error").text("");
                             $("#div_login").attr("disabled", null);
                             if (data.success) {
-                                var token = data.token;
+                                token = data.token;
+                                username = token.access_token.split(":")[0];
+                                session = token.access_token.split(":")[1];
 
                                 remote.receiveToken(token);
+                                $("#div_logout").show();
+                                $("#div_login").hide();
+
+
                                 // do something
                             } else {
+                                $("#div_error").text(data.reason);
                                 if (data.passwordChangeRequired) {
                                     $("#btn_login").val("Change Password");
                                     passwordChangeRequired = true;
@@ -90,11 +101,46 @@
                             }
                         });
                 });
+
+                $("#btn_logout").live("click", function() {
+
+                
+                    $("#div_logout").attr("disabled", "true");
+
+                    $.post("@Url.Action("Logout", "Authorize")",
+                        {
+                            username: username,
+                            session: session
+                        },
+                        function(data, status, xhr) {
+
+
+                            $("#div_error").text("");
+                            $("#div_logout").attr("disabled", null);
+                            if (data.success) {
+                                token = null;
+                                username = null;
+                                session = null;
+                               
+                                remote.receiveToken(token);
+                                $("#div_logout").hide();
+                                $("#div_login").show();
+
+                            } else {
+                                $("#div_error").text(data.reason);
+                            }
+                        });
+
+                });
+
             });
         </script>
     </head>
     <body>
         <div id="div_error">
+        </div>
+        <div id="div_logout" style="display: none;">
+            <input type="button" id="btn_logout" value="Log Out" />
         </div>
         <div id="div_login">
             <table>
@@ -139,11 +185,8 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>
+                    <td colspan="2">
                         <input type="button" id="btn_login" value="Log In" />
-                    </td>
-                    <td>
-                        <input type="button" id="btn_cancel" value="Cancel" />
                     </td>
                 </tr>
             </table>

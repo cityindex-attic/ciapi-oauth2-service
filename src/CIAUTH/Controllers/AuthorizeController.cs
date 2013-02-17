@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Web.Mvc;
 using CIAPI.DTO;
 using CIAPI.Rpc;
@@ -26,6 +27,12 @@ namespace CIAUTH.Controllers
             _loginService = loginService;
         }
 
+        public ActionResult Logout(string username, string session)
+        {
+            bool result = _loginService.Logout(username, session);
+
+            return Json(new { success = result, reason = "" });
+        }
         public ActionResult Login(string username, string password, string new_password)
         {
             // #TODO: restrict calls to same origin, we don't want native code clients collecting credentials and calling this
@@ -87,7 +94,7 @@ namespace CIAUTH.Controllers
                 token = null;
             }
 
-            return Json(new {success, reason, passwordChangeRequired, token});
+            return Json(new { success, reason, passwordChangeRequired, token });
         }
 
 
@@ -104,7 +111,7 @@ namespace CIAUTH.Controllers
 
         // ReSharper disable InconsistentNaming
         public ActionResult Index(string client_id, string response_type, string redirect_uri, string state)
-            // ReSharper restore InconsistentNaming
+        // ReSharper restore InconsistentNaming
         {
             ClientElement client = CIAUTHConfigurationSection.Instance.Clients[client_id];
             Utilities.ValidateOAUTHParameters(response_type, redirect_uri, client);
@@ -117,7 +124,7 @@ namespace CIAUTH.Controllers
         // ReSharper disable InconsistentNaming
         public ActionResult Index(string username, string password, string login, string cancel, string client_id,
                                   string response_type, string redirect_uri, string state)
-            // ReSharper restore InconsistentNaming
+        // ReSharper restore InconsistentNaming
         {
             if (string.IsNullOrEmpty(redirect_uri))
             {

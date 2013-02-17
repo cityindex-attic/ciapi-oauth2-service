@@ -9,12 +9,21 @@ namespace CIAUTH.Services
     // #TODO: move config values to bootstrapper
     public class LoginService : ILoginService
     {
-        public LoginService()
-        {
-            
-        }
         private string _apiUrl;
         private string _appKey;
+
+        public string ApiUrl
+        {
+            get { return _apiUrl ?? CIAUTHConfigurationSection.Instance.ApiUrl; }
+            set { _apiUrl = value; }
+        }
+
+        public string AppKey
+        {
+            get { return _appKey ?? CIAUTHConfigurationSection.Instance.AppKey; }
+            set { _appKey = value; }
+        }
+
         #region ILoginService Members
 
         public ApiChangePasswordResponseDTO ChangePassword(string username, string password, string newPassword)
@@ -46,18 +55,21 @@ namespace CIAUTH.Services
 
         #endregion
 
-        public string ApiUrl
+        public bool Logout(string username, string session)
         {
-            get { return _apiUrl ?? CIAUTHConfigurationSection.Instance.ApiUrl; }
-            set { _apiUrl = value; }
+            bool result;
+            using (Client client = BuildClient())
+            {
+                client.Session = session;
+                client.UserName = username;
+                result = client.LogOut();
+            }
+
+            return result;
         }
-        public string AppKey 
+
+        private Client BuildClient()
         {
-            get { return _appKey ?? CIAUTHConfigurationSection.Instance.AppKey; }
-            set { _appKey = value; }
-        }
-        private  Client BuildClient()
-        { 
             var client = new Client(new Uri(ApiUrl),
                                     new Uri("http://example.com"), AppKey);
             return client;

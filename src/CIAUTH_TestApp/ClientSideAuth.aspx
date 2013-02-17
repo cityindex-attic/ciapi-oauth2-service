@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-    <script src="scripts/jquery-1.7.1.js" type="text/javascript"></script>
+    <script src="scripts/jquery-1.7.1.js" type="text/javascript"> </script>
     <script type="text/javascript" src="scripts/easyXDM/easyXDM.js"> </script>
     <script type="text/javascript" src="scripts/json2.js"> </script>
     <script type="text/javascript">
@@ -16,6 +16,7 @@
 
 
         var remote = new easyXDM.Rpc(/** The channel configuration */{
+
         local: "scripts/easyXDM/name.html",
         swf: REMOTE + "/scripts/easyXDM/easyxdm.swf",
 
@@ -39,7 +40,10 @@
                     },
                     local: {
                         resize: function (height) {
-                            this.container.getElementsByTagName("iframe")[0].style.height = height + "px";
+                   
+                            var iframes = $("#div_login iframe")[0];
+                          
+                            iframes.style.height = height + "px";
 
                         },
                         alertMessage: function (msg) {
@@ -47,8 +51,7 @@
                         },
                         receiveToken: function (msg) {
 
-                            $("#div_login").hide();
-                            $("#div_logout").show();
+
                             token = msg;
                             $("#div_action").text(JSON.stringify(token, null, '  '));
 
@@ -56,33 +59,42 @@
                     }
                 });
 
-                $(document).ready(function () {
-                    $("#btn_logout").live("click", function () {
-                        token = null;
-                        $("#div_logout").hide();
-                        $("#div_login").show();
-                        $("#div_action").text("logged out");
-                    });
+    $(document).ready(function () {
+        $("#btn_logout").live("click", function () {
+            token = null;
 
-                });
+            $("#div_action").text("logged out");
+        });
+
+    });
     </script>
     <style type="text/css">
-        #embedded iframe
-        {
-            height: 100%;
-            width: 100%;
-        }
+ 
     </style>
 </head>
 <body>
     <form id="form1" runat="server">
-    <div id="div_logout" style="display: none;">
-        <input type="button" id="btn_logout" value="Log Out" />
-    </div>
+        <h2>Ajax Authentication Demo</h2>
+        <p> The dotted red line borders an IFRAME running in the context of the auth server.</p>
+        <p> Upon successful login and/or password change, the IFRAME posts a message to the 
+            parent application with the decoded access token.</p>
+        <p> Using the client_id, the login frame may&nbsp; be rendered in such a way that it 
+            will only communicate with a parent with a specific URL, in much the same 
+            fashion as the full workflow allows only client specific callback URLs.</p>
+        <p> Using the client_id, the login frame may be styled to conform to the client 
+            application.</p>
+        <p> Cross domain communication is accomplished using 
+            <a href="http://easyxdm.net/wp/">easyXDMMM</a>.</p>
+        <p> What the user-agent (javascript) application may do with the access token is 
+            rather limited at this time (javascript XD limitations).&nbsp; </p>
+        <p> I suspect it will fall to us to provide guidance for cross-domain communication 
+            with a generated api proxy to be hosted on the client application&#39;s server 
+            and/or CORS/WebSockets implementations </p>
     <div id="div_login">
     </div>
+    <p>The dotted green line borders content in this document reflecting the access token posted from the auth server IFRAME</p>
     <pre><code>
-        <div id="div_action">
+        <div id="div_action" style="border:2px dotted green">
         </div>
     </code></pre>
     </form>

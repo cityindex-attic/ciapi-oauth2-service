@@ -170,7 +170,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Bootstrapper.cs" />
+    <Compile Include="Code\TradingApiActionFilter.cs" />
     <Compile Include="Controllers\TradingApi\AuthenticationController.cs" />
+    <Compile Include="Controllers\TradingApi\TradingApiProxyController.cs" />
     <Compile Include="Models\AccessToken.cs" />
     <Compile Include="Models\Error.cs" />
     <Compile Include="Services\ILoginService.cs" />

@@ -17,6 +17,7 @@ namespace CIAUTH.Tests.Code
         private static readonly byte[] AesVector;
         static UtilitiesFixture()
         {
+            //#TODO: does accessing config in here smell? i think it does...
             AesVector = Utilities.ToByteArray(CIAUTHConfigurationSection.Instance.AesVector);
             AesKey = Utilities.ToByteArray(CIAUTHConfigurationSection.Instance.AesKey);
         }
@@ -34,7 +35,7 @@ namespace CIAUTH.Tests.Code
         [Test]
         public void BuildPayload()
         {
-            string result = Utilities.BuildPayload("foo", "bar", "session", AesKey, AesVector);
+            string result = Utilities.BuildPayload("foo", "bar", "session" , AesKey, AesVector);
             Assert.AreEqual("JpstAC9GbwGop5FiEqfs3Q%3d%3d", result);
 
 

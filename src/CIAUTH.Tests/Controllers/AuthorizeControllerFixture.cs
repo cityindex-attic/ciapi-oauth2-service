@@ -223,7 +223,7 @@ namespace CIAUTH.Tests.Controllers
 
             var redirectResult = (RedirectResult) result;
             Assert.IsFalse(redirectResult.Permanent);
-            Assert.AreEqual("http://foo.bar.com?code=JpstAC9GbwGop5FiEqfs3Q%3d%3d&state=state", redirectResult.Url);
+            Assert.AreEqual("http://foo.bar.com?code=JpstAC9GbwGop5FiEqfs3Q%3d%3d&state=state&client_id=123", redirectResult.Url);
         }
 
 

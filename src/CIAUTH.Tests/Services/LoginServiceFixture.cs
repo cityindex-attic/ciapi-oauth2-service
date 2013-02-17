@@ -9,7 +9,7 @@ using NUnit.Framework;
 
 namespace CIAUTH.Tests.Services
 {
-    [TestFixture]
+    [TestFixture,Ignore]
     public class LoginServiceFixture
     {
 

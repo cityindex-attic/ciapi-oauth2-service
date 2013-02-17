@@ -1,0 +1,152 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>AjaxLogin</title>
+        <script type="text/javascript" src="~/Scripts/easyXDM/easyXDM.js"> </script>
+        <script type="text/javascript" src="~/Scripts/json2.js"> </script>
+        <script src="../../Scripts/jquery-1.7.1.js" type="text/javascript"> </script>
+        <script type="text/javascript">
+
+            $(document).ready(function() {
+                var remote = new easyXDM.Rpc(
+                    {
+                        local: "../../scripts/easyXDM/name.html",
+                        swf: "../../scripts/easyXDM/easyxdm.swf",
+                        onReady: function() {
+                            remote.resize(document.body.scrollHeight);
+                        }
+                    }, {
+                        remote: {
+                            resize: { },
+                            alertMessage: { },
+                            receiveToken: { }
+                        },
+                        local: {
+                            noOp: function() {
+                                alert("executing in login iframe");
+                            }
+                        }
+                    });
+
+
+                var passwordChangeRequired = false;
+
+
+                $("#btn_login").live("click", function() {
+
+
+                    // validate uid and pwd
+                    if (!$("#tb_uid").val() || !$("#tb_pwd").val()) {
+                        $("#div_error").text("All fields are required");
+
+                        return;
+                    }
+
+
+                    if (passwordChangeRequired) {
+
+                        // validate new password fields 
+
+                        if (!$("#tb_new_pwd_1").val() || !$("#tb_new_pwd_2").val()) {
+                            $("#div_error").text("All fields are required");
+
+                            return;
+                        }
+                        if ($("#tb_new_pwd_1").val() != $("#tb_new_pwd_2").val()) {
+
+                            $("#div_error").text("New password and confirmation are not the same");
+
+                            return;
+                        }
+
+                    }
+
+
+                    $("#div_login").attr("disabled", "true");
+
+                    $.post("@Url.Action("Login", "Authorize")",
+                        {
+                            username: $("#tb_uid").val(),
+                            password: $("#tb_pwd").val(),
+                            new_password: $("#tb_new_pwd_1").val(),
+                        },
+                        function(data, status, xhr) {
+
+                            $("#div_change_password").hide();
+                            $("#div_error").text(data.reason);
+                            $("#div_login").attr("disabled", null);
+                            if (data.success) {
+                                var token = data.token;
+
+                                remote.receiveToken(token);
+                                // do something
+                            } else {
+                                if (data.passwordChangeRequired) {
+                                    $("#btn_login").val("Change Password");
+                                    passwordChangeRequired = true;
+                                    $("#div_change_password").show();
+                                }
+                            }
+                        });
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <div id="div_error">
+        </div>
+        <div id="div_login">
+            <table>
+                <tr>
+                    <td>
+                        Username:
+                    </td>
+                    <td>
+                        <input type="text" id="tb_uid" value="XX658109" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Password:
+                    </td>
+                    <td>
+                        <input type="password" id="tb_pwd" value="password" />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <div id="div_change_password" style="display: none">
+                            <table>
+                                <tr>
+                                    <td>
+                                        New Password:
+                                    </td>
+                                    <td>
+                                        <input type="password" id="tb_new_pwd_1" value="" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Confirm New Password:
+                                    </td>
+                                    <td>
+                                        <input type="password" id="tb_new_pwd_2" value="" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="button" id="btn_login" value="Log In" />
+                    </td>
+                    <td>
+                        <input type="button" id="btn_cancel" value="Cancel" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>

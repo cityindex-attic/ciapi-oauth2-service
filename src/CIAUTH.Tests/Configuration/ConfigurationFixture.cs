@@ -29,8 +29,8 @@ namespace CIAUTH.Tests.Configuration
             Assert.AreEqual("456", index.Secret);
             Assert.AreEqual("Demo App", index.Name);
             Assert.AreEqual("123", index.Id);
-            Assert.AreEqual("*", index.IP);
-            Assert.AreEqual("http:/foo.bar.com", index.AboutURL);
+            Assert.AreEqual("*", index.Hosts);
+            Assert.AreEqual("http://foo.bar.com", index.AboutURL);
         }
     }
 }

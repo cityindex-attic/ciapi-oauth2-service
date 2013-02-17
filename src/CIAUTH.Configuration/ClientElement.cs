@@ -45,12 +45,13 @@ namespace CIAUTH.Configuration
             //set { base["about_url"] = value; }
         }
 
-        [ConfigurationProperty("ip")]
-        public string IP
+        [ConfigurationProperty("hosts")]
+        public string Hosts
         {
-            get { return (string)base["ip"]; }
-            //set { base["ip"] = value; }
+            get { return (string)base["hosts"]; }
         }
+         
+
 
     }
 }

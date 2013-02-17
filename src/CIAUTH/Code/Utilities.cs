@@ -1,12 +1,32 @@
 ﻿using System;
 using System.Linq;
 using System.Web.Mvc;
+using CIAUTH.Configuration;
 using CIAUTH.Models;
 
 namespace CIAUTH.Code
 {
     public static class Utilities
     {
+        // ReSharper disable InconsistentNaming
+        public static void ValidateOAUTHParameters(string response_type, string redirect_uri, ClientElement client)
+        // ReSharper restore InconsistentNaming
+        {
+            if (client == null)
+            {
+                throw new Exception("unregistered client");
+            }
+
+            if (response_type != "code")
+            {
+                throw new Exception("invalid response_type");
+            }
+
+            if (string.IsNullOrEmpty(redirect_uri))
+            {
+                throw new Exception("empty redirect_uri");
+            }
+        }
 
         public static JsonResult CreateErrorJsonResult(string error, string errorDescription, string errorUri, int status)
         {
@@ -34,7 +54,8 @@ namespace CIAUTH.Code
                 string username = parts[0];
                 string session = parts[1];
                 string password = parts[2];
-                return BuildAccessTokenJsonResult(username, session, password, aesKey, aesVector);
+               
+                return BuildAccessTokenJsonResult(username, session, password ,aesKey, aesVector);
             }
             catch (Exception ex)
             {
@@ -49,7 +70,7 @@ namespace CIAUTH.Code
             return new JsonResult {Data = BuildAccessToken(username, session, password, aesKey, aesVector)};
         }
 
-        public static AccessToken BuildAccessToken(string username, string session, string password, byte[] aesKey,
+        public static AccessToken BuildAccessToken(string username, string session, string password,  byte[] aesKey,
                                                    byte[] aesVector)
         {
             string accessToken = username + ":" + session;
@@ -70,9 +91,9 @@ namespace CIAUTH.Code
             return new AesEncryption(aesKey, aesVector).Decrypt(payload);
         }
 
-        public static string BuildPayload(string username, string password, string session, byte[] aesKey, byte[] aesVector)
+        public static string BuildPayload(string username, string password, string session,  byte[] aesKey, byte[] aesVector)
         {
-            return new AesEncryption(aesKey, aesVector).EncryptAndEncode(username + ":" + session + ":" + password);
+            return new AesEncryption(aesKey, aesVector).EncryptAndEncode(username + ":" + session + ":" + password  );
         }
 
 

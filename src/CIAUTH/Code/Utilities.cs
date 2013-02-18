@@ -48,8 +48,25 @@ namespace CIAUTH.Code
                        };
         }
 
+        public static AccessToken BuildAccessToken(string code, byte[] aesKey, byte[] aesVector)
+        {
+            try
+            {
+                string decryptPayload = DecryptPayload(code, aesKey, aesVector);
+                string[] parts = decryptPayload.Split(new[] { ':' }, StringSplitOptions.RemoveEmptyEntries);
 
-        public static JsonResult BuildToken(string code, byte[] aesKey, byte[] aesVector)
+                string username = parts[0];
+                string session = parts[1];
+                string password = parts[2];
+
+                return BuildAccessToken(username, session, password, aesKey, aesVector);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Malformed access code", ex);
+            }
+        }
+        public static JsonResult BuildAccessTokenJsonResult(string code, byte[] aesKey, byte[] aesVector)
         {
             try
             {

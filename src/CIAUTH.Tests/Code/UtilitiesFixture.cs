@@ -45,7 +45,7 @@ namespace CIAUTH.Tests.Code
         [Test]
         public void BuildTokenFromCode()
         {
-            JsonResult result = Utilities.BuildToken("JpstAC9GbwGop5FiEqfs3Q==", AesKey, AesVector);
+            JsonResult result = Utilities.BuildAccessTokenJsonResult("JpstAC9GbwGop5FiEqfs3Q==", AesKey, AesVector);
             Assert.IsInstanceOf<AccessToken>(result.Data);
             var data = (AccessToken)result.Data;
             Assert.AreEqual("foo:session", data.access_token);

@@ -118,7 +118,7 @@ namespace CIAUTH.Controllers
 
                         case "authorization_code":
                             string code = formCollection["code"];
-                            jsonResult = Utilities.BuildToken(code, AesKey, AesVector);
+                            jsonResult = Utilities.BuildAccessTokenJsonResult(code, AesKey, AesVector);
                             break;
 
                         default:

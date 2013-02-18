@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Web;
 using System.Web.Mvc;
 using CIAPI.DTO;
 using CIAPI.Rpc;
 using CIAUTH.Code;
 using CIAUTH.Configuration;
 using CIAUTH.Models;
+using Newtonsoft.Json;
 
 namespace CIAUTH.Controllers
 {
@@ -26,6 +28,37 @@ namespace CIAUTH.Controllers
             _loginService = loginService;
         }
 
+
+        // ReSharper disable InconsistentNaming
+        public ActionResult Callback(string code, string client_id, bool? cancel, string state, bool? complete)
+        // ReSharper restore InconsistentNaming
+        {
+
+            if (complete.GetValueOrDefault())
+            {
+                if (cancel.GetValueOrDefault())
+                {
+                    ViewBag.Message = "Login cancelled by user";
+                }
+                else
+                {
+                    ViewBag.Message = "Login complete";
+                }
+                return View();
+            }
+
+            string rawUrl = Request.RawUrl + "&complete=true";
+            string encodedToken = null;
+            if (!cancel.GetValueOrDefault())
+            {
+
+                var token = Utilities.BuildAccessToken(code, AesKey, AesVector);
+                encodedToken = "#" + HttpUtility.UrlEncode(JsonConvert.SerializeObject(token));
+            }
+            string redirect = rawUrl + encodedToken;
+            return new RedirectResult(redirect, false);
+        }
+
         #region AJAX Methods
 
         public ActionResult AjaxLogin()
@@ -33,9 +66,9 @@ namespace CIAUTH.Controllers
             return View();
         }
 
-// ReSharper disable InconsistentNaming
+        // ReSharper disable InconsistentNaming
         public ActionResult RefreshToken(string refresh_token)
-// ReSharper restore InconsistentNaming
+        // ReSharper restore InconsistentNaming
         {
             bool success;
             string reason;
@@ -45,7 +78,7 @@ namespace CIAUTH.Controllers
             try
             {
                 string decryptPayload = Utilities.DecryptPayload(refresh_token, AesKey, AesVector);
-                string[] parts = decryptPayload.Split(new[] {':'}, StringSplitOptions.RemoveEmptyEntries);
+                string[] parts = decryptPayload.Split(new[] { ':' }, StringSplitOptions.RemoveEmptyEntries);
 
                 string username = parts[0];
                 string password = parts[2];
@@ -57,10 +90,10 @@ namespace CIAUTH.Controllers
                     {
                         _loginService.Logout(username, session);
                     }
-                    catch 
+                    catch
                     {
-                        
-                         // swallow
+
+                        // swallow
                     }
 
                     ApiLogOnResponseDTO result = _loginService.Login(username, password);
@@ -96,7 +129,7 @@ namespace CIAUTH.Controllers
                 passwordChangeRequired = false;
             }
 
-            return Json(new {success, reason, passwordChangeRequired, token});
+            return Json(new { success, reason, passwordChangeRequired, token });
         }
 
         public ActionResult Logout(string username, string session)
@@ -114,12 +147,12 @@ namespace CIAUTH.Controllers
                 reason = ex.Message;
             }
 
-            return Json(new {success, reason});
+            return Json(new { success, reason });
         }
 
-// ReSharper disable InconsistentNaming
+        // ReSharper disable InconsistentNaming
         public ActionResult Login(string username, string password, string new_password)
-// ReSharper restore InconsistentNaming
+        // ReSharper restore InconsistentNaming
         {
             // #TODO: restrict calls to same origin, we don't want native code clients collecting credentials and calling this
 
@@ -177,14 +210,14 @@ namespace CIAUTH.Controllers
                 token = null;
             }
 
-            return Json(new {success, reason, passwordChangeRequired, token});
+            return Json(new { success, reason, passwordChangeRequired, token });
         }
 
         #endregion
 
-// ReSharper disable InconsistentNaming
+        // ReSharper disable InconsistentNaming
         public ActionResult ChangePassword(string client_id, string response_type, string redirect_uri, string state)
-// ReSharper restore InconsistentNaming
+        // ReSharper restore InconsistentNaming
         {
             return View();
         }
@@ -192,7 +225,7 @@ namespace CIAUTH.Controllers
 
         // ReSharper disable InconsistentNaming
         public ActionResult Index(string client_id, string response_type, string redirect_uri, string state)
-            // ReSharper restore InconsistentNaming
+        // ReSharper restore InconsistentNaming
         {
             ClientElement client = CIAUTHConfigurationSection.Instance.Clients[client_id];
             Utilities.ValidateOAUTHParameters(response_type, redirect_uri, client);
@@ -205,7 +238,7 @@ namespace CIAUTH.Controllers
         // ReSharper disable InconsistentNaming
         public ActionResult Index(string username, string password, string login, string cancel, string client_id,
                                   string response_type, string redirect_uri, string state)
-            // ReSharper restore InconsistentNaming
+        // ReSharper restore InconsistentNaming
         {
             if (string.IsNullOrEmpty(redirect_uri))
             {

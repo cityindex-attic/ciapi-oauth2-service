@@ -28,7 +28,7 @@ namespace CIAUTH.Configuration
             //}
         }
 
-        public ClientElement this[string name]
+        public new ClientElement this[string name]
         {
             get
             {

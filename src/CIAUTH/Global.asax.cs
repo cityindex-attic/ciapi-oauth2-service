@@ -31,6 +31,8 @@ namespace CIAUTH
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             Bootstrapper.Initialise();
+            BootstrapSupport.BootstrapBundleConfig.RegisterBundles(System.Web.Optimization.BundleTable.Bundles);
+            BootstrapMvcSample.ExampleLayoutsRouteConfig.RegisterRoutes(RouteTable.Routes);
         }
 
         protected void Application_Error(object sender, EventArgs e)

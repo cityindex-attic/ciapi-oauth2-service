@@ -9,55 +9,41 @@
         <script type="text/javascript" src="scripts/easyXDM/easyXDM.js"> </script>
         <script type="text/javascript" src="scripts/json2.js"> </script>
         <script type="text/javascript">
-            $(document).ready(function() {
+            $(document).ready(function () {
                 var token = null;
                 var username = null;
                 var session = null;
 
                 var authServerUrl = "<%= AuthServer %>";
 
-                var authServerAjax = "/Authorize/AjaxLogin?response_type=code&client_id=123&redirect_uri=<%= HttpUtility.UrlEncode(AuthServer) %>/callback&state=statevalue";
+                var authServerAjax = "/Authorize/UserAgentLogin?response_type=code&client_id=123&redirect_uri=<%= HttpUtility.UrlEncode(AuthServer) %>/callback&state=statevalue";
 
 
                 var remote = new easyXDM.Rpc(/** The channel configuration */{
-                        local: "scripts/easyXDM/name.html",
-                        swf: authServerUrl + "/scripts/easyXDM/easyxdm.swf",
+                local: "scripts/easyXDM/name.html",
+                swf: authServerUrl + "/scripts/easyXDM/easyxdm.swf",
 
-                        remote: authServerUrl + authServerAjax,
-                        remoteHelper: authServerUrl + "/scripts/easyXDM/name.html",
+                remote: authServerUrl + authServerAjax,
+                remoteHelper: authServerUrl + "/scripts/easyXDM/name.html",
 
-                        container: "div_login",
-                        props: {
-                            style: {
-                                border: "2px dotted red",
-                                height: "200px"
-                            }
-                        },
-                        onReady: function() {
-                            // maybe verify connection
-                        }
-                    },
+                container: "div_login",
+
+                onReady: function () {
+
+                }
+            },
                     {
                         remote: {
-                            noOp: { },
-                            logout: { },
-                            refreshToken: { }
+                            logIn: {}
                         },
                         local: {
-                            resize: function(height) {
-
-                                var iframes = $("#div_login iframe")[0];
-
-                                iframes.style.height = height + "px";
-
-                            },
-                            alertMessage: function(msg) {
+                            alertMessage: function (msg) {
                                 alert(msg);
                             },
-                            receiveToken: function(msg) {
+                            receiveToken: function (msg) {
                                 // #TODO: redesign this interface
                                 // have separate token, error, data channels
-
+                                debugger;
                                 if (!msg) {
                                     username = null;
                                     session = null;
@@ -81,44 +67,30 @@
                     });
 
 
-                //
-                $("#btn_logout").live("click", function() { remote.logout(); });
-                $("#btn_refresh_token").live("click", function() { remote.refreshToken(); });
+            //
+            $("#btn_login").live("click", function () { remote.logIn(); });
+    
 
 
-                $("#btn_account_info").live("click", function() {
+            $("#btn_account_info").live("click", function () {
 
 
-                    $.getJSON("https://ciapi.cityindex.com/tradingapi/useraccount/ClientAndTradingAccount?userName="
+                $.getJSON("https://ciapi.cityindex.com/tradingapi/useraccount/ClientAndTradingAccount?userName="
                         + username + "&session=" + session + "&only200=true",
-                        function(data, a, b, c) {
+                        function (data, a, b, c) {
                             $("#div_action").text(JSON.stringify(data, null, "  "));
-                        }, function(data, a, b, c) {
+                        }, function (data, a, b, c) {
                             $("#div_action").text(JSON.stringify(data, null, "  "));
 
                         });
 
-                });
-
-
             });
 
-        //                    type: "GET",
 
+        });
 
-    //                    success: function (data, textStatus, jqXHR) {
-    //                        debugger;
-    //                        $("#div_action").text("logged out\r\n" + JSON.stringify(data, null, "  "));
-
-    //                    },
-    //                    error: function (jqXHR, textStatus, errorThrown) {
-    //                        debugger;
-    //                        if (errorThrown == "No Transport") {
-    //                            errorThrown = errorThrown + "\r\n CORS not supported in this browser.";
-    //                        }
-    //                        alert("failure: " + errorThrown);
-    //                    }
-    //
+       
+    
     </script>
         <style type="text/css">
         
@@ -157,8 +129,8 @@
                 These buttons trigger authentication actions tunnelled to the auth server via IFRAM
                 communications</p>
             <div id="div_action_buttons">
-                <input type="button" id="btn_logout" value="local log out" />
-                <input type="button" id="btn_refresh_token" value="local refresh token" />
+                <input type="button" id="btn_login" value="log in" />
+                 
             </div>
             <p>
                 These buttons use CORS transport to talk directly to the API using the information

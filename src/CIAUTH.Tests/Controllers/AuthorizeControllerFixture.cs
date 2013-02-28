@@ -271,10 +271,7 @@ namespace CIAUTH.Tests.Controllers
             string response_type = "code";
             string redirect_uri = "http://foo.bar.com";
             string state = "state";
-            string username = "foo";
-            string password = "bar";
-            string login = "";
-            string cancel = "Cancel";
+ 
 
             ActionResult result =
                 controller.ChangePassword(client_id, response_type, redirect_uri, state);

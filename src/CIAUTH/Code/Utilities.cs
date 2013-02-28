@@ -17,8 +17,9 @@ namespace CIAUTH.Code
                 throw new Exception("unregistered client");
             }
 
-            if (response_type != "code")
+            if (response_type != "code" && response_type != "token")
             {
+                // #TODO: validate response type against client_id/redirect_uri
                 throw new Exception("invalid response_type");
             }
 

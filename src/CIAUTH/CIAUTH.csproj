@@ -67,6 +67,9 @@
     <Reference Include="Microsoft.Practices.Unity.Configuration">
       <HintPath>..\packages\Unity.2.1.505.2\lib\NET35\Microsoft.Practices.Unity.Configuration.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Web.Mvc">
+      <HintPath>..\packages\Mvc4Futures.4.0.20710.0\lib\net40\Microsoft.Web.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -89,6 +92,10 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.20715.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
@@ -133,10 +140,6 @@
     <Reference Include="System.Web.Providers">
       <HintPath>..\packages\Microsoft.AspNet.Providers.Core.1.1\lib\net40\System.Web.Providers.dll</HintPath>
     </Reference>
-    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.20710.0\lib\net40\System.Web.Razor.dll</HintPath>
-    </Reference>
     <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.dll</HintPath>
@@ -155,6 +158,9 @@
     <Reference Include="Unity.WebApi">
       <HintPath>..\packages\Unity.WebAPI.0.10\lib\net40\Unity.WebApi.dll</HintPath>
     </Reference>
+    <Reference Include="WebActivatorEx">
+      <HintPath>..\packages\WebActivatorEx.2.0.1\lib\net40\WebActivatorEx.dll</HintPath>
+    </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.1.0\lib\WebGrease.dll</HintPath>
@@ -165,16 +171,31 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\BootstrapBundleConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\ExampleLayoutsRouteConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Bootstrapper.cs" />
+    <Compile Include="BootstrapSupport\ControlGroupExtensions.cs" />
+    <Compile Include="BootstrapSupport\HtmlHelpers\GlyphIcons.cs" />
+    <Compile Include="BootstrapSupport\HtmlHelpers\Paging.cs" />
+    <Compile Include="BootstrapSupport\ViewHelperExtensions.cs" />
     <Compile Include="Code\TradingApiActionFilter.cs" />
+    <Compile Include="Controllers\BootstrapBaseController.cs" />
+    <Compile Include="Controllers\ExampleLayoutsController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TradingApi\AuthenticationController.cs" />
     <Compile Include="Controllers\TradingApi\TradingApiProxyController.cs" />
     <Compile Include="Models\AccessToken.cs" />
     <Compile Include="Models\Error.cs" />
+    <Compile Include="Models\HomeInputModel.cs" />
+    <Compile Include="NavigationRoutes\INavigationRouteFilter.cs" />
+    <Compile Include="NavigationRoutes\NamedRoute.cs" />
+    <Compile Include="NavigationRoutes\NavigationExtensions.cs" />
+    <Compile Include="NavigationRoutes\NavigationRouteConfigurationExtensions.cs" />
+    <Compile Include="NavigationRoutes\NavigationRouteFilter.cs" />
     <Compile Include="Services\ILoginService.cs" />
     <Compile Include="Services\LoginService.cs" />
     <Compile Include="Code\AesEncryption.cs" />
@@ -189,6 +210,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\body.css" />
+    <Content Include="Content\bootstrap-mvc-validation.css" />
+    <Content Include="Content\bootstrap-responsive.css" />
+    <Content Include="Content\bootstrap-responsive.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\images\glyphicons-halflings-white.png" />
+    <Content Include="Content\images\glyphicons-halflings.png" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -246,6 +275,8 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\easyXDM\easyXDM.debug.js" />
     <Content Include="Scripts\easyXDM\easyXDM.js" />
     <Content Include="Scripts\easyXDM\easyXDM.min.js" />
@@ -254,11 +285,15 @@
     <Content Include="Scripts\easyXDM\easyXDM.Widgets.js" />
     <Content Include="Scripts\easyXDM\easyXDM.Widgets.min.js" />
     <Content Include="Scripts\easyXDM\example\remotemethods.html" />
+    <Content Include="Scripts\easyXDM\json2.js" />
     <Content Include="Scripts\easyXDM\MIT-license.txt" />
     <Content Include="Scripts\easyXDM\name.html" />
-    <Content Include="Scripts\jquery-1.7.1-vsdoc.js" />
-    <Content Include="Scripts\jquery-1.7.1.js" />
-    <Content Include="Scripts\jquery-1.7.1.min.js" />
+    <Content Include="Scripts\html5shiv.js" />
+    <Content Include="Scripts\jquery-1.9.1-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.9.1.js" />
+    <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <Content Include="Scripts\jquery-migrate-1.1.0.js" />
+    <Content Include="Scripts\jquery-migrate-1.1.0.min.js" />
     <Content Include="Scripts\jquery-ui-1.8.20.js" />
     <Content Include="Scripts\jquery-ui-1.8.20.min.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
@@ -266,6 +301,7 @@
     <Content Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive-custom-for-bootstrap.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\json2.js" />
@@ -329,6 +365,29 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Authorize\Callback.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Authorize\UserAgentLogin.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_html5shiv.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\jquery-1.9.1.min.map" />
+    <Content Include="Views\Shared\Index.cshtml" />
+    <Content Include="Views\Shared\Details.cshtml" />
+    <Content Include="Views\Shared\Create.cshtml" />
+    <Content Include="Views\Shared\_validationSummary.cshtml" />
+    <Content Include="Views\Shared\_BootstrapLayout.narrow.cshtml" />
+    <Content Include="Views\Shared\_BootstrapLayout.empty.cshtml" />
+    <Content Include="Views\Shared\_BootstrapLayout.basic.cshtml" />
+    <Content Include="Views\Shared\_alerts.cshtml" />
+    <Content Include="Views\ExampleLayouts\TBD.cshtml" />
+    <Content Include="Views\ExampleLayouts\Starter.cshtml" />
+    <Content Include="Views\ExampleLayouts\SignIn.cshtml" />
+    <Content Include="Views\ExampleLayouts\Narrow.cshtml" />
+    <Content Include="Views\ExampleLayouts\Marketing.cshtml" />
+    <Content Include="Views\ExampleLayouts\Fluid.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

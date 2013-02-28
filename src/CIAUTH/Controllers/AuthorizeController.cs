@@ -28,7 +28,10 @@ namespace CIAUTH.Controllers
             _loginService = loginService;
         }
 
-
+        public ActionResult UserAgentLogin()
+        {
+            return View();
+        }
         // ReSharper disable InconsistentNaming
         public ActionResult Callback(string code, string client_id, bool? cancel, string state, bool? complete)
         // ReSharper restore InconsistentNaming

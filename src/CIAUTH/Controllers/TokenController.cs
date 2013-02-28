@@ -107,7 +107,7 @@ namespace CIAUTH.Controllers
                                
 
                             }
-                            catch (Exception ex)
+                            catch  
                             {
                                 jsonResult = Utilities.CreateErrorJsonResult("invalid_request", "invalid refresh_token", "", 400);
 

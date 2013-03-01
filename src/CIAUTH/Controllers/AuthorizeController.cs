@@ -233,6 +233,9 @@ namespace CIAUTH.Controllers
             ClientElement client = CIAUTHConfigurationSection.Instance.Clients[client_id];
             Utilities.ValidateOAUTHParameters(response_type, redirect_uri, client);
             ViewBag.SiteName = client.Name;
+            ViewBag.Logo = client.Logo;
+            ViewBag.Uid = "XX658109";
+            
             return View();
         }
 
@@ -257,12 +260,16 @@ namespace CIAUTH.Controllers
             ClientElement client = CIAUTHConfigurationSection.Instance.Clients[client_id];
 
             Utilities.ValidateOAUTHParameters(response_type, redirect_uri, client);
-
-
+          
+            ViewBag.Logo = client.Logo;
+            ViewBag.ErrorType = "";
             ViewBag.SiteName = client.Name;
             ViewBag.ErrorMessage = "";
             ViewBag.PwdLabel = "";
             ViewBag.UidLabel = "";
+            ViewBag.UidAlert = "";
+            ViewBag.PwdAlert = "";
+            ViewBag.Uid = username ;
 
             ActionResult redirectResult = View();
 
@@ -272,18 +279,23 @@ namespace CIAUTH.Controllers
             {
                 error = true;
                 ViewBag.UidLabel = "Required";
+                ViewBag.ErrorType = "error";
+                ViewBag.UidAlert = "error";
             }
 
             if (string.IsNullOrEmpty(password))
             {
                 error = true;
                 ViewBag.PwdLabel = "Required";
+                ViewBag.ErrorType = "error";
+                ViewBag.PwdAlert = "error";
             }
 
 
             if (error)
             {
                 ViewBag.ErrorMessage = "Required fields missing";
+                ViewBag.ErrorType = "error";
             }
             else
             {
@@ -296,9 +308,7 @@ namespace CIAUTH.Controllers
                         redirectResult = RedirectToAction("ChangePassword", "Authorize", new
                                                                                              {
                                                                                                  client_id,
-                                                                                                 response_type,
-                                                                                                 redirect_uri,
-                                                                                                 state
+                                                                                  state
                                                                                              });
                     }
                     else
@@ -314,6 +324,7 @@ namespace CIAUTH.Controllers
                 catch (InvalidCredentialsException)
                 {
                     ViewBag.ErrorMessage = "Invalid Username or Password";
+                    ViewBag.ErrorType = "error";
                 }
             }
 

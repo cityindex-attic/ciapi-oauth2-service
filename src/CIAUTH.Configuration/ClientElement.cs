@@ -15,8 +15,15 @@ namespace CIAUTH.Configuration
     // /> 
     public class ClientElement : ConfigurationElement
     {
-        
 
+        //
+
+        [ConfigurationProperty("logo")]
+        public string Logo
+        {
+            get { return (string)base["logo"]; }
+            //set { base["id"] = value; }
+        }
         [ConfigurationProperty("id")]
         public string Id
         {

@@ -1,47 +1,48 @@
-﻿
-<header>
-    <div class="content-wrapper">
-        <div class="float-left">
-            <p class="site-title">
-                <a href="~/">City Index Authorization v1</a></p>
+﻿<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span8 offset2">
+            <div class="row-fluid oauth-container">
+                <div class="span8 oauth-scope">
+                    <h5>Someapp.com is requesting permission to:</h5>
+                    <ul>
+                        <li>Access to your City Index trading account.</li>
+                    </ul>
+                    <form class="form-signin form-inline" action="" method="POST">
+                        <h5>To allow access to Someapp.com, login below</h5>
+                        <hr />
+                        @if (ViewBag.ErrorMessage != "")
+                        {
+                            <div class="alert alert-@ViewBag.ErrorType"><button type="button" class="close" data-dismiss="alert">&times;</button>
+                                @ViewBag.ErrorMessage
+                            </div>                    
+                        }
+                        <div class="control-group @ViewBag.UidAlert">
+                            <div class="controls">
+                                <input type="text" class="input-block-level span8" placeholder="Username" name="username" value="@ViewBag.Uid">
+                                <span class="help-inline">@ViewBag.UidLabel </span>
+                            </div>
+                        </div>
+                        <div class="control-group @ViewBag.PwdAlert">
+                            <div class="controls">
+                                <input type="password" class="input-block-level span8" placeholder="Password" name="password" value="">
+                                <span class="help-inline">@ViewBag.PwdLabel</span>
+                            </div>
+                        </div>                
+                        <button class="btn btn-primary" type="submit" id="login">Login</button>
+                        <button class="btn btn-primary" type="submit" name="cancel">Cancel</button>
+                    </form>  
+                </div>
+                <div class="span4 oauth-third-party">
+                   
+                    <img src="@ViewBag.Logo" style="width: 150px; height: 70px;">
+                    <div class="caption">
+                    <h5>Someapp.com</h5>
+                        <a href="#" class="learnmore">Learn more</a>
+                   
+                </div>
+                </div>       
+            </div>
+          
         </div>
     </div>
-
- 
-</header>
-<div id="body">
-    <section class="featured">
-        <div class="content-wrapper">
-            <hgroup class="title">
-                
-                <h2>@ViewBag.SiteName is requesting access to your City Index trading account.</h2>
-            </hgroup>
-            <p>
-                If you would like to grant @ViewBag.SiteName authority to access your City Index trading account on your behalf please login here with your City Index credentials.
-
-            </p>
-        
-        </div>
-    </section>
-    <section class="content-wrapper main-content clear-fix">
-        <h3>LOGIN</h3>
-        <form action="" method="post">
-            <table>
-                <tr>
-                    <td>Username:</td><td><input type="text" name="username" value="XX658109" />@ViewBag.UidLabel</td>
-                </tr>
-                <tr>
-                    <td>Password:</td><td><input type="password" name="password" value="password" />@ViewBag.PwdLabel</td>
-                </tr>
-                
-                <tr>
-                    <td><input name="login" type="submit"  value="Login"/></td>
-                    <td><input name="cancel" type="submit" value="Cancel"/></td>
-                </tr>
-            </table>
-            @ViewBag.ErrorMessage
-            
-     
-        </form>
-    </section>
 </div>

@@ -14,20 +14,18 @@ namespace BootstrapSupport
             var jsTransformer = new JsTransformer();
             var nullOrderer = new NullOrderer();
 
-            bundles.Add(new ScriptBundle("~/js").Include(
+            bundles.Add(new ScriptBundle("~/content/js").Include(
                 "~/Scripts/jquery-{version}.js",
                 "~/Scripts/jquery-migrate-{version}.js",
-                "~/Scripts/bootstrap.js",
+                "~/Content/vendor/bootstrap/js/bootstrap.js",
                 "~/Scripts/jquery.validate.js",
                 "~/scripts/jquery.validate.unobtrusive.js",
                 "~/Scripts/jquery.validate.unobtrusive-custom-for-bootstrap.js"
                 ));
 
             bundles.Add(new StyleBundle("~/content/css").Include(
-                "~/Content/bootstrap.css",
-                "~/Content/body.css",
-                "~/Content/bootstrap-responsive.css",
-                "~/Content/bootstrap-mvc-validation.css"
+                "~/Content/vendor/bootstrap/css/bootstrap.css",
+                "~/Content/vendor/bootstrap/css/bootstrap-mvc-validation.css"
                 ));
 
             var lessBundle = new Bundle("~/content/less").Include("~/Content/less/ciauth.less");

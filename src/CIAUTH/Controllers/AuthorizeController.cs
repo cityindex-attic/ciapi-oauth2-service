@@ -233,7 +233,7 @@ namespace CIAUTH.Controllers
             ClientElement client = CIAUTHConfigurationSection.Instance.Clients[client_id];
             Utilities.ValidateOAUTHParameters(response_type, redirect_uri, client);
             ViewBag.SiteName = client.Name;
-            ViewBag.Logo = client.Logo;
+            ViewBag.AboutURL = client.AboutURL;
             ViewBag.Uid = "XX658109";
             
             return View();
@@ -261,7 +261,7 @@ namespace CIAUTH.Controllers
 
             Utilities.ValidateOAUTHParameters(response_type, redirect_uri, client);
           
-            ViewBag.Logo = client.Logo;
+            ViewBag.AboutURL = client.AboutURL;
             ViewBag.ErrorType = "";
             ViewBag.SiteName = client.Name;
             ViewBag.ErrorMessage = "";

@@ -8,7 +8,11 @@
                         <li>Access to your City Index trading account.</li>
                     </ul>
                     <form class="form-signin form-inline" action="" method="POST">
+<<<<<<< HEAD
+                        <h5>To allow access to SomeApp, login below</h5>
+=======
                         <h5>To allow access to @ViewBag.SiteName, login below</h5>
+>>>>>>> ui-mods-v3
                         <hr />
                         @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
                         {

@@ -30,7 +30,7 @@ namespace DesktopAppTest
         public void ShowLogin()
         {
             string authServer = ConfigurationManager.AppSettings["auth_server"];
-            webBrowser1.Navigate(authServer + "/Authorize?response_type=code&client_id=123&redirect_uri=" + HttpUtility.UrlEncode(authServer + "/authorize/callback") + "&state=statevalue");
+            webBrowser1.Navigate(authServer + "/Authorize?response_type=code&client_id=654&redirect_uri=" + HttpUtility.UrlEncode(authServer + "/authorize/callback") + "&state=statevalue");
         }
 
         private void webBrowser1_Navigated(object sender, WebBrowserNavigatedEventArgs e)

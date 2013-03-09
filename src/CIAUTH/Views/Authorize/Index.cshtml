@@ -8,41 +8,46 @@
                         <li>Access to your City Index trading account.</li>
                     </ul>
                     <form class="form-signin form-inline" action="" method="POST">
-                        <h5>To allow access to @ViewBag.SiteName, login below</h5>
-                        <hr />
-                        @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
-                        {
-                            <div class="alert alert-@ViewBag.ErrorType"><button type="button" class="close" data-dismiss="alert">&times;</button>
-                                @ViewBag.ErrorMessage
-                            </div>                    
-                        }
-                        <div class="control-group @ViewBag.UidAlert">
-                            <div class="controls">
-                                <input type="text" class="input-block-level span8" placeholder="Username" name="username" value="@ViewBag.Uid">
-                                <span class="help-inline">@ViewBag.UidLabel </span>
-                            </div>
+                    <h5>
+                        To allow access to @ViewBag.SiteName, login below</h5>
+                    <hr />
+                    @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+                    {
+                        <div class="alert alert-@ViewBag.ErrorType">
+                            <button type="button" class="close" data-dismiss="alert">
+                                &times;</button>
+                            @ViewBag.ErrorMessage
+                        </div>                    
+                    }
+                    <div class="control-group @ViewBag.UidAlert">
+                        <div class="controls">
+                            <input type="text" class="input-block-level span8" placeholder="Username" name="username" value="@ViewBag.Uid">
+                            <span class="help-inline">@ViewBag.UidLabel </span>
                         </div>
-                        <div class="control-group @ViewBag.PwdAlert">
-                            <div class="controls">
-                                <input type="password" class="input-block-level span8" placeholder="Password" name="password" value="">
-                                <span class="help-inline">@ViewBag.PwdLabel</span>
-                            </div>
-                        </div>                
-                        <button class="btn btn-primary" type="submit" id="login">Login</button>
-                        <button class="btn btn-primary" type="submit" name="cancel">Cancel</button>
-                    </form>  
+                    </div>
+                    <div class="control-group @ViewBag.PwdAlert">
+                        <div class="controls">
+                            <input type="password" class="input-block-level span8" placeholder="Password" name="password"
+                                value="">
+                            <span class="help-inline">@ViewBag.PwdLabel</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" type="submit" id="login">
+                        Login</button>
+                    <button class="btn btn-primary" type="submit" name="cancel">
+                        Cancel</button>
+                    </form>
                 </div>
                 <div class="span4 oauth-third-party">
-                   
-                    <a class="brand" href="@ViewBag.AboutURL" target="_blank" style="background-image: url( '@ViewBag.ClientLogo' );">@ViewBag.SiteName</a>
+                    <a class="brand" href="@ViewBag.AboutURL" target="_blank"  >
+                        <img src="@ViewBag.ClientLogo" alt="@ViewBag.SiteName"/>
+                        </a>
                     <div class="caption">
                         <h5>@ViewBag.SiteName</h5>
                         <a href="@ViewBag.AboutURL" class="learnmore" target="_blank">Learn more</a>
-                   
+                    </div>
                 </div>
-                </div>       
             </div>
-          
         </div>
     </div>
 </div>

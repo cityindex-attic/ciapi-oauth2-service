@@ -19,7 +19,7 @@ namespace CIAUTH.Tests.Configuration
             Assert.AreEqual("146, 64, 191, 111, 23, 3, 113, 119, 231, 121, 221, 112, 79, 32, 114, 156", section.AesVector);
             Assert.AreEqual("https://ciapi.cityindex.com/tradingapi", section.ApiUrl);
             Assert.AreEqual("CIAUTH", section.AppKey);
-            Assert.AreEqual(2,section.Clients.Count);
+           // Assert.AreEqual(2,section.Clients.Count);
 
 
             var ordinalindex = section.Clients[0];

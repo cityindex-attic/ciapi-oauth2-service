@@ -3,14 +3,14 @@
         <div class="span8 offset2">
             <div class="row-fluid oauth-container">
                 <div class="span8 oauth-scope">
-                    <h5>Someapp.com is requesting permission to:</h5>
+                    <h5>@ViewBag.SiteName is requesting permission to:</h5>
                     <ul>
                         <li>Access to your City Index trading account.</li>
                     </ul>
                     <form class="form-signin form-inline" action="" method="POST">
-                        <h5>To allow access to Someapp.com, login below</h5>
+                        <h5>To allow access to @ViewBag.SiteName, login below</h5>
                         <hr />
-                        @if (ViewBag.ErrorMessage != "")
+                        @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
                         {
                             <div class="alert alert-@ViewBag.ErrorType"><button type="button" class="close" data-dismiss="alert">&times;</button>
                                 @ViewBag.ErrorMessage
@@ -34,10 +34,10 @@
                 </div>
                 <div class="span4 oauth-third-party">
                    
-                    <a class="brand" href="#">@ViewBag.SiteName</a>
+                    <a class="brand" href="@ViewBag.AboutURL" target="_blank" style="background-image: url( '@ViewBag.ClientLogo' );">@ViewBag.SiteName</a>
                     <div class="caption">
                         <h5>@ViewBag.SiteName</h5>
-                        <a href="@ViewBag.AboutURL" class="learnmore">Learn more</a>
+                        <a href="@ViewBag.AboutURL" class="learnmore" target="_blank">Learn more</a>
                    
                 </div>
                 </div>       

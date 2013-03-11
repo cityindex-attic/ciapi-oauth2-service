@@ -234,7 +234,7 @@ namespace CIAUTH.Controllers
             Utilities.ValidateOAUTHParameters(response_type, redirect_uri, client);
             ViewBag.SiteName = client.Name;
             ViewBag.AboutURL = client.AboutURL;
-            ViewBag.Uid = "XX658109";
+           // ViewBag.Uid = "XX658109";
             ViewBag.ClientLogo = client.Logo;
          
             

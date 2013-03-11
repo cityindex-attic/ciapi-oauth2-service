@@ -23,6 +23,10 @@ namespace BootstrapSupport
                 "~/Scripts/jquery.validate.unobtrusive-custom-for-bootstrap.js"
                 ));
 
+            bundles.Add(new ScriptBundle("~/scripts/modernizr").Include(
+                "~/Scripts/modernizr-{version}.js"
+                ));
+
             bundles.Add(new StyleBundle("~/content/css").Include(
                 "~/Content/vendor/bootstrap/css/bootstrap.css",
                 "~/Content/vendor/bootstrap/css/bootstrap-mvc-validation.css"

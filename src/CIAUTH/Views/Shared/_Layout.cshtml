@@ -2,7 +2,7 @@
 @using BootstrapSupport
 @using NavigationRoutes
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
     <head>
         <meta charset="utf-8">
         <title>@ViewBag.Title</title>
@@ -11,7 +11,7 @@
         
         @Styles.Render("~/content/less")
 
-        @Scripts.Render("~/bundles/modernizr")
+        @Scripts.Render("~/scripts/modernizr")
         @RenderSection("head", required: false)
         @Html.Partial("_html5shiv")
         @* favicons and touch icons go here *@

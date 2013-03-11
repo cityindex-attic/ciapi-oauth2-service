@@ -15,9 +15,7 @@ namespace CIAUTH.Configuration
     // /> 
     public class ClientElement : ConfigurationElement
     {
-
-        //
-
+ 
         [ConfigurationProperty("logo")]
         public string Logo
         {

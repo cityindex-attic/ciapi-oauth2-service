@@ -1,262 +1,158 @@
-﻿@{
-    Layout = null;
-}
+﻿<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span8 offset2">
+            <div class="row-fluid oauth-container">
+                <div class="span8 oauth-scope">
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>AjaxLogin</title>
-    <script type="text/javascript" src="~/Scripts/easyXDM/easyXDM.js"> </script>
-    <script type="text/javascript" src="~/Scripts/json2.js"> </script>
-    <script src="~/Scripts/jquery-1.7.1.js" type="text/javascript"> </script>
+                    <h5>@ViewBag.SiteName is requesting permission to:</h5>
+                    <ul>
+                        <li>Access to your City Index trading account.</li>
+                    </ul>
+                    <form class="form-signin form-inline" action="" method="POST">
+                        To allow access to @ViewBag.SiteName, login below
+                        <hr />
+                        <div class="alert alert-" id="errDiv" style="display:none">
+                            <button type="button" class="close" data-dismiss="alert">
+                                &times;</button>
+                            <span id="errMessage"></span>
+                        </div>
+
+                        <div class="control-group @ViewBag.UidAlert">
+                            <div class="controls">
+                                <input type="text" class="input-block-level span8" placeholder="Username" id="tb_uid" name="username" value="@ViewBag.Uid">
+                                <span class="help-inline">@ViewBag.UidLabel </span>
+                            </div>
+                        </div>
+                        <div class="control-group @ViewBag.PwdAlert">
+                            <div class="controls">
+                                <input type="password" class="input-block-level span8" placeholder="Password" id="tb_pwd" name="password"
+                                    value="">
+                                <span class="help-inline">@ViewBag.PwdLabel</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary" type="button" id="login">
+                            Login</button>
+                        <button class="btn btn-primary" type="button" name="cancel">
+                            Cancel</button>
+                    </form>
+                </div>
+                <div class="span4 oauth-third-party">
+                    <a class="brand" href="@ViewBag.AboutURL" target="_blank"  >
+                        <img src="@ViewBag.ClientLogo" alt="@ViewBag.SiteName"/>
+                    </a>
+                    <div class="caption">
+                        <h5>@ViewBag.SiteName</h5>
+                        <a href="@ViewBag.AboutURL" class="learnmore" target="_blank">Learn more</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- figure out how to render scripts after razor -->
+    <script src="/Scripts/jquery-1.9.1.js"></script>
+    <script type="text/javascript">
+        var target = location.hash.substring(1);
+
+        var host = window.opener.frames[target];
+
+        if (window.opener) {
+            try {
+                if (window.opener.document.title) {
+                    host = window.opener;
+                }
+            }
+            catch (xDomainError) {
+                host = window.opener.frames[target];
+            }
+            if (host) {
+                try {
+                    host.setApp(window);
+                }
+                catch (browserHostError) {
+                    alert("was unable to gain a reference to the iframe");
+                }
+            }
+        }
+    </script>
     <script type="text/javascript">
 
-            $(document).ready(function() {
-                var client_id = null; // #TODO: populate from querystring and use to validate origin and style the form
-                var passwordChangeRequired = false;
-                var token = null;
-                var username = null;
-                var session = null;
-
-                // #TODO: make this work. seems need to be called explicitely upon change in UI
-                $(window).resize(function() { remote.resize(window.document.scrollHeight); });
-
-                $("#btn_login").live("click", function() { doLogin(); });
-
-                $("#btn_logout").live("click", function() { doLogOut(); });
+        $(document).ready(function () {
+            var passwordChangeRequired = false;
+            var token = null;
 
 
-                var remote = new easyXDM.Rpc(
-                    {
-                        local: "../../scripts/easyXDM/name.html",
-                        swf: "../../scripts/easyXDM/easyxdm.swf"
-                    },
-                    {
-                        remote: {
-                            resize: { },
-                            alertMessage: { },
-                            receiveToken: { }
-                        },
-                        local: {
-                            refreshToken: function() {
-                                doRefreshToken();
-                            },
-                            logout: function() {
-                                doLogOut();
-                            },
-                            noOp: function() {
-                                alert("executing in login iframe");
-                            }
-                        }
-                    });
+            $("#login").click(doLogin);
 
 
-                function doLogin() {
-
-                    validateForm();
 
 
-                    $("#div_login").attr("disabled", "true");
 
-                    $.post("@Url.Action("Login", "Authorize")",
+            function doLogin() {
+
+                // validateForm();
+
+
+                $("#div_login").attr("disabled", "true");
+
+                $.post("@Url.Action("Login", "Authorize")",
                         {
                             username: $("#tb_uid").val(),
-                            password: $("#tb_pwd").val(),
-                            new_password: $("#tb_new_pwd_1").val()
+                            password: $("#tb_pwd").val()
+                            //,new_password: $("#tb_new_pwd_1").val()
                         },
-                        function(data, status, xhr) {
+                        function (data, status, xhr) {
 
-                            $("#div_change_password").hide();
+                            //$("#div_change_password").hide();
                             $("#div_error").text("");
                             $("#div_login").attr("disabled", null);
                             if (data.success) {
-                                token = data.token;
-                                username = token.access_token.split(":")[0];
-                                session = token.access_token.split(":")[1];
-                                passwordChangeRequired = false;
-                                remote.receiveToken(token);
-                                $("#div_logout").show();
-                                $("#div_login").hide();
 
+                                token = data.token;
+                                $("#div_login").hide();
+                                host.sendData(token);
 
                                 // do something
                             } else {
-                                remote.receiveToken(null);
-                                $("#div_error").text(data.reason);
-                                if (data.passwordChangeRequired) {
-                                    $("#btn_login").val("Change Password");
-                                    passwordChangeRequired = true;
-                                    $("#div_change_password").show();
-                                } else {
-                                    $("#div_change_password").hide();
-                                    passwordChangeRequired = false;
-                                }
+                                $("#errDiv").show();
+                                $("#errMessage").text(data.reason);
+
                             }
                         });
+            };
+
+
+
+
+            function validateForm() {
+                // validate uid and pwd
+                if (!$("#tb_uid").val() || !$("#tb_pwd").val()) {
+                    $("#div_error").text("All fields are required");
+
+                    return;
                 }
 
 
-                function doRefreshToken() {
-                    $.post("@Url.Action("RefreshToken", "Authorize")",
-                        {
-                            refresh_token: token.refresh_token
-                        },
-                        function(data, status, xhr) {
+                if (passwordChangeRequired) {
 
-                            $("#div_error").text("");
+                    // validate new password fields 
 
-                            if (data.success) {
-                                token = data.token;
-                                username = token.access_token.split(":")[0];
-                                session = token.access_token.split(":")[1];
-                                passwordChangeRequired = false;
-                                remote.receiveToken(token);
-
-
-                            } else {
-                                
-                                username = null;
-                                password = null;
-                                token = null;
-
-                                $("#div_logout").hide();
-                                $("#div_login").show();
-
-                                $("#div_error").text(data.reason);
-                                if (data.passwordChangeRequired) {
-                                    $("#btn_login").val("Change Password");
-                                    passwordChangeRequired = true;
-                                    $("#div_change_password").show();
-                                } else {
-                                    $("#div_change_password").hide();
-                                    passwordChangeRequired = false;
-                                }
-                                
-                                remote.receiveToken(
-                                    {
-                                        success:false,
-                                        reason:""
-                                    });
-                                
-                            }
-                        });
-                }
-
-                function doLogOut() {
-
-                    $("#div_logout").attr("disabled", "true");
-
-                    $.post("@Url.Action("Logout", "Authorize")",
-                        {
-                            username: username,
-                            session: session
-                        },
-                        function(data, status, xhr) {
-
-
-                            $("#div_error").text("");
-                            $("#div_logout").attr("disabled", null);
-                            if (data.success) {
-                                token = null;
-                                username = null;
-                                session = null;
-
-                                remote.receiveToken(token);
-                                $("#div_logout").hide();
-                                $("#div_login").show();
-
-                            } else {
-                                $("#div_error").text(data.reason);
-                            }
-                        });
-                }
-
-
-                function validateForm() {
-                    // validate uid and pwd
-                    if (!$("#tb_uid").val() || !$("#tb_pwd").val()) {
+                    if (!$("#tb_new_pwd_1").val() || !$("#tb_new_pwd_2").val()) {
                         $("#div_error").text("All fields are required");
 
                         return;
                     }
+                    if ($("#tb_new_pwd_1").val() != $("#tb_new_pwd_2").val()) {
 
+                        $("#div_error").text("New password and confirmation are not the same");
 
-                    if (passwordChangeRequired) {
-
-                        // validate new password fields 
-
-                        if (!$("#tb_new_pwd_1").val() || !$("#tb_new_pwd_2").val()) {
-                            $("#div_error").text("All fields are required");
-
-                            return;
-                        }
-                        if ($("#tb_new_pwd_1").val() != $("#tb_new_pwd_2").val()) {
-
-                            $("#div_error").text("New password and confirmation are not the same");
-
-                            return;
-                        }
-
+                        return;
                     }
-                }
 
-            });
+                }
+            }
+
+        });
     </script>
-</head>
-<body>
-    <div id="div_error">
-    </div>
-    <div id="div_logout" style="display: none;">
-        <input type="button" id="btn_logout" value="Log Out" />
-    </div>
-    <div id="div_login">
-        <table>
-            <tr>
-                <td>
-                    Username:
-                </td>
-                <td>
-                    <input type="text" id="tb_uid" value="XX658109" />
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Password:
-                </td>
-                <td>
-                    <input type="password" id="tb_pwd" value="password" />
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <div id="div_change_password" style="display: none">
-                        <table>
-                            <tr>
-                                <td>
-                                    New Password:
-                                </td>
-                                <td>
-                                    <input type="password" id="tb_new_pwd_1" value="" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Confirm New Password:
-                                </td>
-                                <td>
-                                    <input type="password" id="tb_new_pwd_2" value="" />
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <input type="button" id="btn_login" value="Log In" />
-                </td>
-            </tr>
-        </table>
-    </div>
-</body>
-</html>
+</div>
+
+

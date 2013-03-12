@@ -28,6 +28,10 @@ namespace CIAUTH.Controllers
             _loginService = loginService;
         }
 
+        public ActionResult AjaxLoginProxy()
+        {
+            return View();
+        }
         public ActionResult UserAgentLogin()
         {
             return View();
@@ -64,8 +68,13 @@ namespace CIAUTH.Controllers
 
         #region AJAX Methods
 
-        public ActionResult AjaxLogin()
+        public ActionResult AjaxLogin(string client_id, string state)
         {
+            ClientElement client = CIAUTHConfigurationSection.Instance.Clients[client_id];
+            ViewBag.SiteName = client.Name;
+            ViewBag.AboutURL = client.AboutURL;
+            ViewBag.ClientLogo = client.Logo;
+
             return View();
         }
 
@@ -170,6 +179,7 @@ namespace CIAUTH.Controllers
                 passwordChangeRequired = result.PasswordChangeRequired;
                 reason = "Logged in";
                 token = Utilities.BuildAccessToken(username, result.Session, password, AesKey, AesVector);
+                token.refresh_token = null;
                 if (result.PasswordChangeRequired)
                 {
                     if (!string.IsNullOrEmpty(new_password))

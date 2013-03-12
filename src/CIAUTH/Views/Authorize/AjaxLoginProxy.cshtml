@@ -1,0 +1,61 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AjaxLoginProxy</title>
+    <script type="text/javascript" src="/easyXDM/json2.js"> </script>
+    <script type="text/javascript" src="/easyXDM/easyXDM.js"> </script>
+
+    <script type="text/javascript">
+        function getParameterByName(name) {
+            name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+            var regexS = "[\\?&]" + name + "=([^&#]*)";
+            var regex = new RegExp(regexS);
+            var results = regex.exec(window.location.search);
+            if (results == null)
+                return "";
+            else
+                return decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+
+        var win, remoteapp;
+        var proxy = new easyXDM.Rpc({
+            local: "easyXDM/name.html",
+            swf: "easyXDM/easyxdm.swf"
+        }, {
+            local: {
+
+                open: function (name) {
+                    var client_id = getParameterByName("client_id");
+                    var state = getParameterByName("state");
+                    remoteapp = null;
+                    win = window.open('/authorize/AjaxLogin/?client_id=' + client_id + '&state=' + state + '#easyXDM_' + easyXDM.query.xdm_c + '_provider', name, "width=1000, height=700");
+                }
+            },
+            remote: {
+                postMessage: {}
+            }
+        });
+
+        function setApp(app) {
+            remoteapp = app;
+        }
+
+        function sendData(data) {
+            var copy = {};
+            // copy the object in order to avoid the IE JSON serialization bug
+            easyXDM.apply(copy, data);
+            proxy.postMessage(copy);
+        }
+    </script>
+</head>
+<body>
+    <div>
+    </div>
+</body>
+</html>

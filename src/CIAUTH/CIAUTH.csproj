@@ -243,6 +243,11 @@
     <Content Include="Content\vendor\css3pie\PIE_IE9_uncompressed.js" />
     <Content Include="Content\vendor\css3pie\PIE_uncompressed.htc" />
     <Content Include="Content\vendor\css3pie\PIE_uncompressed.js" />
+    <Content Include="easyXDM\blank.html" />
+    <Content Include="easyXDM\easyXDM.js" />
+    <Content Include="easyXDM\easyxdm.swf" />
+    <Content Include="easyXDM\json2.js" />
+    <Content Include="easyXDM\name.html" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.js" />
@@ -365,6 +370,7 @@
     <Content Include="Views\ExampleLayouts\Narrow.cshtml" />
     <Content Include="Views\ExampleLayouts\Marketing.cshtml" />
     <Content Include="Views\ExampleLayouts\Fluid.cshtml" />
+    <Content Include="Views\Authorize\AjaxLoginProxy.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

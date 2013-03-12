@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>CIAUTH client side flow example</title>
+    <script type="text/javascript" src="easyXDM/easyXDM.js"></script>
+    <script type="text/javascript" src="easyXDM/json2.js"></script>
+    <script type="text/javascript">
+
+        var REMOTE = "http://localhost.:36412";
+
+        var proxy, win;
+
+
+
+        function openLogin() {
+            if (win) {
+                if (win.closed) {
+                    win = window.open(REMOTE + '/easyXDM/blank.html', 'ciauth', "width=1000, height=700");
+                    proxy.open("ciauth");
+                }
+                return;
+            }
+
+            win = window.open(REMOTE + '/easyXDM/blank.html', 'ciauth', "width=1000, height=700");
+
+
+
+            proxy = new easyXDM.Rpc({
+                local: "easyXDM/name.html",
+                swf: REMOTE + "/easyXDM/easyxdm.swf",
+                remote: REMOTE + "/authorize/AjaxLoginProxy?client_id=654&state=foo",
+                remoteHelper: REMOTE + "/easyXDM/name.html"
+            }, {
+                remote: {
+                    open: {}
+                },
+                local: {
+        
+                    postMessage: function (data) {
+                        win.close();
+                        win = null;
+                        var div = document.createElement("div");
+                        
+                        div.innerHTML = "data from '" + proxy.origin + "'";
+                        document.body.appendChild(div);
+                        for (var key in data) {
+                            if (data.hasOwnProperty(key)) {
+                                div = document.createElement("div");
+                                div.innerHTML = key + "=" + data[key];
+                                document.body.appendChild(div);
+                            }
+                        }
+                    }
+                }
+            });
+
+            proxy.open("ciauth");
+        }
+        </script>
+</head>
+    <body>
+        <div>
+            <input id="btnLogin" type="button" onclick="openLogin();" value="Show Login" />
+        </div>
+    </body>
+</html>

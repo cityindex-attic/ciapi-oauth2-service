@@ -111,7 +111,12 @@
   <ItemGroup>
     <Content Include="ClientAuth2.aspx" />
     <Content Include="ClientSideAuth.aspx" />
+    <Content Include="JavascriptAuth.html" />
     <Content Include="Default.aspx" />
+    <Content Include="easyXDM\easyXDM.js" />
+    <Content Include="easyXDM\easyxdm.swf" />
+    <Content Include="easyXDM\json2.js" />
+    <Content Include="easyXDM\name.html" />
     <Content Include="scripts\easyXDM\easyXDM.debug.js" />
     <Content Include="scripts\easyXDM\easyXDM.js" />
     <Content Include="scripts\easyXDM\easyXDM.min.js" />

@@ -8,8 +8,8 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>AjaxLoginProxy</title>
-    <script type="text/javascript" src="/easyXDM/json2.js"> </script>
-    <script type="text/javascript" src="/easyXDM/easyXDM.js"> </script>
+    <script type="text/javascript" src="/ciauth/easyXDM/json2.js"> </script>
+    <script type="text/javascript" src="/ciauth/easyXDM/easyXDM.js"> </script>
 
     <script type="text/javascript">
         function getParameterByName(name) {
@@ -25,8 +25,8 @@
 
         var win, remoteapp;
         var proxy = new easyXDM.Rpc({
-            local: "easyXDM/name.html",
-            swf: "easyXDM/easyxdm.swf"
+            local: "/ciauth/easyXDM/name.html",
+            swf: "/ciauth/easyXDM/easyxdm.swf"
         }, {
             local: {
 
@@ -34,7 +34,7 @@
                     var client_id = getParameterByName("client_id");
                     var state = getParameterByName("state");
                     remoteapp = null;
-                    win = window.open('/authorize/AjaxLogin/?client_id=' + client_id + '&state=' + state + '#easyXDM_' + easyXDM.query.xdm_c + '_provider', name, "width=1000, height=700");
+                    win = window.open('/ciauth//authorize/AjaxLogin/?client_id=' + client_id + '&state=' + state + '#easyXDM_' + easyXDM.query.xdm_c + '_provider', name, "width=1000, height=700");
                 }
             },
             remote: {

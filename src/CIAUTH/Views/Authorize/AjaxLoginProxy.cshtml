@@ -34,7 +34,7 @@
                     var client_id = getParameterByName("client_id");
                     var state = getParameterByName("state");
                     remoteapp = null;
-                    win = window.open('AjaxLogin/?client_id=' + client_id + '&state=' + state + '#easyXDM_' + easyXDM.query.xdm_c + '_provider', name, "width=1000, height=700");
+                    win = window.open('/ciauth/authorize/AjaxLogin/?client_id=' + client_id + '&state=' + state + '#easyXDM_' + easyXDM.query.xdm_c + '_provider', name, "width=1000, height=700");
                 }
             },
             remote: {

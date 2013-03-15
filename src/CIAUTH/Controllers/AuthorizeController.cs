@@ -41,10 +41,12 @@ namespace CIAUTH.Controllers
             {
                 if (cancel.GetValueOrDefault())
                 {
+                    ViewBag.Data = Request.QueryString;
                     ViewBag.Message = "Login cancelled by user";
                 }
                 else
                 {
+                    ViewBag.Data = Request.QueryString;
                     ViewBag.Message = "Login complete";
                 }
                 return View();

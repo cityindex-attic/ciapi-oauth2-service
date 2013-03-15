@@ -1,6 +1,12 @@
 ﻿@using System.Web.Optimization
 @using BootstrapSupport
 @using NavigationRoutes
+@{
+    if (string.IsNullOrEmpty(ViewBag.Title))
+    {
+        ViewBag.Title = "Login";
+    } 
+}
 <!DOCTYPE html>
 <html lang="en">
     <head>

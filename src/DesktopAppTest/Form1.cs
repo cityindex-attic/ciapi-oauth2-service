@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Configuration;
+using System.Diagnostics;
+using System.Web;
 using System.Windows.Forms;
 using CIAPI.Rpc;
 
@@ -66,43 +68,39 @@ namespace DesktopAppTest
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var loginForm = new LoginForm();
-            loginForm.TokenEvent += loginForm_TokenEvent;
-            loginForm.ShowLogin();
-            //#TODO: use dialog result 
-            var result = loginForm.ShowDialog(this);
-            loginForm.TokenEvent -= loginForm_TokenEvent;
-            
-            // do not dispose the login form or default browser will pop up
-            // just let it go out of scope.
-            //loginForm.Dispose();
+            var state = Guid.NewGuid().ToString();
+            Process.Start(GetAuthorizeUrl(state));
+ 
+            var authCode = String.Empty;
+            while (String.IsNullOrEmpty(authCode))
+            {
+                System.Threading.Thread.Sleep(500);
+
+                authCode = WindowTitleBrowser.GetWindowTitleContaining(state);
+            }
+
+            Session = authCode;
+            Debug.WriteLine(authCode);
+
         }
 
-        private void loginForm_TokenEvent(object sender, AccessTokenEventArgs e)
+        private void BuildClient(string accessToken)
         {
-            lbl_message.Text = e.Message;
-
-            if (e.AccessToken != null)
+            UserName = accessToken.Substring(0, Token.access_token.IndexOf(":"));
+            Session = accessToken.Substring(Token.access_token.IndexOf(":") + 1);
+            if (_client != null)
             {
-                Token = e.AccessToken;
-                UserName = Token.access_token.Substring(0, Token.access_token.IndexOf(":"));
-                Session = Token.access_token.Substring(Token.access_token.IndexOf(":") + 1);
-                if(_client!=null)
-                {
-                    _client.Dispose();
-                    _client = null;
-
-                }
-                _client = BuildRpcClient();
-     
+                _client.Dispose();
+                _client = null;
 
             }
-            else
-            {
-                Token = null;
-                UserName = null;
-                Session = null;
-            }
+            _client = BuildRpcClient();
+        }
+
+        private string GetAuthorizeUrl(string stateValue)
+        {
+            var authServer = ConfigurationManager.AppSettings["auth_server"];
+            return authServer + "/Authorize?response_type=code&client_id=654&redirect_uri=" + HttpUtility.UrlEncode(authServer + "/authorize/callback") + "&state="+stateValue;
         }
 
         private void btn_logout_Click(object sender, EventArgs e)

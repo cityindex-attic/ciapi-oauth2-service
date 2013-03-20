@@ -45,6 +45,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesktopAppTest", "DesktopAp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CIAUTH.UI", "CIAUTH.UI\CIAUTH.UI.csproj", "{7737F731-644C-4BD6-96A9-F4FDD0F0CDA8}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{4A4ACC07-2BE0-4938-89E4-6A8902F6969A}"
+	ProjectSection(SolutionItems) = preProject
+		build.xml = build.xml
+		CIAUTH.nuspec = CIAUTH.nuspec
+		..\tools\msbuild\CommonProperties.targets.xml = ..\tools\msbuild\CommonProperties.targets.xml
+		..\tools\msbuild\DropsAndPackaging.targets.xml = ..\tools\msbuild\DropsAndPackaging.targets.xml
+		..\tools\msbuild\TestsAndMetrics.targets.xml = ..\tools\msbuild\TestsAndMetrics.targets.xml
+		..\tools\msbuild\Versioning.targets.xml = ..\tools\msbuild\Versioning.targets.xml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

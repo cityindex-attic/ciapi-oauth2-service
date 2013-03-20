@@ -27,10 +27,10 @@
                 Regex="AssemblyFileVersion\s*\(\s*\&quot;(\d+\.\d+\.(\d+|\*)\.(\d+|\*))\&quot;\s*\)"
                 ReplacementText="AssemblyFileVersion(&quot;$(Major).$(Minor).$(Patch).$(Build)&quot;)"/>
 
-    <!--<Message Text="Updating NuGet package version"/>
+    <Message Text="Updating NuGet package version"/>
     <FileUpdate Files="$(SrcDirectory)\CIAUTH.nuspec"
                 Regex="&lt;version&gt;(.*?)&lt;/version&gt;"
-                ReplacementText="&lt;version&gt;$(Major).$(Minor).$(Patch)$(PreRelease)&lt;/version&gt;" />-->
+                ReplacementText="&lt;version&gt;$(Major).$(Minor).$(Patch)$(PreRelease)&lt;/version&gt;" />
              
   </Target>
 </Project>

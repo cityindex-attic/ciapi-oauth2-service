@@ -2570,22 +2570,38 @@ if ( !getSetAttribute ) {
 				ret.value :
 				undefined;
 		},
-		set: function( elem, value, name ) {
-			// Set the existing or create a new attribute node
-			var ret = elem.getAttributeNode( name );
-			if ( !ret ) {
-				elem.setAttributeNode(
-					(ret = elem.ownerDocument.createAttribute( name ))
-				);
-			}
 
-			ret.value = value += "";
-
-			// Break association with cloned elements by also using setAttribute (#9646)
-			return name === "value" || value === elem.getAttribute( name ) ?
-				value :
-				undefined;
+	    // hacked with http://bugs.jquery.com/ticket/12577
+		set: function (elem, value, name) {
+		    if (navigator.userAgent.toLowerCase().indexOf('msie') != -1 && document.documentMode <= 7) {
+		        elem.setAttribute(name, value);
+		        return elem.getAttributeNode(name);
+		    } else {
+		        // Set the existing or create a new attribute node
+		        var ret = elem.getAttributeNode(name);
+		        if (!ret) {
+		            ret = document.createAttribute(name);
+		            elem.setAttributeNode(ret);
+		        }
+		        return (ret.nodeValue = value + "");
+		    }
 		}
+		//set: function( elem, value, name ) {
+		//	// Set the existing or create a new attribute node
+		//	var ret = elem.getAttributeNode( name );
+		//	if ( !ret ) {
+		//		elem.setAttributeNode(
+		//			(ret = elem.ownerDocument.createAttribute( name ))
+		//		);
+		//	}
+
+		//	ret.value = value += "";
+
+		//	// Break association with cloned elements by also using setAttribute (#9646)
+		//	return name === "value" || value === elem.getAttribute( name ) ?
+		//		value :
+		//		undefined;
+		//}
 	};
 
 	// Set contenteditable to false on removals(#10429)

@@ -20,6 +20,15 @@ namespace DesktopAppTest
         {
             EventHandler<AccessTokenEventArgs> handler = TokenEvent;
             if (handler != null) handler(this, e);
+            if (e.Message == "Login complete")
+            {
+                this.DialogResult = DialogResult.OK;
+            }
+            else
+            {
+                this.DialogResult = DialogResult.Cancel;
+            }
+
         }
 
         public LoginForm()
@@ -29,31 +38,15 @@ namespace DesktopAppTest
 
         public void ShowLogin()
         {
-            string authServer = ConfigurationManager.AppSettings["auth_server"];
-            webBrowser1.Navigate(authServer + "/Authorize?response_type=code&client_id=654&redirect_uri=" + HttpUtility.UrlEncode(authServer + "/authorize/callback") + "&state=statevalue");
+            ciauthControl1.ShowLogin();
         }
 
-        private void webBrowser1_Navigated(object sender, WebBrowserNavigatedEventArgs e)
+        private void ciauthControl1_TokenEvent(object sender, AccessTokenEventArgs e)
         {
-            if (e.Url.AbsoluteUri.Contains("complete=true"))
-            {
-                if (e.Url.AbsoluteUri.Contains("#"))
-                {
-                    var tokenText = e.Url.AbsoluteUri.Substring(e.Url.AbsoluteUri.IndexOf("#") + 1);
-                    tokenText = HttpUtility.UrlDecode(tokenText);
-                    AccessToken token = JsonConvert.DeserializeObject<AccessToken>(tokenText);
-                    
-                    AccessTokenEventArgs ea = new AccessTokenEventArgs(){AccessToken = token,Message = "Login complete"};
-                    OnTokenEvent(ea);
-                    this.DialogResult=DialogResult.OK;
-                }
-                else
-                {
-                    AccessTokenEventArgs ea = new AccessTokenEventArgs() { AccessToken = null, Message = "Login failed" };
-                    OnTokenEvent(ea);
-                    this.DialogResult=DialogResult.Cancel;
-                }
-            }
+            OnTokenEvent(e);
         }
+
+
+
     }
 }

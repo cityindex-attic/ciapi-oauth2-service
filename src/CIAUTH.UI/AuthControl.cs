@@ -17,11 +17,11 @@ using System.Web;
 using Newtonsoft.Json;
 using System.Configuration;
 
-namespace DesktopAppTest
+namespace CIAUTH.UI
 {
-    public partial class CIAUTHControl : UserControl
+    public partial class AuthControl : UserControl
     {
-        public CIAUTHControl()
+        public AuthControl()
         {
             InitializeComponent();
             txtUrl.Text = "Loading City Index Authorization....";

@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CIAUTH", "CIAUTH\CIAUTH.csproj", "{F550F658-E7E3-4E66-AEF2-B16F8D1AF417}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CIAUTH.Tests", "CIAUTH.Tests\CIAUTH.Tests.csproj", "{A13FE17F-8D26-4D12-9257-A4855F362D76}"
@@ -42,6 +42,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".build", ".build", "{2EE884
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesktopAppTest", "DesktopAppTest\DesktopAppTest.csproj", "{D3726B24-3D31-49EC-B461-7BCD7523A538}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CIAUTH.UI", "CIAUTH.UI\CIAUTH.UI.csproj", "{7737F731-644C-4BD6-96A9-F4FDD0F0CDA8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -103,6 +105,16 @@ Global
 		{D3726B24-3D31-49EC-B461-7BCD7523A538}.Release|Mixed Platforms.Build.0 = Release|x86
 		{D3726B24-3D31-49EC-B461-7BCD7523A538}.Release|x86.ActiveCfg = Release|x86
 		{D3726B24-3D31-49EC-B461-7BCD7523A538}.Release|x86.Build.0 = Release|x86
+		{7737F731-644C-4BD6-96A9-F4FDD0F0CDA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7737F731-644C-4BD6-96A9-F4FDD0F0CDA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7737F731-644C-4BD6-96A9-F4FDD0F0CDA8}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{7737F731-644C-4BD6-96A9-F4FDD0F0CDA8}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{7737F731-644C-4BD6-96A9-F4FDD0F0CDA8}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7737F731-644C-4BD6-96A9-F4FDD0F0CDA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7737F731-644C-4BD6-96A9-F4FDD0F0CDA8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7737F731-644C-4BD6-96A9-F4FDD0F0CDA8}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{7737F731-644C-4BD6-96A9-F4FDD0F0CDA8}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{7737F731-644C-4BD6-96A9-F4FDD0F0CDA8}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

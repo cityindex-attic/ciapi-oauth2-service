@@ -2,7 +2,7 @@
 using System.Configuration;
 using System.Windows.Forms;
 using CIAPI.Rpc;
-
+using CIAUTH.UI;
 namespace DesktopAppTest
 {
     public partial class Form1 : Form

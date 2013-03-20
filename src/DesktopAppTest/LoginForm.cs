@@ -9,7 +9,7 @@ using System.Text;
 using System.Web;
 using System.Windows.Forms;
 using Newtonsoft.Json;
-
+using CIAUTH.UI;
 namespace DesktopAppTest
 {
     public partial class LoginForm : Form
@@ -38,15 +38,13 @@ namespace DesktopAppTest
 
         public void ShowLogin()
         {
-            ciauthControl1.ShowLogin();
+            authControl1.ShowLogin();
         }
 
-        private void ciauthControl1_TokenEvent(object sender, AccessTokenEventArgs e)
+
+        private void authControl1_TokenEvent(object sender, CIAUTH.UI.AccessTokenEventArgs e)
         {
             OnTokenEvent(e);
         }
-
-
-
     }
 }

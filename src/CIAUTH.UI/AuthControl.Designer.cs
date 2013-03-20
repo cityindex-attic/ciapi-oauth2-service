@@ -1,6 +1,6 @@
-﻿namespace DesktopAppTest
+﻿namespace CIAUTH.UI
 {
-    partial class CIAUTHControl
+    partial class AuthControl
     {
         /// <summary> 
         /// Required designer variable.

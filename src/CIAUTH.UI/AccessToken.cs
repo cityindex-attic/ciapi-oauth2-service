@@ -1,6 +1,6 @@
 using System;
 
-namespace DesktopAppTest
+namespace CIAUTH.UI
 {
     public class AccessTokenEventArgs:EventArgs
     {

@@ -3,12 +3,13 @@
         <div class="span8 offset2">
             <div class="row-fluid oauth-container">
                 <div class="span8 oauth-scope">
+
                     <h5>@ViewBag.SiteName is requesting permission to:</h5>
                     <ul>
                         <li>Access to your City Index trading account.</li>
                     </ul>
                     <form class="form-signin form-inline" action="" method="POST">
-                    <h5>
+
                         To allow access to @ViewBag.SiteName, login below</h5>
                     <hr />
                     @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))

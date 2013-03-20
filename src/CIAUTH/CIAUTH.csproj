@@ -235,6 +235,14 @@
     <Content Include="Content\vendor\bootstrap\img\glyphicons-halflings.png" />
     <Content Include="Content\vendor\bootstrap\js\bootstrap.js" />
     <Content Include="Content\vendor\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Content\vendor\css3pie\PIE.htc" />
+    <Content Include="Content\vendor\css3pie\PIE.js" />
+    <Content Include="Content\vendor\css3pie\PIE_IE678.js" />
+    <Content Include="Content\vendor\css3pie\PIE_IE678_uncompressed.js" />
+    <Content Include="Content\vendor\css3pie\PIE_IE9.js" />
+    <Content Include="Content\vendor\css3pie\PIE_IE9_uncompressed.js" />
+    <Content Include="Content\vendor\css3pie\PIE_uncompressed.htc" />
+    <Content Include="Content\vendor\css3pie\PIE_uncompressed.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.js" />
@@ -341,6 +349,7 @@
     </None>
     <Content Include="Content\less\variables.less" />
     <Content Include="Content\less\general.less" />
+    <Content Include="Content\vendor\css3pie\PIE.php" />
     <None Include="Scripts\jquery-1.9.1.min.map" />
     <Content Include="Views\Shared\Index.cshtml" />
     <Content Include="Views\Shared\Details.cshtml" />

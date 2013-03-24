@@ -1,4 +1,6 @@
-﻿namespace DesktopAppTest
+﻿using CIAUTH.UI.NET;
+
+namespace DesktopAppTest
 {
     partial class LoginForm
     {
@@ -28,7 +30,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.authControl1 = new CIAUTH.UI.AuthControl();
+            this.authControl1 = new AuthControl();
             this.SuspendLayout();
             // 
             // authControl1
@@ -54,7 +56,7 @@
 
         #endregion
 
-        private CIAUTH.UI.AuthControl authControl1;
+        private AuthControl authControl1;
 
 
     }

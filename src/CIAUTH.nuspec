@@ -6,7 +6,7 @@
     <owners>CityIndex Ltd,Sky Sanders</owners>
     <licenseUrl>https://github.com/cityindex/CIAPI.CS/raw/master/LICENSE.txt</licenseUrl>
     <dependencies>
-      <dependency id="CIAPI" />
+      <dependency id="newtonsoft.json" />
     </dependencies>
     <id>CIAUTH</id>
     <title>CIAUTH</title>
@@ -16,15 +16,9 @@
   </metadata>
   <files>
 
-    
-    <file src="..\dist\lib\ciauth.ui\bin\**\Salient.ReliableHttpClient.dll" target="lib\net35" />
-    <file src="..\dist\lib\ciauth.ui\bin\**\CIAPI.Serializer.dll" target="lib\net35" />
-    <file src="..\dist\lib\ciauth.ui\bin\**\CIAPI.dll" target="lib\net35" />
-
     <file src="..\dist\lib\ciauth.ui\bin\**\ciauth.ui.dll" target="lib\net35" />
     <file src="..\dist\lib\ciauth.ui\bin\**\ciauth.ui.pdb" target="lib\net35" />
     <file src="..\dist\lib\ciauth.ui\bin\**\ciauth.ui.XML" target="lib\net35" />
-
     
     <file src="lib\src\**\*.cs" target="src" />
   </files>

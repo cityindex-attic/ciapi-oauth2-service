@@ -13,7 +13,9 @@
   <Target Name="Package" DependsOnTargets="CreateDropDirectories;CopyMSBuildOutputToDropDirectory;CopySourceToDropDirectory;DeleteBinFilesFromSource;CopyLicenseToAllDirectories;CopyReportsToDropFolder">
     <Message Text="Packaging with NuGet" />
     <Copy SourceFiles="$(RootDirectory)\src\CIAUTH.nuspec" DestinationFolder="$(DropDirectory)"/>
-    <Exec Command='"$(NuGetEXE)" pack -Symbols "$(DropDirectory)\CIAUTH.nuspec"' ContinueOnError='false' WorkingDirectory='$(DropDirectory)'/>
+    <!-- nuget choking on xaml files http://nuget.codeplex.com/workitem/2715 year old bug -->
+    <!--<Exec Command='"$(NuGetEXE)" pack -Symbols "$(DropDirectory)\CIAUTH.nuspec"' ContinueOnError='false' WorkingDirectory='$(DropDirectory)'/>-->
+    <Exec Command='"$(NuGetEXE)" pack  "$(DropDirectory)\CIAUTH.nuspec"' ContinueOnError='false' WorkingDirectory='$(DropDirectory)'/>
   </Target>
 
   <Target Name="PublishToNugetOrg" DependsOnTargets="Package">

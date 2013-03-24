@@ -21,5 +21,6 @@
     <file src="..\dist\lib\ciauth.ui\bin\**\ciauth.ui.XML" target="lib\net35" />
     
     <file src="lib\src\**\*.cs" target="src" />
+    <file src="lib\src\**\*.xaml" target="src" />
   </files>
 </package>

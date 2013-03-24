@@ -22,5 +22,6 @@
     
     <file src="lib\src\**\*.cs" target="src" />
     <file src="lib\src\**\*.xaml" target="src" />
+    <file src="lib\src\**\*.xaml.cs" target="src" />
   </files>
 </package>

@@ -1,5 +1,4 @@
 ﻿using System.Configuration;
-using System.IO;
 
 namespace CIAuth.ResourceServer
 {
@@ -9,9 +8,6 @@ namespace CIAuth.ResourceServer
         {
             get { return ConfigurationManager.AppSettings["CIAUTH_ENDPOINT"]; }
         }
-        public static string EncryptionKey
-        {
-            get { return File.ReadAllText("enckey"); }
-        }
+
     }
 }

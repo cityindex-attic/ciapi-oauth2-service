@@ -1,0 +1,737 @@
+8/21/2013 1:07:42 AM
+CIAuth.Web.Controllers.CIAuthException: unauthorized_client
+   at CIAuth.Web.Helpers.DataAccess.GetApplication(Int32 id) in c:\dev3\CIAuth\src\CIAuth\CIAuth.Web\Helpers\DataAccess.cs:line 21
+   at CIAuth.Web.Controllers.AuthorizeController.Index(AuthCodeRequest authRequest) in c:\dev3\CIAuth\src\CIAuth\CIAuth.Web\Controllers\AuthorizeController.cs:line 165
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+=========================================
+8/21/2013 1:08:52 AM
+CIAuth.Web.Controllers.CIAuthException: unauthorized_client
+   at CIAuth.Web.Helpers.DataAccess.GetApplication(Int32 id) in c:\dev3\CIAuth\src\CIAuth\CIAuth.Web\Helpers\DataAccess.cs:line 21
+   at CIAuth.Web.Controllers.AuthorizeController.Index(AuthCodeRequest authRequest) in c:\dev3\CIAuth\src\CIAuth\CIAuth.Web\Controllers\AuthorizeController.cs:line 165
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+=========================================
+8/21/2013 1:10:59 AM
+System.Exception: invalid_request
+   at CIAuth.Web.Controllers.AuthorizeController.ValidateAuthRequest(AuthCodeRequest authRequest, Application client) in c:\dev3\CIAuth\src\CIAuth\CIAuth.Web\Controllers\AuthorizeController.cs:line 213
+   at CIAuth.Web.Controllers.AuthorizeController.Index(AuthCodeRequest authRequest) in c:\dev3\CIAuth\src\CIAuth\CIAuth.Web\Controllers\AuthorizeController.cs:line 167
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+=========================================
+8/21/2013 1:11:35 AM
+System.Exception: invalid_request
+   at CIAuth.Web.Controllers.AuthorizeController.ValidateAuthRequest(AuthCodeRequest authRequest, Application client) in c:\dev3\CIAuth\src\CIAuth\CIAuth.Web\Controllers\AuthorizeController.cs:line 213
+   at CIAuth.Web.Controllers.AuthorizeController.Index(AuthCodeRequest authRequest) in c:\dev3\CIAuth\src\CIAuth\CIAuth.Web\Controllers\AuthorizeController.cs:line 167
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+=========================================
+8/21/2013 1:12:32 AM
+System.ObjectDisposedException: The ObjectContext instance has been disposed and can no longer be used for operations that require a connection.
+   at System.Data.Objects.ObjectContext.EnsureConnection()
+   at System.Data.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)
+   at System.Data.Objects.ObjectQuery`1.Execute(MergeOption mergeOption)
+   at System.Data.Objects.DataClasses.EntityReference`1.Load(MergeOption mergeOption)
+   at System.Data.Objects.DataClasses.RelatedEnd.Load()
+   at System.Data.Objects.DataClasses.RelatedEnd.DeferredLoad()
+   at System.Data.Objects.Internal.LazyLoadBehavior.LoadProperty[TItem](TItem propertyValue, String relationshipName, String targetRoleName, Boolean mustBeNull, Object wrapperObject)
+   at System.Data.Objects.Internal.LazyLoadBehavior.<>c__DisplayClass7`2.<GetInterceptorDelegate>b__2(TProxy proxy, TItem item)
+   at System.Data.Entity.DynamicProxies.Application_090AE1D314E6DF7D61977CE03FB9E079DB843959D3511DB6BF58103FF8603728.get_UserProfile()
+   at CIAuth.Web.Controllers.AuthorizeController.Index(AuthCodeRequest authRequest) in c:\dev3\CIAuth\src\CIAuth\CIAuth.Web\Controllers\AuthorizeController.cs:line 176
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+=========================================
+8/21/2013 1:15:34 AM
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at CIAuth.Web.Controllers.AuthorizeController.Login(LoginModel login) in c:\dev3\CIAuth\src\CIAuth\CIAuth.Web\Controllers\AuthorizeController.cs:line 45
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+=========================================
+8/21/2013 1:15:56 AM
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at CIAuth.Web.Controllers.AuthorizeController.Login(LoginModel login) in c:\dev3\CIAuth\src\CIAuth\CIAuth.Web\Controllers\AuthorizeController.cs:line 45
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+=========================================
+8/21/2013 1:27:07 AM
+CIAuth.Web.Controllers.CIAuthException: access_denied
+   at CIAuth.Web.Controllers.AuthorizeController.Login(LoginModel login) in c:\dev3\CIAuth\src\CIAuth\CIAuth.Web\Controllers\AuthorizeController.cs:line 32
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+=========================================
+8/21/2013 2:11:54 AM
+The remote server returned an error: (404) Not Found. - failed 3 times
+System.Net.WebException
+   at Salient.ReliableHttpClient.ClientBase.Request(RequestMethod method, String target, String uriTemplate, Dictionary`2 headers, Dictionary`2 parameters, ContentType requestContentType, ContentType responseContentType, TimeSpan cacheDuration, Int32 timeout, Int32 retryCount)
+   at Salient.ReliableHttpClient.ClientBase.Request[T](RequestMethod method, String target, String uriTemplate, Dictionary`2 headers, Dictionary`2 parameters, ContentType requestContentType, ContentType responseContentType, TimeSpan cacheDuration, Int32 timeout, Int32 retryCount)
+   at CIAPI.Rpc.Client.Request[T](RequestMethod method, String target, String uriTemplate, Dictionary`2 parameters, ContentType requestContentType, ContentType responseContentType, TimeSpan cacheDuration, Int32 timeout, Int32 retryCount)
+   at CIAPI.Rpc.Client.LogIn(String userName, String password)
+   at CIAuth.Common.SessionManager.Authenticate(String username, String password) in c:\dev3\CIAuth\src\CIAuth\CIAuth.Common\SessionManager.cs:line 45
+   at CIAuth.Web.Controllers.AuthorizeController.Login(LoginModel login) in c:\dev3\CIAuth\src\CIAuth\CIAuth.Web\Controllers\AuthorizeController.cs:line 41
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+System.Net.WebException: The remote server returned an error: (404) Not Found.
+   at System.Net.HttpWebRequest.EndGetResponse(IAsyncResult asyncResult)
+   at Salient.ReliableHttpClient.RequestInfo.CompleteRequest(IAsyncResult result)
+
+=========================================
+8/21/2013 2:11:55 AM
+The remote server returned an error: (404) Not Found. - failed 3 times
+System.Net.WebException
+   at Salient.ReliableHttpClient.ClientBase.Request(RequestMethod method, String target, String uriTemplate, Dictionary`2 headers, Dictionary`2 parameters, ContentType requestContentType, ContentType responseContentType, TimeSpan cacheDuration, Int32 timeout, Int32 retryCount)
+   at Salient.ReliableHttpClient.ClientBase.Request[T](RequestMethod method, String target, String uriTemplate, Dictionary`2 headers, Dictionary`2 parameters, ContentType requestContentType, ContentType responseContentType, TimeSpan cacheDuration, Int32 timeout, Int32 retryCount)
+   at CIAPI.Rpc.Client.Request[T](RequestMethod method, String target, String uriTemplate, Dictionary`2 parameters, ContentType requestContentType, ContentType responseContentType, TimeSpan cacheDuration, Int32 timeout, Int32 retryCount)
+   at CIAPI.Rpc.Client.LogIn(String userName, String password)
+   at CIAuth.Common.SessionManager.Authenticate(String username, String password) in c:\dev3\CIAuth\src\CIAuth\CIAuth.Common\SessionManager.cs:line 45
+   at CIAuth.Web.Controllers.AuthorizeController.Login(LoginModel login) in c:\dev3\CIAuth\src\CIAuth\CIAuth.Web\Controllers\AuthorizeController.cs:line 41
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+System.Net.WebException: The remote server returned an error: (404) Not Found.
+   at System.Net.HttpWebRequest.EndGetResponse(IAsyncResult asyncResult)
+   at Salient.ReliableHttpClient.RequestInfo.CompleteRequest(IAsyncResult result)
+
+=========================================
+8/21/2013 2:13:50 AM
+The remote server returned an error: (404) Not Found. - failed 3 times
+System.Net.WebException
+   at Salient.ReliableHttpClient.ClientBase.Request(RequestMethod method, String target, String uriTemplate, Dictionary`2 headers, Dictionary`2 parameters, ContentType requestContentType, ContentType responseContentType, TimeSpan cacheDuration, Int32 timeout, Int32 retryCount)
+   at Salient.ReliableHttpClient.ClientBase.Request[T](RequestMethod method, String target, String uriTemplate, Dictionary`2 headers, Dictionary`2 parameters, ContentType requestContentType, ContentType responseContentType, TimeSpan cacheDuration, Int32 timeout, Int32 retryCount)
+   at CIAPI.Rpc.Client.Request[T](RequestMethod method, String target, String uriTemplate, Dictionary`2 parameters, ContentType requestContentType, ContentType responseContentType, TimeSpan cacheDuration, Int32 timeout, Int32 retryCount)
+   at CIAPI.Rpc.Client.LogIn(String userName, String password)
+   at CIAuth.Common.SessionManager.Authenticate(String username, String password) in c:\dev3\CIAuth\src\CIAuth\CIAuth.Common\SessionManager.cs:line 45
+   at CIAuth.Web.Controllers.AuthorizeController.Login(LoginModel login) in c:\dev3\CIAuth\src\CIAuth\CIAuth.Web\Controllers\AuthorizeController.cs:line 41
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+System.Net.WebException: The remote server returned an error: (404) Not Found.
+   at System.Net.HttpWebRequest.EndGetResponse(IAsyncResult asyncResult)
+   at Salient.ReliableHttpClient.RequestInfo.CompleteRequest(IAsyncResult result)
+
+=========================================
+8/21/2013 2:14:17 AM
+The remote server returned an error: (404) Not Found. - failed 3 times
+System.Net.WebException
+   at Salient.ReliableHttpClient.ClientBase.Request(RequestMethod method, String target, String uriTemplate, Dictionary`2 headers, Dictionary`2 parameters, ContentType requestContentType, ContentType responseContentType, TimeSpan cacheDuration, Int32 timeout, Int32 retryCount)
+   at Salient.ReliableHttpClient.ClientBase.Request[T](RequestMethod method, String target, String uriTemplate, Dictionary`2 headers, Dictionary`2 parameters, ContentType requestContentType, ContentType responseContentType, TimeSpan cacheDuration, Int32 timeout, Int32 retryCount)
+   at CIAPI.Rpc.Client.Request[T](RequestMethod method, String target, String uriTemplate, Dictionary`2 parameters, ContentType requestContentType, ContentType responseContentType, TimeSpan cacheDuration, Int32 timeout, Int32 retryCount)
+   at CIAPI.Rpc.Client.LogIn(String userName, String password)
+   at CIAuth.Common.SessionManager.Authenticate(String username, String password) in c:\dev3\CIAuth\src\CIAuth\CIAuth.Common\SessionManager.cs:line 45
+   at CIAuth.Web.Controllers.AuthorizeController.Login(LoginModel login) in c:\dev3\CIAuth\src\CIAuth\CIAuth.Web\Controllers\AuthorizeController.cs:line 41
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+System.Net.WebException: The remote server returned an error: (404) Not Found.
+   at System.Net.HttpWebRequest.EndGetResponse(IAsyncResult asyncResult)
+   at Salient.ReliableHttpClient.RequestInfo.CompleteRequest(IAsyncResult result)
+
+=========================================
+8/21/2013 2:15:29 AM
+Exception of type 'Salient.ReliableHttpClient.ReliableHttpException' was thrown.
+
+   at Salient.ReliableHttpClient.ClientBase.Request(RequestMethod method, String target, String uriTemplate, Dictionary`2 headers, Dictionary`2 parameters, ContentType requestContentType, ContentType responseContentType, TimeSpan cacheDuration, Int32 timeout, Int32 retryCount)
+   at Salient.ReliableHttpClient.ClientBase.Request[T](RequestMethod method, String target, String uriTemplate, Dictionary`2 headers, Dictionary`2 parameters, ContentType requestContentType, ContentType responseContentType, TimeSpan cacheDuration, Int32 timeout, Int32 retryCount)
+   at CIAPI.Rpc.Client.Request[T](RequestMethod method, String target, String uriTemplate, Dictionary`2 parameters, ContentType requestContentType, ContentType responseContentType, TimeSpan cacheDuration, Int32 timeout, Int32 retryCount)
+   at CIAPI.Rpc.Client.LogIn(String userName, String password)
+   at CIAuth.Common.SessionManager.Authenticate(String username, String password) in c:\dev3\CIAuth\src\CIAuth\CIAuth.Common\SessionManager.cs:line 45
+   at CIAuth.Web.Controllers.AuthorizeController.Login(LoginModel login) in c:\dev3\CIAuth\src\CIAuth\CIAuth.Web\Controllers\AuthorizeController.cs:line 41
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+
+
+=========================================
+8/21/2013 2:18:39 AM
+Exception of type 'Salient.ReliableHttpClient.ReliableHttpException' was thrown.
+
+   at Salient.ReliableHttpClient.ClientBase.Request(RequestMethod method, String target, String uriTemplate, Dictionary`2 headers, Dictionary`2 parameters, ContentType requestContentType, ContentType responseContentType, TimeSpan cacheDuration, Int32 timeout, Int32 retryCount)
+   at Salient.ReliableHttpClient.ClientBase.Request[T](RequestMethod method, String target, String uriTemplate, Dictionary`2 headers, Dictionary`2 parameters, ContentType requestContentType, ContentType responseContentType, TimeSpan cacheDuration, Int32 timeout, Int32 retryCount)
+   at CIAPI.Rpc.Client.Request[T](RequestMethod method, String target, String uriTemplate, Dictionary`2 parameters, ContentType requestContentType, ContentType responseContentType, TimeSpan cacheDuration, Int32 timeout, Int32 retryCount)
+   at CIAPI.Rpc.Client._AccountInformation.GetClientAndTradingAccount()
+   at CIAuth.Common.SessionManager.Authenticate(String username, String password) in c:\dev3\CIAuth\src\CIAuth\CIAuth.Common\SessionManager.cs:line 46
+   at CIAuth.Web.Controllers.AuthorizeController.Login(LoginModel login) in c:\dev3\CIAuth\src\CIAuth\CIAuth.Web\Controllers\AuthorizeController.cs:line 41
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+
+
+=========================================
+8/21/2013 2:37:39 AM
+Exception of type 'Salient.ReliableHttpClient.ReliableHttpException' was thrown.
+
+   at Salient.ReliableHttpClient.ClientBase.Request(RequestMethod method, String target, String uriTemplate, Dictionary`2 headers, Dictionary`2 parameters, ContentType requestContentType, ContentType responseContentType, TimeSpan cacheDuration, Int32 timeout, Int32 retryCount)
+   at Salient.ReliableHttpClient.ClientBase.Request[T](RequestMethod method, String target, String uriTemplate, Dictionary`2 headers, Dictionary`2 parameters, ContentType requestContentType, ContentType responseContentType, TimeSpan cacheDuration, Int32 timeout, Int32 retryCount)
+   at CIAPI.Rpc.Client.Request[T](RequestMethod method, String target, String uriTemplate, Dictionary`2 parameters, ContentType requestContentType, ContentType responseContentType, TimeSpan cacheDuration, Int32 timeout, Int32 retryCount)
+   at CIAPI.Rpc.Client._AccountInformation.GetClientAndTradingAccount()
+   at CIAuth.Common.SessionManager.Authenticate(String username, String password) in c:\dev3\CIAuth\src\CIAuth\CIAuth.Common\SessionManager.cs:line 46
+   at CIAuth.Web.Controllers.AuthorizeController.Login(LoginModel login) in c:\dev3\CIAuth\src\CIAuth\CIAuth.Web\Controllers\AuthorizeController.cs:line 41
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+
+
+=========================================
+8/21/2013 2:40:04 AM
+Exception of type 'Salient.ReliableHttpClient.ReliableHttpException' was thrown.
+
+   at Salient.ReliableHttpClient.ClientBase.Request(RequestMethod method, String target, String uriTemplate, Dictionary`2 headers, Dictionary`2 parameters, ContentType requestContentType, ContentType responseContentType, TimeSpan cacheDuration, Int32 timeout, Int32 retryCount)
+   at Salient.ReliableHttpClient.ClientBase.Request[T](RequestMethod method, String target, String uriTemplate, Dictionary`2 headers, Dictionary`2 parameters, ContentType requestContentType, ContentType responseContentType, TimeSpan cacheDuration, Int32 timeout, Int32 retryCount)
+   at CIAPI.Rpc.Client.Request[T](RequestMethod method, String target, String uriTemplate, Dictionary`2 parameters, ContentType requestContentType, ContentType responseContentType, TimeSpan cacheDuration, Int32 timeout, Int32 retryCount)
+   at CIAPI.Rpc.Client._AccountInformation.GetClientAndTradingAccount()
+   at CIAuth.Common.SessionManager.Authenticate(String username, String password) in c:\dev3\CIAuth\src\CIAuth\CIAuth.Common\SessionManager.cs:line 46
+   at CIAuth.Web.Controllers.AuthorizeController.Login(LoginModel login) in c:\dev3\CIAuth\src\CIAuth\CIAuth.Web\Controllers\AuthorizeController.cs:line 41
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+
+
+=========================================
+8/21/2013 2:43:13 AM
+Exception of type 'Salient.ReliableHttpClient.ReliableHttpException' was thrown.
+
+   at Salient.ReliableHttpClient.ClientBase.Request(RequestMethod method, String target, String uriTemplate, Dictionary`2 headers, Dictionary`2 parameters, ContentType requestContentType, ContentType responseContentType, TimeSpan cacheDuration, Int32 timeout, Int32 retryCount)
+   at Salient.ReliableHttpClient.ClientBase.Request[T](RequestMethod method, String target, String uriTemplate, Dictionary`2 headers, Dictionary`2 parameters, ContentType requestContentType, ContentType responseContentType, TimeSpan cacheDuration, Int32 timeout, Int32 retryCount)
+   at CIAPI.Rpc.Client.Request[T](RequestMethod method, String target, String uriTemplate, Dictionary`2 parameters, ContentType requestContentType, ContentType responseContentType, TimeSpan cacheDuration, Int32 timeout, Int32 retryCount)
+   at CIAPI.Rpc.Client._AccountInformation.GetClientAndTradingAccount()
+   at CIAuth.Common.SessionManager.Authenticate(String username, String password) in c:\dev3\CIAuth\src\CIAuth\CIAuth.Common\SessionManager.cs:line 46
+   at CIAuth.Web.Controllers.AuthorizeController.Login(LoginModel login) in c:\dev3\CIAuth\src\CIAuth\CIAuth.Web\Controllers\AuthorizeController.cs:line 41
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+
+
+=========================================
+8/21/2013 2:44:51 AM
+Error getting value from 'CFDAccount' on 'CIAPI.DTO.AccountInformationResponseDTO'.
+Newtonsoft.Json.JsonSerializationException
+   at Salient.ReliableHttpClient.ClientBase.Request[T](RequestMethod method, String target, String uriTemplate, Dictionary`2 headers, Dictionary`2 parameters, ContentType requestContentType, ContentType responseContentType, TimeSpan cacheDuration, Int32 timeout, Int32 retryCount)
+   at CIAPI.Rpc.Client.Request[T](RequestMethod method, String target, String uriTemplate, Dictionary`2 parameters, ContentType requestContentType, ContentType responseContentType, TimeSpan cacheDuration, Int32 timeout, Int32 retryCount)
+   at CIAPI.Rpc.Client._AccountInformation.GetClientAndTradingAccount()
+   at CIAuth.Common.SessionManager.Authenticate(String username, String password) in c:\dev3\CIAuth\src\CIAuth\CIAuth.Common\SessionManager.cs:line 46
+   at CIAuth.Web.Controllers.AuthorizeController.Login(LoginModel login) in c:\dev3\CIAuth\src\CIAuth\CIAuth.Web\Controllers\AuthorizeController.cs:line 41
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+Newtonsoft.Json.JsonSerializationException: Error getting value from 'CFDAccount' on 'CIAPI.DTO.AccountInformationResponseDTO'. ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.Where[TSource](IEnumerable`1 source, Func`2 predicate)
+   at CIAPI.DTO.AccountInformationResponseDTO.get_CFDAccount()
+   at GetCFDAccount(Object )
+   at Newtonsoft.Json.Serialization.DynamicValueProvider.GetValue(Object target)
+   --- End of inner exception stack trace ---
+   at Newtonsoft.Json.Serialization.DynamicValueProvider.GetValue(Object target)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.CalculatePropertyDetails(JsonProperty property, JsonConverter& propertyConverter, JsonContainerContract containerContract, JsonProperty containerProperty, JsonReader reader, Object target, Boolean& useExistingValue, Object& currentValue, JsonContract& propertyContract, Boolean& gottenCurrentValue)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.SetPropertyValue(JsonProperty property, JsonConverter propertyConverter, JsonContainerContract containerContract, JsonProperty containerProperty, JsonReader reader, Object target)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.PopulateObject(Object newObject, JsonReader reader, JsonObjectContract contract, JsonProperty member, String id)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.CreateObject(JsonReader reader, Type objectType, JsonContract contract, JsonProperty member, JsonContainerContract containerContract, JsonProperty containerMember, Object existingValue)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.CreateValueInternal(JsonReader reader, Type objectType, JsonContract contract, JsonProperty member, JsonContainerContract containerContract, JsonProperty containerMember, Object existingValue)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonSerializer.Deserialize(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   at CIAPI.Serialization.Serializer.DeserializeObject[T](String json)
+   at Salient.ReliableHttpClient.ClientBase.Request[T](RequestMethod method, String target, String uriTemplate, Dictionary`2 headers, Dictionary`2 parameters, ContentType requestContentType, ContentType responseContentType, TimeSpan cacheDuration, Int32 timeout, Int32 retryCount)
+
+=========================================
+8/21/2013 2:46:30 AM
+Error getting value from 'CFDAccount' on 'CIAPI.DTO.AccountInformationResponseDTO'.
+Newtonsoft.Json.JsonSerializationException
+   at Salient.ReliableHttpClient.ClientBase.Request[T](RequestMethod method, String target, String uriTemplate, Dictionary`2 headers, Dictionary`2 parameters, ContentType requestContentType, ContentType responseContentType, TimeSpan cacheDuration, Int32 timeout, Int32 retryCount)
+   at CIAPI.Rpc.Client.Request[T](RequestMethod method, String target, String uriTemplate, Dictionary`2 parameters, ContentType requestContentType, ContentType responseContentType, TimeSpan cacheDuration, Int32 timeout, Int32 retryCount)
+   at CIAPI.Rpc.Client._AccountInformation.GetClientAndTradingAccount()
+   at CIAuth.Common.SessionManager.Authenticate(String username, String password) in c:\dev3\CIAuth\src\CIAuth\CIAuth.Common\SessionManager.cs:line 46
+   at CIAuth.Web.Controllers.AuthorizeController.Login(LoginModel login) in c:\dev3\CIAuth\src\CIAuth\CIAuth.Web\Controllers\AuthorizeController.cs:line 41
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+Newtonsoft.Json.JsonSerializationException: Error getting value from 'CFDAccount' on 'CIAPI.DTO.AccountInformationResponseDTO'. ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.Where[TSource](IEnumerable`1 source, Func`2 predicate)
+   at CIAPI.DTO.AccountInformationResponseDTO.get_CFDAccount()
+   at GetCFDAccount(Object )
+   at Newtonsoft.Json.Serialization.DynamicValueProvider.GetValue(Object target)
+   --- End of inner exception stack trace ---
+   at Newtonsoft.Json.Serialization.DynamicValueProvider.GetValue(Object target)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.CalculatePropertyDetails(JsonProperty property, JsonConverter& propertyConverter, JsonContainerContract containerContract, JsonProperty containerProperty, JsonReader reader, Object target, Boolean& useExistingValue, Object& currentValue, JsonContract& propertyContract, Boolean& gottenCurrentValue)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.SetPropertyValue(JsonProperty property, JsonConverter propertyConverter, JsonContainerContract containerContract, JsonProperty containerProperty, JsonReader reader, Object target)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.PopulateObject(Object newObject, JsonReader reader, JsonObjectContract contract, JsonProperty member, String id)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.CreateObject(JsonReader reader, Type objectType, JsonContract contract, JsonProperty member, JsonContainerContract containerContract, JsonProperty containerMember, Object existingValue)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.CreateValueInternal(JsonReader reader, Type objectType, JsonContract contract, JsonProperty member, JsonContainerContract containerContract, JsonProperty containerMember, Object existingValue)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonSerializer.Deserialize(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   at CIAPI.Serialization.Serializer.DeserializeObject[T](String json)
+   at Salient.ReliableHttpClient.ClientBase.Request[T](RequestMethod method, String target, String uriTemplate, Dictionary`2 headers, Dictionary`2 parameters, ContentType requestContentType, ContentType responseContentType, TimeSpan cacheDuration, Int32 timeout, Int32 retryCount)
+
+=========================================
+8/21/2013 2:47:59 AM
+Error getting value from 'CFDAccount' on 'CIAPI.DTO.AccountInformationResponseDTO'.
+Newtonsoft.Json.JsonSerializationException
+   at Salient.ReliableHttpClient.ClientBase.Request[T](RequestMethod method, String target, String uriTemplate, Dictionary`2 headers, Dictionary`2 parameters, ContentType requestContentType, ContentType responseContentType, TimeSpan cacheDuration, Int32 timeout, Int32 retryCount)
+   at CIAPI.Rpc.Client.Request[T](RequestMethod method, String target, String uriTemplate, Dictionary`2 parameters, ContentType requestContentType, ContentType responseContentType, TimeSpan cacheDuration, Int32 timeout, Int32 retryCount)
+   at CIAPI.Rpc.Client._AccountInformation.GetClientAndTradingAccount()
+   at CIAuth.Common.SessionManager.Authenticate(String username, String password) in c:\dev3\CIAuth\src\CIAuth\CIAuth.Common\SessionManager.cs:line 46
+   at CIAuth.Web.Controllers.AuthorizeController.Login(LoginModel login) in c:\dev3\CIAuth\src\CIAuth\CIAuth.Web\Controllers\AuthorizeController.cs:line 41
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+Newtonsoft.Json.JsonSerializationException: Error getting value from 'CFDAccount' on 'CIAPI.DTO.AccountInformationResponseDTO'. ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.Where[TSource](IEnumerable`1 source, Func`2 predicate)
+   at CIAPI.DTO.AccountInformationResponseDTO.get_CFDAccount()
+   at GetCFDAccount(Object )
+   at Newtonsoft.Json.Serialization.DynamicValueProvider.GetValue(Object target)
+   --- End of inner exception stack trace ---
+   at Newtonsoft.Json.Serialization.DynamicValueProvider.GetValue(Object target)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.CalculatePropertyDetails(JsonProperty property, JsonConverter& propertyConverter, JsonContainerContract containerContract, JsonProperty containerProperty, JsonReader reader, Object target, Boolean& useExistingValue, Object& currentValue, JsonContract& propertyContract, Boolean& gottenCurrentValue)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.SetPropertyValue(JsonProperty property, JsonConverter propertyConverter, JsonContainerContract containerContract, JsonProperty containerProperty, JsonReader reader, Object target)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.PopulateObject(Object newObject, JsonReader reader, JsonObjectContract contract, JsonProperty member, String id)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.CreateObject(JsonReader reader, Type objectType, JsonContract contract, JsonProperty member, JsonContainerContract containerContract, JsonProperty containerMember, Object existingValue)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.CreateValueInternal(JsonReader reader, Type objectType, JsonContract contract, JsonProperty member, JsonContainerContract containerContract, JsonProperty containerMember, Object existingValue)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonSerializer.Deserialize(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   at CIAPI.Serialization.Serializer.DeserializeObject[T](String json)
+   at Salient.ReliableHttpClient.ClientBase.Request[T](RequestMethod method, String target, String uriTemplate, Dictionary`2 headers, Dictionary`2 parameters, ContentType requestContentType, ContentType responseContentType, TimeSpan cacheDuration, Int32 timeout, Int32 retryCount)
+
+=========================================
+8/21/2013 3:09:19 AM
+CIAuth.Web.Controllers.CIAuthException: invalid_request
+   at CIAuth.Web.Controllers.TokenController.Index(TokenRequest tokenRequest) in c:\dev3\CIAuth\src\CIAuth\CIAuth.Web\Controllers\TokenController.cs:line 145
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+=========================================
+8/21/2013 3:09:20 AM
+CIAuth.Web.Controllers.CIAuthException: invalid_request
+   at CIAuth.Web.Controllers.TokenController.Index(TokenRequest tokenRequest) in c:\dev3\CIAuth\src\CIAuth\CIAuth.Web\Controllers\TokenController.cs:line 79
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+=========================================
+8/21/2013 3:40:09 AM
+System.Exception: invalid_request
+   at CIAuth.Web.Controllers.AuthorizeController.ValidateAuthRequest(AuthCodeRequest authRequest, Application client) in c:\dev3\CIAuth\src\CIAuth\CIAuth.Web\Controllers\AuthorizeController.cs:line 218
+   at CIAuth.Web.Controllers.AuthorizeController.Index(AuthCodeRequest authRequest) in c:\dev3\CIAuth\src\CIAuth\CIAuth.Web\Controllers\AuthorizeController.cs:line 167
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+=========================================
+8/21/2013 1:28:08 PM
+CIAuth.Web.Controllers.CIAuthException: invalid_request
+   at CIAuth.Web.Controllers.TokenController.Index(TokenRequest tokenRequest) in c:\dev3\CIAuth\src\CIAuth\CIAuth.Web\Controllers\TokenController.cs:line 152
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+=========================================
+8/21/2013 1:28:09 PM
+CIAuth.Web.Controllers.CIAuthException: invalid_request
+   at CIAuth.Web.Controllers.TokenController.Index(TokenRequest tokenRequest) in c:\dev3\CIAuth\src\CIAuth\CIAuth.Web\Controllers\TokenController.cs:line 85
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+=========================================
+8/22/2013 12:58:37 AM
+The remote server returned an error: (500) Internal Server Error. - failed 3 times
+System.Net.WebException
+   at Salient.ReliableHttpClient.ClientBase.Request(RequestMethod method, String target, String uriTemplate, Dictionary`2 headers, Dictionary`2 parameters, ContentType requestContentType, ContentType responseContentType, TimeSpan cacheDuration, Int32 timeout, Int32 retryCount)
+   at Salient.ReliableHttpClient.ClientBase.Request[T](RequestMethod method, String target, String uriTemplate, Dictionary`2 headers, Dictionary`2 parameters, ContentType requestContentType, ContentType responseContentType, TimeSpan cacheDuration, Int32 timeout, Int32 retryCount)
+   at CIAPI.Rpc.Client.Request[T](RequestMethod method, String target, String uriTemplate, Dictionary`2 parameters, ContentType requestContentType, ContentType responseContentType, TimeSpan cacheDuration, Int32 timeout, Int32 retryCount)
+   at CIAPI.Rpc.Client.LogIn(String userName, String password)
+   at CIAuth.Common.SessionManager.Authenticate(String username, String password) in c:\dev3\CIAuth\src\CIAuth\CIAuth.Common\SessionManager.cs:line 45
+   at CIAuth.Web.Controllers.AuthorizeController.Login(LoginModel login) in c:\dev3\CIAuth\src\CIAuth\CIAuth.Web\Controllers\AuthorizeController.cs:line 41
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+System.Net.WebException: The remote server returned an error: (500) Internal Server Error.
+   at System.Net.HttpWebRequest.EndGetResponse(IAsyncResult asyncResult)
+   at Salient.ReliableHttpClient.RequestInfo.CompleteRequest(IAsyncResult result)
+
+=========================================
+8/22/2013 1:02:00 AM
+The remote server returned an error: (500) Internal Server Error. - failed 3 times
+System.Net.WebException
+   at Salient.ReliableHttpClient.ClientBase.Request(RequestMethod method, String target, String uriTemplate, Dictionary`2 headers, Dictionary`2 parameters, ContentType requestContentType, ContentType responseContentType, TimeSpan cacheDuration, Int32 timeout, Int32 retryCount)
+   at Salient.ReliableHttpClient.ClientBase.Request[T](RequestMethod method, String target, String uriTemplate, Dictionary`2 headers, Dictionary`2 parameters, ContentType requestContentType, ContentType responseContentType, TimeSpan cacheDuration, Int32 timeout, Int32 retryCount)
+   at CIAPI.Rpc.Client.Request[T](RequestMethod method, String target, String uriTemplate, Dictionary`2 parameters, ContentType requestContentType, ContentType responseContentType, TimeSpan cacheDuration, Int32 timeout, Int32 retryCount)
+   at CIAPI.Rpc.Client.LogIn(String userName, String password)
+   at CIAuth.Common.SessionManager.Authenticate(String username, String password) in c:\dev3\CIAuth\src\CIAuth\CIAuth.Common\SessionManager.cs:line 45
+   at CIAuth.Web.Controllers.AuthorizeController.Login(LoginModel login) in c:\dev3\CIAuth\src\CIAuth\CIAuth.Web\Controllers\AuthorizeController.cs:line 41
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+System.Net.WebException: The remote server returned an error: (500) Internal Server Error.
+   at System.Net.HttpWebRequest.EndGetResponse(IAsyncResult asyncResult)
+   at Salient.ReliableHttpClient.RequestInfo.CompleteRequest(IAsyncResult result)
+
+=========================================
+8/22/2013 1:02:53 AM
+The remote server returned an error: (500) Internal Server Error. - failed 3 times
+System.Net.WebException
+   at Salient.ReliableHttpClient.ClientBase.Request(RequestMethod method, String target, String uriTemplate, Dictionary`2 headers, Dictionary`2 parameters, ContentType requestContentType, ContentType responseContentType, TimeSpan cacheDuration, Int32 timeout, Int32 retryCount)
+   at Salient.ReliableHttpClient.ClientBase.Request[T](RequestMethod method, String target, String uriTemplate, Dictionary`2 headers, Dictionary`2 parameters, ContentType requestContentType, ContentType responseContentType, TimeSpan cacheDuration, Int32 timeout, Int32 retryCount)
+   at CIAPI.Rpc.Client.Request[T](RequestMethod method, String target, String uriTemplate, Dictionary`2 parameters, ContentType requestContentType, ContentType responseContentType, TimeSpan cacheDuration, Int32 timeout, Int32 retryCount)
+   at CIAPI.Rpc.Client.LogIn(String userName, String password)
+   at CIAuth.Common.SessionManager.Authenticate(String username, String password) in c:\dev3\CIAuth\src\CIAuth\CIAuth.Common\SessionManager.cs:line 45
+   at CIAuth.Web.Controllers.AuthorizeController.Login(LoginModel login) in c:\dev3\CIAuth\src\CIAuth\CIAuth.Web\Controllers\AuthorizeController.cs:line 41
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+System.Net.WebException: The remote server returned an error: (500) Internal Server Error.
+   at System.Net.HttpWebRequest.EndGetResponse(IAsyncResult asyncResult)
+   at Salient.ReliableHttpClient.RequestInfo.CompleteRequest(IAsyncResult result)
+
+=========================================

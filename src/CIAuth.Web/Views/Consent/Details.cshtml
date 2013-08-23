@@ -1,0 +1,51 @@
+﻿@model CIAuth.Web.Models.Token
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Token</legend>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Application.UserProfile.UserName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Application.UserProfile.UserName)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Application.ApplicationName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Application.ApplicationName)
+    </div>
+
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Expires)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Expires)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Scope)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Scope)
+    </div>
+
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.LastAccessed)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.LastAccessed)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

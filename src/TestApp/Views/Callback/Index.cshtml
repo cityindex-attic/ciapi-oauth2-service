@@ -1,0 +1,49 @@
+﻿@{
+    ViewBag.Title = "Callback";
+}
+
+<div>
+    <h3>access code results</h3>
+    <ul>
+        <li>code=@ViewBag.code</li>
+        <li>error=@ViewBag.error</li>
+        <li>error_description=@ViewBag.error_description</li>
+        <li>error_uri=@ViewBag.error_uri</li>
+        <li>state=@ViewBag.state</li>
+
+    </ul>
+    
+    <h3>token exchange results</h3>
+    <ul>
+        <li>token_type=@ViewBag.token_type</li>
+        <li>expires_in=@ViewBag.expires_in</li>
+        <li>scope=@ViewBag.scope</li>
+        <li>refresh_token=@ViewBag.refresh_token</li>
+        <li>token=@ViewBag.access_token</li>
+        <li>username=@ViewBag.username</li>
+        <li>error=@ViewBag.tokenError</li>
+        <li>error_description=@ViewBag.tokenError_description</li>
+        <li>error_uri=@ViewBag.tokenError_uri</li>
+        <li>state=@ViewBag.tokenState</li>
+
+    </ul>
+
+    <h3>refreshed token  results</h3>
+    <ul>
+        <li>token_type=@ViewBag.refreshed_token_type</li>
+        <li>expires_in=@ViewBag.refreshed_expires_in</li>
+        <li>scope=@ViewBag.refreshed_scope</li>
+        <li>refresh_token=@ViewBag.refreshed_refresh_token</li>
+        <li>token=@ViewBag.refreshed_access_token</li>
+        <li>username=@ViewBag.refreshed_username</li>
+        <li>error=@ViewBag.refreshed_tokenError</li>
+        <li>error_description=@ViewBag.refreshed_tokenError_description</li>
+        <li>error_uri=@ViewBag.refreshed_tokenError_uri</li>
+        <li>state=@ViewBag.refreshed_tokenState</li>
+    </ul>
+    
+    <h3>TradingAPI Call</h3>
+    <ul>
+        <li>logonUserName=@ViewBag.result_LogonUserName</li>
+    </ul>
+</div>

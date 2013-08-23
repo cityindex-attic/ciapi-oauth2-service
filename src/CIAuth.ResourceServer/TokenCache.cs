@@ -26,7 +26,7 @@ namespace CIAuth.ResourceServer
 
         public static void Insert(TokenItem grant)
         {
-            DateTime timeToRemoveGrantFromCache = grant.Expires.LocalDateTime.Subtract(TimeSpan.FromMinutes(1));
+            DateTime timeToRemoveGrantFromCache = grant.Expires.ToUniversalTime().Subtract(TimeSpan.FromMinutes(1));
             Cache.Insert(grant.Token, grant, null, timeToRemoveGrantFromCache, Cache.NoSlidingExpiration);
             // NOTE: could use removed callback to refresh token
         }

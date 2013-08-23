@@ -1,0 +1,16 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>@ViewBag.Title.</h1>
+            </hgroup>
+
+            
+        </div>
+    </section>
+}
+
+<a href="@ViewBag.AuthServer/authorize?client_id=@ViewBag.ClientId&scope=module_Bot1 offline trading&response_type=code&state=stateValue&redirect_uri=@ViewBag.RedirectUrl">authorize</a>

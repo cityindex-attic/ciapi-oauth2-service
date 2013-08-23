@@ -1,0 +1,53 @@
+﻿@model IEnumerable<CIAuth.Web.Models.Token>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Application.UserProfile.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Application.ApplicationName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Expires)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Scope)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastAccessed)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Application.UserProfile.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Application.ApplicationName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Expires)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Scope)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastAccessed)
+            </td>
+            <td>
+                @Html.ActionLink("Revoke", "Delete", new { id = item.TokenId })
+            </td>
+        </tr>
+    }
+
+</table>
+

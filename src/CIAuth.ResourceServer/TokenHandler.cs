@@ -1,15 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Net;
 using System.Security;
-using System.Text;
 using System.Web;
-using CIAuth.Core;
-using CIAuth.Core.Extensions;
-
+using Newtonsoft.Json;
 
 namespace CIAuth.ResourceServer
 {
+    /// <summary>
+    /// #TODO: establish solid expiration plan so that refreshing is handled without gaps
+    /// 
+    /// </summary>
     public class TokenHandler
     {
         public void ProcessRequest(HttpRequestBase request)
@@ -49,20 +49,37 @@ namespace CIAuth.ResourceServer
 
                 if (tokenItem == null)
                 {
-                    JsonWebEncryptedToken jwt = AuthenticationServerProxy.ValidateToken(authToken, request);
+
+
+
+                    var tokenResult = ValidateToken(authToken, request);
+
+
+                    // check for error
+                    if (tokenResult.error == "invalid_token")
+                    {
+                        throw new SecurityException("token is invalid");
+                    }
+
+                    // check for expired token
+
+                    if (tokenResult.error == "expired_token")
+                    {
+                        throw new SecurityException("token is expired");
+                    }
 
                     tokenItem = new TokenItem
                         {
-                            Token = authToken,
-                            Expires = jwt.ExpiresOn,
-                            Username = jwt.Username,
-                            Session = jwt.Session
+                            Token = tokenResult.access_token,
+                            Expires = DateTime.UtcNow.AddSeconds(tokenResult.expires_in),
+                            Username = tokenResult.username,
+                            Session = tokenResult.session
                         };
 
                     TokenCache.Insert(tokenItem);
                 }
 
-                if (tokenItem.Expires < DateTimeOffset.UtcNow)
+                if (tokenItem.Expires < DateTime.UtcNow)
                 {
                     TokenCache.Remove(authToken);
 
@@ -76,8 +93,15 @@ namespace CIAuth.ResourceServer
                 // and off the request goes to the TradingAPI
 
             }
+            // #TODO: check for only200 and set exception response same same as TradingAPI
             catch (SecurityException se)
             {
+                //new ApiErrorResponseDTO()
+                //    {
+                //        ErrorCode = 4011,
+                //        HttpStatus = 401,
+                //        ErrorMessage = "Session is not valid"
+                //    }
                 // log it
                 throw;
             }
@@ -86,6 +110,24 @@ namespace CIAuth.ResourceServer
                 //log it
                 throw new SecurityException("token exception");
             }
+        }
+
+        private static TokenResponse ValidateToken(string authToken, HttpRequestBase request)
+        {
+            var endpoint = TokenHandlingModuleConfiguration.CIAuthEndpoint;
+            var client = new WebClient();
+            client.Headers["Content-Type"] = "application/json";
+            var jsonResult = client.UploadString(endpoint + "/token/validate",
+                                                 JsonConvert.SerializeObject(
+                                                 new
+                                                 {
+                                                     token = authToken,
+                                                     userHostAddress = request.UserHostAddress,
+                                                     userHostName = request.UserHostName,
+                                                     userAgent=request.UserAgent
+                                                 }, Formatting.Indented));
+            var tokenResult = JsonConvert.DeserializeObject<TokenResponse>(jsonResult);
+            return tokenResult;
         }
     }
 }

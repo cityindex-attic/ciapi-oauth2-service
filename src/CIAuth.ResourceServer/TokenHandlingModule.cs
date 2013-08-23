@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Web;
 
 namespace CIAuth.ResourceServer
@@ -50,9 +47,9 @@ namespace CIAuth.ResourceServer
                     _context.Dispose();
                 }
             }
-            // ReSharper disable EmptyGeneralCatchClause
+                // ReSharper disable EmptyGeneralCatchClause
             catch
-            // ReSharper restore EmptyGeneralCatchClause
+                // ReSharper restore EmptyGeneralCatchClause
             {
                 // swallow
             }

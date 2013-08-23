@@ -1,0 +1,48 @@
+﻿@{
+    ViewBag.Title = "Authorize";
+}
+
+<h2>Authorize</h2>
+
+<p>An application would like to connect to your account.</p>
+<p>
+    The app @ViewBag.ClientName @ViewBag.ApplicationName would like the ability to:
+    <ul>
+        <li>access your basic information</li>
+        @{
+        
+            if (ViewBag.Trading)
+            {
+            @:<li>place trades on your behalf</li>     
+        }
+            if (ViewBag.Offline)
+            {
+            @:<li>run offline (better describe autonomous refresh concept)</li>     
+        }
+        }
+    </ul>
+
+    <h3>Allow  @ViewBag.ClientName  @ViewBag.ApplicationName access?</h3>
+
+    @using (Html.BeginForm("Index"))
+    {
+        
+        <input id="denyButton" type="submit" name="submit" value="Deny" />
+        <input id="allowButton" type="submit" name="submit" value="Allow" />
+        
+    
+    }
+
+
+
+
+    @section scripts{
+
+        <script type="text/javascript">
+            $("#")
+        </script>
+
+    }
+</p>
+
+

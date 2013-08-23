@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{458F70F3-5ECF-4A91-A078-AAE1E1BB981A}</ProjectGuid>
+    <ProjectGuid>{7D5E4EBC-70D6-4236-9BE6-C69DC552FAF7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>CIAuth.ResourceServer</RootNamespace>
@@ -30,7 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.IdentityModel, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.6\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
@@ -42,22 +44,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AuthenticationServerProxy.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TokenCache.cs" />
     <Compile Include="TokenHandler.cs" />
     <Compile Include="TokenHandlingModule.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TokenHandlingModuleConfiguration.cs" />
     <Compile Include="TokenItem.cs" />
+    <Compile Include="TokenResponse.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\CIAuth.Core\CIAuth.Core.csproj">
-      <Project>{68045fd9-a332-42d5-8083-98299bfb7455}</Project>
-      <Name>CIAuth.Core</Name>
-    </ProjectReference>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

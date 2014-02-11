@@ -1,5 +1,5 @@
-RTD-Subscription-Engine
-Copyright 2010 CityIndex Ltd.
+ciapi-oauth2-service
+Copyright 2013 CityIndex Ltd.
 
 This product includes software developed at
 	CityIndex Ltd. (http://www.cityindex.com)
